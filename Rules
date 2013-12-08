@@ -17,6 +17,9 @@
 compile '/static/*' do
 end
 
+compile '/CNAME/' do
+end
+
 compile '/SIPjs/*' do
   filter :erb
   filter :kramdown, :toc_levels => [2,3]
@@ -45,6 +48,10 @@ end
 
 route '/static/*' do
   item.identifier[7..-2]
+end
+
+route '/CNAME/' do
+  '/CNAME'
 end
 
 route '*' do
