@@ -16,6 +16,7 @@ def commit_message
 
   mesg = last_commit if mesg == ''
   mesg.gsub(/'/, '') # to allow this to be handed off via -m '#{message}'
+  `echo '#{mesg}' > /tmp/dev.gh.m`
 end
 
 desc "Publish to http://developer.onsip.com"
@@ -34,9 +35,9 @@ task :publish => [:clean] do
     File.unlink(gif) if File.file?(gif)
     `git add -A`
     tsha = `git write-tree`.strip
-    puts "Created tree   #{tsha}"
+    puts "Created tree #{tsha}"
     if old_sha.size == 40
-      csha = `git commit-tree #{tsha} -p #{old_sha} -m '#{mesg}'`.strip
+      csha = `git commit-tree #{tsha}  -p #{old_sha} < /tmp/dev.gh.m`.strip
     else
       csha = `git commit-tree #{tsha} -m '#{mesg}'`.strip
     end
