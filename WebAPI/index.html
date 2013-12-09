@@ -47,18 +47,46 @@
 	
   <div id="wrapper">
   	<div class="content">
-    	<h1 id="overview">Overview</h1>
+    	<p>The OnSIP Web API allows you to automate and/or integrate the administration of your OnSIP account.</p>
 
-<p>The Web API consists of a set of callable actions. To perform an action, you need to send an HTTP request specifying the action along with whatever parameters the action requires. In return, you will receive a formatted response. The Web API expects all data to be <a href="http://www.utf-8.com">UTF-8</a> encoded.</p>
+<h1 id="overview">Overview</h1>
+
+<p>Any task that can be completed in the OnSIP administrative portal can also be performed via the OnSIP Web API. This includes tasks such as creating a user, retrieving information about an existing user, assigning a voicemail box, adding a phone number, and more. Requests are HTTP GET or HTTP POST, and response formats are (default) XML or JSON. The Web API expects all data to be <a href="http://www.utf-8.com">UTF-8</a> encoded.</p>
+
+<p>The Web API consists of a set of callable “Actions”, most of which require authentication with an administrative account. The credentials needed for authentication are the same as those used to access the OnSIP administrative portal, <a href="https://admin.onsip.com">admin.onsip.com</a>. See <a href="/WebAPI/Authentication">Creating a Session</a> for an example of how this is done.</p>
 
 <p>If you have any problems or requests please contact [support][].</p>
 
 <ul id="markdown-toc">
-<li><a href="#authentication">Authentication</a></li>
+<li><a href="#hierarchy">Hierarchy</a></li>
+  <li><a href="#roles">Roles</a></li>
+  <li><a href="#authentication">Authentication</a></li>
   <li><a href="#request-format">Request Format</a></li>
   <li><a href="#xml-response-format">XML Response Format</a></li>
   <li><a href="#json-response-format">JSON Response Format</a></li>
-</ul><h2 id="authentication">Authentication</h2>
+</ul><h2 id="hierarchy">Hierarchy</h2>
+
+<p>The OnSIP Hierarchy:</p>
+
+<dl>
+<dt>Account</dt>
+  <dd>Accounts can have an unlimited number of Organizations.</dd>
+  <dt>Organization</dt>
+  <dd>An Organization is comprized of a single domain with an unlimited number of Users.</dd>
+  <dt>Users </dt>
+  <dd>A User represents an end user of the platform which is typically making or receiving calls.</dd>
+</dl><h2 id="roles">Roles</h2>
+
+<p>In most cases, the “Account Administrator” takes on the responsiblity for managing the account (adding users, assigning extensions, setting up ACD Queues, etc.). The Account Administrator role is given by default to the User which created the account. It’s not possible to change the Account Administrator user, but it is possible to give other existing users in the account the Account Administror role. Please call support to do this.</p>
+
+<dl>
+<dt>Account Administrator</dt>
+  <dd>User with this role can edit their own account, organizations, and users. </dd>
+  <dt>Standard User</dt>
+  <dd>Users which can only edit their own information.</dd>
+  <dt>Anonymous User</dt>
+  <dd>This applies to GetOnSIP.com users only. These users have access to a very narrow subset of the API.</dd>
+</dl><h2 id="authentication">Authentication</h2>
 
 <p>Many methods require the user to be logged in. At present there is only one way to accomplish this. Users should request a <code>SessionId</code> token by authenticating using the <a href="Authentication/#sessioncreate">SessionCreate</a> action. The <code>SessionId</code> token should then be passed along with each request.</p>
 
@@ -320,6 +348,8 @@ the underscore (_), and brackets ([ and ]). Brackets must be URL-encoded.</p>
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/">Overview</a></h3>
         <ul class="js-guides">
+          <li><a href="/WebAPI/#hierarchy/">Hierarchy</a></li>
+          <li><a href="/WebAPI/#roles/">Roles</a></li>
           <li><a href="/WebAPI/#authentication/">Authentication</a></li>
           <li><a href="/WebAPI/#request-format/">Request Format</a></li>
           <li><a href="/WebAPI/#xml-response-format/">XML Response Format</a></li>
@@ -329,15 +359,102 @@ the underscore (_), and brackets ([ and ]). Brackets must be URL-encoded.</p>
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Authentication/">Authentication</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/Authentication/#sessioncreate">SessionCreate</a></li>
-          <li><a href="/WebAPI/Authentication/#sessiondestroy">SessionDestroy</a></li>
+          <li><a href="/WebAPI/Authentication/#session-create">Creating a Session</a></li>
+          <li><a href="/WebAPI/Authentication/#session-destroy">Destroying a Sessions</a></li>
+          <li><a href="/WebAPI/Authentication/#stateless-requests">Making Stateless Requests</a></li>
         </ul>
       </li>
       <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Test/">Testing</a></h3>
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Accounts/">Accounts</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/Test/#noop">NoOp</a></li>
-          <li><a href="/WebAPI/Test/#echo">Echo</a></li>
+          <li><a href="/WebAPI/Accounts/#account-read">Account Read</a></li>
+          <li><a href="/WebAPI/Accounts/#account-edit-contact">Account Edit Contact</a></li>
+          <li><a href="/WebAPI/Accounts/#account-credit-add">Account Credit Add</a></li>
+          <li><a href="/WebAPI/Accounts/#account-recharge">Account Recharge</a></li>
+          <li><a href="/WebAPI/Accounts/#account-invoice-read">Account Invoice Read</a></li>
+          <li><a href="/WebAPI/Accounts/#account-invoice-browse">Account Invoice Browse</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Organizations/">Organizations</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Users/">Users</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
+          <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
+          <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
+          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
+          <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
+          <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/User-Addresses/">User Addresses</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/User-Addresses/#user-address-add">User Address Add</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-read">User Address Read</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-browse">User Address Browse</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-delete">User Address Delete</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-edit">User Address Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/User-Aliases/">User Aliases</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/User-Aliases/#user-alias-add">User Alias Add</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-read">User Alias Read</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-browse">User Alias Browse</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-delete">User Alias Delete</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-edit">User Alias Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Phone-Numbers/">Phone Numbers</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Phone-Numbers/#npa-nxx-browse">NPA NXX Browse</a></li>
+          <li><a href="/WebAPI/Phone-Numbers/#did-request">DID Request</a></li>
+          <li><a href="/WebAPI/Phone-Numbers/#did-edit">DID Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Call-Detail-Records/">Call Detail Records</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Call-Detail-Records/#cdr-browse">CDR Browse</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Voicemail/">Voicemail</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-add">Voicemailbox Add</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-read">Voicemailbox Read</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-browse">Voicemailbox Browse</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-delete">Voicemailbox Delete</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-edit">Voicemailbox Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Ring-Groups/">Ring Groups</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Ring-Groups/#group-address-add">Group Address Add</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-read">Group Address Read</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-browse">Group Address Browse</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-delete">Group Address Delete</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-edit">Group Address Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Miscellaneous/">Miscellaneous</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Miscellaneous/#noop">NoOp</a></li>
+          <li><a href="/WebAPI/Miscellaneous/#echo">Echo</a></li>
         </ul>
       </li>
     </ul>
