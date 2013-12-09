@@ -1,5 +1,5 @@
 ---
-title: Authentication | WebAPI
+title: Authentication | Web API
 ---
 
 # Authentication
@@ -8,7 +8,7 @@ title: Authentication | WebAPI
 {:toc}
 
 
-## SessionCreate
+## Session Create
 
 ### Description
 
@@ -45,7 +45,7 @@ Main module: [SessionCreate.rng](/rng/SessionCreate.rng)
 <%= s = IO.read("static/rng/SessionCreate.rng"); s %>
 ~~~
 
-## SessionDestroy
+## Session Destroy
 
 ### Description
 

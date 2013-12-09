@@ -2,14 +2,45 @@
 title: OnSIP Web API
 ---
 
+The OnSIP Web API allows you to automate and/or integrate the administration of your OnSIP account.
+
 # Overview
 
-The Web API consists of a set of callable actions. To perform an action, you need to send an HTTP request specifying the action along with whatever parameters the action requires. In return, you will receive a formatted response. The Web API expects all data to be [UTF-8](http://www.utf-8.com) encoded.
+Any task that can be completed in the OnSIP administrative portal can also be performed via the OnSIP Web API. This includes tasks such as creating a user, retrieving information about an existing user, assigning a voicemail box, adding a phone number, and more. Requests are HTTP GET or HTTP POST, and response formats are (default) XML or JSON. The Web API expects all data to be [UTF-8](http://www.utf-8.com) encoded.
+
+The Web API consists of a set of callable "Actions", most of which require authentication with an administrative account. The credentials needed for authentication are the same as those used to access the OnSIP administrative portal, [admin.onsip.com](https://admin.onsip.com). See [Creating a Session](/WebAPI/Authentication) for an example of how this is done.
 
 If you have any problems or requests please contact [support][].
 
 * TOC
 {:toc}
+
+
+## Hierarchy
+
+The OnSIP Hierarchy:
+
+Account
+: Accounts can have an unlimited number of Organizations.
+
+Organization
+: An Organization is comprized of a single domain with an unlimited number of Users.
+
+Users 
+: A User represents an end user of the platform which is typically making or receiving calls.
+
+## Roles
+
+In most cases, the "Account Administrator" takes on the responsiblity for managing the account (adding users, assigning extensions, setting up ACD Queues, etc.). The Account Administrator role is given by default to the User which created the account. It's not possible to change the Account Administrator user, but it is possible to give other existing users in the account the Account Administror role. Please call support to do this.
+
+Account Administrator
+: User with this role can edit their own account, organizations, and users. 
+
+Standard User
+: Users which can only edit their own information.
+
+Anonymous User
+: This applies to GetOnSIP.com users only. These users have access to a very narrow subset of the API.
 
 
 ## Authentication

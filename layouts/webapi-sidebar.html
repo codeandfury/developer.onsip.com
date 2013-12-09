@@ -4,6 +4,8 @@
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/">Overview</a></h3>
         <ul class="js-guides">
+          <li><a href="/WebAPI/#hierarchy/">Hierarchy</a></li>
+          <li><a href="/WebAPI/#roles/">Roles</a></li>
           <li><a href="/WebAPI/#authentication/">Authentication</a></li>
           <li><a href="/WebAPI/#request-format/">Request Format</a></li>
           <li><a href="/WebAPI/#xml-response-format/">XML Response Format</a></li>
@@ -13,15 +15,102 @@
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Authentication/">Authentication</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/Authentication/#sessioncreate">SessionCreate</a></li>
-          <li><a href="/WebAPI/Authentication/#sessiondestroy">SessionDestroy</a></li>
+          <li><a href="/WebAPI/Authentication/#session-create">Creating a Session</a></li>
+          <li><a href="/WebAPI/Authentication/#session-destroy">Destroying a Sessions</a></li>
+          <li><a href="/WebAPI/Authentication/#stateless-requests">Making Stateless Requests</a></li>
         </ul>
       </li>
       <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Test/">Testing</a></h3>
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Accounts/">Accounts</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/Test/#noop">NoOp</a></li>
-          <li><a href="/WebAPI/Test/#echo">Echo</a></li>
+          <li><a href="/WebAPI/Accounts/#account-read">Account Read</a></li>
+          <li><a href="/WebAPI/Accounts/#account-edit-contact">Account Edit Contact</a></li>
+          <li><a href="/WebAPI/Accounts/#account-credit-add">Account Credit Add</a></li>
+          <li><a href="/WebAPI/Accounts/#account-recharge">Account Recharge</a></li>
+          <li><a href="/WebAPI/Accounts/#account-invoice-read">Account Invoice Read</a></li>
+          <li><a href="/WebAPI/Accounts/#account-invoice-browse">Account Invoice Browse</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Organizations/">Organizations</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Users/">Users</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
+          <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
+          <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
+          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
+          <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
+          <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/User-Addresses/">User Addresses</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/User-Addresses/#user-address-add">User Address Add</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-read">User Address Read</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-browse">User Address Browse</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-delete">User Address Delete</a></li>
+          <li><a href="/WebAPI/User-Addresses/#user-address-edit">User Address Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/User-Aliases/">User Aliases</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/User-Aliases/#user-alias-add">User Alias Add</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-read">User Alias Read</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-browse">User Alias Browse</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-delete">User Alias Delete</a></li>
+          <li><a href="/WebAPI/User-Aliases/#user-alias-edit">User Alias Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Phone-Numbers/">Phone Numbers</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Phone-Numbers/#npa-nxx-browse">NPA NXX Browse</a></li>
+          <li><a href="/WebAPI/Phone-Numbers/#did-request">DID Request</a></li>
+          <li><a href="/WebAPI/Phone-Numbers/#did-edit">DID Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Call-Detail-Records/">Call Detail Records</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Call-Detail-Records/#cdr-browse">CDR Browse</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Voicemail/">Voicemail</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-add">Voicemailbox Add</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-read">Voicemailbox Read</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-browse">Voicemailbox Browse</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-delete">Voicemailbox Delete</a></li>
+          <li><a href="/WebAPI/Voicemail/#voicemailbox-edit">Voicemailbox Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Ring-Groups/">Ring Groups</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Ring-Groups/#group-address-add">Group Address Add</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-read">Group Address Read</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-browse">Group Address Browse</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-delete">Group Address Delete</a></li>
+          <li><a href="/WebAPI/Ring-Groups/#group-address-edit">Group Address Edit</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Miscellaneous/">Miscellaneous</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Miscellaneous/#noop">NoOp</a></li>
+          <li><a href="/WebAPI/Miscellaneous/#echo">Echo</a></li>
         </ul>
       </li>
     </ul>
