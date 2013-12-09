@@ -2,50 +2,75 @@
 title: Test | WebAPI
 ---
 
+# NoOp and Echo
+
 * TOC
 {:toc}
 
-# Echo
+## NoOp
 
-## Description
-    An action which echoes all paramaters back in the response.
+### Description
+
+An action which does nothing.
     
-## Authentication
-    Not required.
+### Authentication
 
-## Authorization
-    Not required.
+Not required.
 
-## Parameters
-    None
+### Authorization
 
-## Result RELAX NG Schema Modules
-    Main module: <a xmlns="http://www.w3.org/1999/xhtml" href="../schema/rng/Echo.rng">Echo.rng</a>
+Not required.
 
-## Result Element Example
-&lt;Result&gt;
-  &lt;Echo/&gt;
-&lt;/Result&gt;
+### Parameters
 
+None
 
-# NoOp
+### Result Element Example
 
-## Description
-    An action which does nothing.
+~~~ xml
+<Result>
+  <NoOp/>
+</Result>
+~~~
+
+### Result Element Schema
     
-## Authentication
-    Not required.
+Main module: [NoOp.rng](/rng/NoOp.rng)
 
-## Authorization
-    Not required.
+~~~ xml
+<%= s = IO.read("static/rng/NoOp.rng"); s %>
+~~~
 
-## Parameters
-    None
+## Echo
 
-## Result RELAX NG Schema Modules
-    Main module: <a xmlns="http://www.w3.org/1999/xhtml" href="../schema/rng/Echo.rng">Echo.rng</a>
+### Description
 
-## Result Element Example
-&lt;Result&gt;
-  &lt;NoOp/&gt;
-&lt;/Result&gt;
+An action which echoes all paramaters back in the response.
+    
+### Authentication
+
+Not required.
+
+### Authorization
+
+Not required.
+
+### Parameters
+
+None
+
+### Result Element Example
+
+~~~ xml
+<Result>
+  <Echo/>
+</Result>
+~~~
+
+### Result Element Schema
+
+Main module: [Echo.rng](/rng/Echo.rng)
+
+~~~ xml
+<%= s = IO.read("static/rng/Echo.rng"); s %>
+~~~

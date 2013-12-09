@@ -1,5 +1,0 @@
----
-title: Echo | WebAPI
----
-
-# Echo

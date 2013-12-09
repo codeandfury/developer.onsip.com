@@ -22,18 +22,26 @@ end
 
 compile '/SIPjs/*' do
   filter :erb
-  filter :kramdown, :toc_levels => [2,3]
+  filter :kramdown,
+         :toc_levels => [2,3]
   filter :colorize_syntax,
-  :colorizers => {:javascript => :pygmentsrb}
+         :colorizers => {:javascript => :pygmentsrb}
   layout item[:layout] || 'sipjs'
 end
 
 compile '/WebAPI/*' do
-  filter :erb
-  filter :kramdown, :toc_levels => [2]
-  filter :colorize_syntax,
-  :colorizers => {:javascript => :pygmentsrb}
-  layout item[:layout] || 'webapi'
+  if item.binary?
+    # don’t filter binary items
+  else
+    filter :erb
+    filter :kramdown,
+           :toc_levels => [2],
+           :enable_coderay => true,
+           :coderay_line_numbers => nil
+    filter :colorize_syntax,
+           :colorizers => {:xml => :coderay}
+    layout item[:layout] || 'webapi'
+  end
 end
 
 compile '*' do
