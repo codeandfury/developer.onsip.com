@@ -49,29 +49,269 @@
   	<div class="content">
     	<h1 id="overview">Overview</h1>
 
-<p>The Junction API consists of a set of callable actions.</p>
-
-<p>To perform an action, you need to send a request specifying an action and some parameters. </p>
-
-<p>In return, you will recieve a formatted response.</p>
-
-<p>The REQUIRED parameter <code>Action</code> is used to specify the requested action.</p>
-
-<p>All actions take a list of named parameters.</p>
-
-<p>The parameters and resulting responses for each action are listed on the action’s spec page.</p>
+<p>The Web API consists of a set of callable actions. To perform an action, you need to send an HTTP request specifying the action along with whatever parameters the action requires. In return, you will receive a formatted response. The Web API expects all data to be <a href="http://www.utf-8.com">UTF-8</a> encoded.</p>
 
 <p>If you have any problems or requests please contact [support][].</p>
 
 <ul id="markdown-toc">
-<li><a href="#user-authentication">User Authentication</a></li>
-  <li><a href="#encoding">Encoding</a></li>
-  <li><a href="#terms-of-use">Terms of Use</a></li>
-</ul><h2 id="user-authentication">User Authentication</h2>
+<li><a href="#authentication">Authentication</a></li>
+  <li><a href="#request-format">Request Format</a></li>
+  <li><a href="#xml-response-format">XML Response Format</a></li>
+  <li><a href="#json-response-format">JSON Response Format</a></li>
+</ul><h2 id="authentication">Authentication</h2>
 
-<h2 id="encoding">Encoding</h2>
+<p>Many methods require the user to be logged in. At present there is only one way to accomplish this. Users should request a <code>SessionId</code> token by authenticating using the <a href="Authentication/#sessioncreate">SessionCreate</a> action. The <code>SessionId</code> token should then be passed along with each request.</p>
 
-<h2 id="terms-of-use">Terms of Use</h2>
+<h2 id="request-format">Request Format</h2>
+
+<p>The request format is simply a HTTP GET or a HTTP POST to the URL:</p>
+
+<pre><code>https://www.jnctn.com/webapi
+</code></pre>
+
+<p>Every request requires an <code>Action</code> parameter to specify the requested action. All actions take a list of named parameters. The parameters and resulting responses for each action are listed on the action’s spec page.</p>
+
+<p>For example, to request the Echo action, invoke like this: </p>
+
+<pre><code>http://www.jnctn.com/webapi?Action=Echo&amp;Foo=Bar
+</code></pre>
+
+<h2 id="xml-response-format">XML Response Format</h2>
+
+<p>The default response format is in the form of an XML document. The response document contains a single Response element. For example, a call to the <a href="Test/#echo">Echo</a> action returns this:</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#579">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;Response</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://www.jnctn.net/ns/rest/2006-01</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;Context&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Action&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;IsCompleted&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/IsCompleted&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;/Action&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Request&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;IsValid&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/IsValid&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;DateTime&gt;</span>2006-12-18T00:36:49-05:00<span style="color:#070;font-weight:bold">&lt;/DateTime&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Duration&gt;</span>2<span style="color:#070;font-weight:bold">&lt;/Duration&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Parameters&gt;</span>
+        <span style="color:#070;font-weight:bold">&lt;Parameter&gt;</span>
+          <span style="color:#070;font-weight:bold">&lt;Name&gt;</span>Action<span style="color:#070;font-weight:bold">&lt;/Name&gt;</span>
+          <span style="color:#070;font-weight:bold">&lt;Value&gt;</span>Echo<span style="color:#070;font-weight:bold">&lt;/Value&gt;</span>
+        <span style="color:#070;font-weight:bold">&lt;/Parameter&gt;</span>
+        <span style="color:#070;font-weight:bold">&lt;Parameter&gt;</span>
+          <span style="color:#070;font-weight:bold">&lt;Name&gt;</span>TestName<span style="color:#070;font-weight:bold">&lt;/Name&gt;</span>
+          <span style="color:#070;font-weight:bold">&lt;Value&gt;</span>TestValue<span style="color:#070;font-weight:bold">&lt;/Value&gt;</span>
+        <span style="color:#070;font-weight:bold">&lt;/Parameter&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;/Parameters&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;/Request&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Session&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;IsEstablished&gt;</span>false<span style="color:#070;font-weight:bold">&lt;/IsEstablished&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;/Session&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/Context&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;Result&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Echo</span><span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/Result&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/Response&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can see a live example response <a href="https://www.jnctn.com/webapi?Action=Echo&amp;TestName=TestValue">here</a>.</p>
+
+<p>The <a href="http://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> schema for the response XML document is located here: <a href="/rng/jnctn.rng">jnctn.rng</a></p>
+
+<h3 id="response-element">Response Element</h3>
+
+<p>The Response element contains a Context element and a Result element.</p>
+
+<p>A <a href="http://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> schema module for the Response element is located here: <a href="/rng/Response.rng">Response.rng</a></p>
+
+<h4 id="context-element">Context Element</h4>
+
+<p>The Context element contains information regarding the action taken, the request processed, and the session.</p>
+
+<p>The Context element is a child of the <a href="response.rest.html">Response element</a> and contains</p>
+<ul>
+<li>Action element - containing information about the action taken</li>
+  <li>Request element - containing information about the request made</li>
+  <li>Session element - containing information about the authenticated session</li>
+</ul><p>A <a href="http://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> schema module for the <a href="context.rest.html">Context element</a> is located here: <a href="/rng/Context.rng">Context.rng</a></p>
+
+<h4 id="action-element">Action Element</h4>
+
+<p>If the requested action completed successfully, the IsCompleted element will be <code>true</code> and the Response element will contain a Result element. Otherwise, the IsCompleted element will be <code>false</code>, the Response element will not contain a Result element, and the Action element may contain an Errors element detailing the reason for the failure. For example,</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Action&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;IsCompleted&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/IsCompleted&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/Action&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>A RELAX NG schema module for the Action element is located here: <a href="../schema/rng/Action.rng">Action.rng</a></p>
+
+<h4 id="request-element">Request Element</h4>
+
+<p>If the parameters associated with the requested action validated, the IsValid element will be <code>true</code>. Otherwise, the IsValid element will be <code>false</code> and the Request element may contain an Errors element detailing reasons one or more parameters failed to validate. A request which fails to validate will never be completed. For example,</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Request&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;IsValid&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/IsValid&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;DateTime&gt;</span>2006-12-18T00:36:49-05:00<span style="color:#070;font-weight:bold">&lt;/DateTime&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;Duration&gt;</span>2<span style="color:#070;font-weight:bold">&lt;/Duration&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;Parameters&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Parameter&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Name&gt;</span>Action<span style="color:#070;font-weight:bold">&lt;/Name&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Value&gt;</span>Echo<span style="color:#070;font-weight:bold">&lt;/Value&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;/Parameter&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;Parameter&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Name&gt;</span>TestName<span style="color:#070;font-weight:bold">&lt;/Name&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;Value&gt;</span>TestValue<span style="color:#070;font-weight:bold">&lt;/Value&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;/Parameter&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/Parameters&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/Request&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>A RELAX NG schema module for the Request element is located here: <a href="/rng/Request.rng">Request.rng</a></p>
+
+<h4 id="session-element">Session Element</h4>
+
+<p>If an <a href="misc.userauth.html">authenticated session</a> is established, the IsEstablished element will be <code>true</code> and the Session element will contain a SessionId element containing the session token. Otherwise, the IsValid element will be <code>false</code>. For example,</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Session&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;IsEstablished&gt;</span>false<span style="color:#070;font-weight:bold">&lt;/IsEstablished&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/Session&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>A RELAX NG schema module for the Session element is located here: <a href="../schema/rng/Session.rng">Session.rng</a></p>
+
+<h4 id="result-element">Result Element</h4>
+
+<p>The Result element contains information specific to the action taken and is only present if the action completed. Result elements are documented on the action’s spec page. Actions are listed on the <a href="./">API index page</a></p>
+
+<p>A <a href="http://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> schema module for the Result element is located here: <a href="/rng/Result.rng">Result.rng</a>.</p>
+
+<h3 id="exception-element">Exception Element</h3>
+
+<p>If an exception occurs, a document like the following is returned:</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#579">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;Exception</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://www.jnctn.net/ns/rest/2006-01</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span style="font-weight:bold;color:#666">&lt;![CDATA[</span>
+Textual description of the exception.
+<span style="font-weight:bold;color:#666">]]&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/Exception&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Exceptions should not occur. An Exception indicates an issue with the API. Please email any Exceptions received to support@onsip.com.</p>
+
+<p>A <a href="http://en.wikipedia.org/wiki/RELAX_NG">RELAX NG</a> schema module for the Exception element is located here: <a href="/rng/Exception.rng">Exception.rng</a></p>
+
+<h2 id="json-response-format">JSON Response Format</h2>
+
+<p>JSON (JavaScript Object Notation) is a lightweight data format based on the object notation of the JavaScript language. 
+It does not require JavaScript to read or write; 
+it is easy to parse by any language and libraries and tools exist in many languages to handle JSON.</p>
+
+<h3 id="json-format-overview">JSON Format Overview</h3>
+
+<p>JSON is a very simple text format based on JavaScript’s object notation. 
+The notation contains these basic elements:</p>
+<ul>
+<li>Objects.  Objects begin and end with braces ({}}.</li>
+  <li>Object members. Members consist of strings and values, separated by colon (:). Members are separated by commas.</li>
+  <li>Arrays. Arrays begin and end with braces and contain values. Values are separated by commas. </li>
+  <li>Values. A value can be a string, a number, an object, an array, or the literals <code>true</code>, <code>false</code>, or <code>null</code>.</li>
+  <li>Strings. Strings are surrounded by double quotes and contain Unicode characters or common backslash escapes. </li>
+</ul><p>For a complete description of JSON and its many uses, we suggest a visit to Douglas Crockford’s <a href="http://www.json.org">JSON.org</a></p>
+<p></p>
+
+<h3 id="how-to-request-json-output">How to Request JSON Output</h3>
+
+<ul>
+<li>To return an API response in JSON format, send a parameter "Output" in the request with a value of "json".</li>
+  <li>Optionally, set the parameter "Callback" in the request to specify a callback function.</li>
+</ul><p>For example, a call to the Echo action returns this:</p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre>{
+ <span style="color:#606"><span style="color:#404">"</span><span>Response</span><span style="color:#404">"</span></span>:{
+  <span style="color:#606"><span style="color:#404">"</span><span>Context</span><span style="color:#404">"</span></span>:{
+   <span style="color:#606"><span style="color:#404">"</span><span>Action</span><span style="color:#404">"</span></span>:{
+    <span style="color:#606"><span style="color:#404">"</span><span>IsCompleted</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">true</span><span style="color:#710">"</span></span>
+   },
+   <span style="color:#606"><span style="color:#404">"</span><span>Request</span><span style="color:#404">"</span></span>:{
+    <span style="color:#606"><span style="color:#404">"</span><span>IsValid</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">true</span><span style="color:#710">"</span></span>,
+    <span style="color:#606"><span style="color:#404">"</span><span>DateTime</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">2006-12-27T23:18:16-05:00</span><span style="color:#710">"</span></span>,
+    <span style="color:#606"><span style="color:#404">"</span><span>Duration</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">1</span><span style="color:#710">"</span></span>,
+    <span style="color:#606"><span style="color:#404">"</span><span>Parameters</span><span style="color:#404">"</span></span>:{
+     <span style="color:#606"><span style="color:#404">"</span><span>Parameter</span><span style="color:#404">"</span></span>:[
+      {
+       <span style="color:#606"><span style="color:#404">"</span><span>Name</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Action</span><span style="color:#710">"</span></span>,
+       <span style="color:#606"><span style="color:#404">"</span><span>Value</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span>
+      },
+      {
+       <span style="color:#606"><span style="color:#404">"</span><span>Name</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Output</span><span style="color:#710">"</span></span>,
+       <span style="color:#606"><span style="color:#404">"</span><span>Value</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">json</span><span style="color:#710">"</span></span>
+      },
+      {
+       <span style="color:#606"><span style="color:#404">"</span><span>Name</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">TestName</span><span style="color:#710">"</span></span>,
+       <span style="color:#606"><span style="color:#404">"</span><span>Value</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">TestValue</span><span style="color:#710">"</span></span>
+      }
+     ]
+    }
+   },
+   <span style="color:#606"><span style="color:#404">"</span><span>Session</span><span style="color:#404">"</span></span>:{
+    <span style="color:#606"><span style="color:#404">"</span><span>IsEstablished</span><span style="color:#404">"</span></span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">false</span><span style="color:#710">"</span></span>
+   }
+  },
+  <span style="color:#606"><span style="color:#404">"</span><span>Result</span><span style="color:#404">"</span></span>:{
+   <span style="color:#606"><span style="color:#404">"</span><span>Echo</span><span style="color:#404">"</span></span>:{
+   }
+  }
+ }
+}
+</pre></div>
+</div>
+</div>
+
+<p>You can see an example response <a href="/restapi?Action=Echo&amp;TestName=TestValue&amp;Output=json">here</a>.</p>
+
+<h3 id="callback-function">Callback Function</h3>
+
+<p>The Callback parameter (<code>Callback</code>=<em>function</em>) wraps the JSON output text in parentheses and a function name of your choosing.</p>
+<p></p>
+
+<p>Callback function names may only use upper and lowercase alphabetic characters (A-Z, a-z), numbers (0-9), the period (.), 
+the underscore (_), and brackets ([ and ]). Brackets must be URL-encoded.</p>
+<p></p>
+
+<p>Results wrapped in callbacks look like this: <code>ws_results( ...json output... );</code></p>
+<p></p>
+
+<p>Because JSON output is native JavaScript, you do not have to parse or evaluate the returned object in your callback function. You can immediately access the elements inside it, just as if you had passed an object reference to your ws_result function.</p>
+<p></p>
+
+<p>Callbacks are particularly useful for use with web service requests in client-side JavaScript. Normally web service requests using the XMLHttpRequest object run afoul of browser security restrictions that prevent files from being loaded across domains. This restriction requires you to proxy your requests on the server side or use server rewrites to trick the browser into thinking the web service data is coming from the same site as your web content.</p>
+<p></p>
+
+<p>Using JSON and callbacks, you can place the Web API request inside a &lt;script&gt; tag, and operate on the results with a function elsewhere in the JavaScript code on the page. Using this mechanism, the JSON output from the Web API request is loaded when the enclosing web page is loaded. No proxy or server trickery is required.</p>
+<p></p>
+
+<p>A simple working example is <a href="../clicktocall">Click to Call</a>.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -80,22 +320,27 @@
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/">Overview</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/#user-authentication/">User Authentication</a></li>
-          <li><a href="/WebAPI/#encoding/">Encoding</a></li>
-          <li><a href="/WebAPI/#terms-of-use/">Terms of Use</a></li>
+          <li><a href="/WebAPI/#authentication/">Authentication</a></li>
+          <li><a href="/WebAPI/#request-format/">Request Format</a></li>
+          <li><a href="/WebAPI/#xml-response-format/">XML Response Format</a></li>
+          <li><a href="/WebAPI/#json-response-format/">JSON Response Format</a></li>
         </ul>
       </li>
       <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Test/">Test</a></h3>
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Authentication/">Authentication</a></h3>
         <ul class="js-guides">
-          <li><a href="/WebAPI/activity/events/">Events</a></li>
-          <li><a href="/WebAPI/activity/events/types/">Event Types</a></li>
-          <li><a href="/WebAPI/activity/feeds/">Feeds</a></li>
-          <li><a href="/WebAPI/activity/notifications/">Notifications</a></li>
-          <li><a href="/WebAPI/activity/starring/">Starring</a></li>
-          <li><a href="/WebAPI/activity/watching/">Watching</a></li>
+          <li><a href="/WebAPI/Authentication/#sessioncreate">SessionCreate</a></li>
+          <li><a href="/WebAPI/Authentication/#sessiondestroy">SessionDestroy</a></li>
         </ul>
       </li>
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Test/">Testing</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Test/#noop">NoOp</a></li>
+          <li><a href="/WebAPI/Test/#echo">Echo</a></li>
+        </ul>
+      </li>
+    </ul>
   </div> <!-- /sidebar-module -->
   <div class="sidebar-module notice">
     <p>This website is a <a href="https://onsip.com/onsip/developer.onsip.com" target="_blank">public OnSIP repository</a>. Please help us by forking the project and adding to it.</p>

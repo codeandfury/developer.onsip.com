@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Test | WebAPI</title>
+  <title>Authentication | WebAPI</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
@@ -47,18 +47,18 @@
 	
   <div id="wrapper">
   	<div class="content">
-    	<h1 id="noop-and-echo">NoOp and Echo</h1>
+    	<h1 id="authentication">Authentication</h1>
 
 <ul id="markdown-toc">
-<li><a href="#noop">NoOp</a></li>
-  <li><a href="#echo">Echo</a></li>
-</ul><h2 id="noop">NoOp</h2>
+<li><a href="#sessioncreate">SessionCreate</a></li>
+  <li><a href="#sessiondestroy">SessionDestroy</a></li>
+</ul><h2 id="sessioncreate">SessionCreate</h2>
 
 <h3 id="description">Description</h3>
 
-<p>An action which does nothing.</p>
+<p>Used to create a new session (login the user). Returns a new <code>SessionId</code> for the user. The <code>SessionId</code> is returned in the <code>Session</code> node of the response.</p>
 
-<h3 id="authentication">Authentication</h3>
+<h3 id="authentication-1">Authentication</h3>
 
 <p>Not required.</p>
 
@@ -68,14 +68,30 @@
 
 <h3 id="parameters">Parameters</h3>
 
-<p>None</p>
-
-<h3 id="result-element-example">Result Element Example</h3>
+<table>
+<thead><tr>
+<th>Name</th>
+      <th> </th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Username</code></td>
+      <td>Required</td>
+      <td>An authentication username which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Password</code></td>
+      <td>Required</td>
+      <td>A user’s login password (the password used to login to the web portal).</td>
+    </tr>
+</tbody>
+</table><h3 id="result-element-example">Result Element Example</h3>
 
 <div>
 <div class="CodeRay">
   <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Result&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;NoOp</span><span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;SessionCreate</span><span style="color:#070;font-weight:bold">/&gt;</span>
 <span style="color:#070;font-weight:bold">&lt;/Result&gt;</span>
 </pre></div>
 </div>
@@ -83,7 +99,7 @@
 
 <h3 id="result-element-schema">Result Element Schema</h3>
 
-<p>Main module: <a href="/rng/NoOp.rng">NoOp.rng</a></p>
+<p>Main module: <a href="/rng/SessionCreate.rng">SessionCreate.rng</a></p>
 
 <div>
 <div class="CodeRay">
@@ -91,31 +107,31 @@
 <span style="color:#070;font-weight:bold">&lt;grammar</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://relaxng.org/ns/structure/1.0</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
   <span style="color:#777">&lt;!--
     
-    NoOp Result
+    SessionCreate Result
     
   --&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Result.content</span><span style="color:#710">"</span></span> <span style="color:#b48">combine</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">choice</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
   <span style="color:#777">&lt;!--
     
-    NoOp Element
+    SessionCreate Element
     
   --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
         <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">AnyAttribute</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionCreate.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;element&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;anyName</span><span style="color:#070;font-weight:bold">/&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Anything</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
@@ -127,30 +143,30 @@
 </div>
 </div>
 
-<h2 id="echo">Echo</h2>
+<h2 id="sessiondestroy">SessionDestroy</h2>
 
 <h3 id="description-1">Description</h3>
 
-<p>An action which echoes all paramaters back in the response.</p>
+<p>Used to destroy an existing session (logout the user).</p>
 
-<h3 id="authentication-1">Authentication</h3>
+<h3 id="authentication-2">Authentication</h3>
 
 <p>Not required.</p>
 
 <h3 id="authorization-1">Authorization</h3>
 
-<p>Not required.</p>
+<p>This action requires an <a href="/WebAPI/#user-authentication">Authenticated Session</a>.</p>
 
 <h3 id="parameters-1">Parameters</h3>
 
-<p>None</p>
+<p>None.</p>
 
 <h3 id="result-element-example-1">Result Element Example</h3>
 
 <div>
 <div class="CodeRay">
   <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Result&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;Echo</span><span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;SessionDestroy</span><span style="color:#070;font-weight:bold">/&gt;</span>
 <span style="color:#070;font-weight:bold">&lt;/Result&gt;</span>
 </pre></div>
 </div>
@@ -158,7 +174,7 @@
 
 <h3 id="result-element-schema-1">Result Element Schema</h3>
 
-<p>Main module: <a href="/rng/Echo.rng">Echo.rng</a></p>
+<p>Main module: <a href="/rng/SessionDestroy.rng">SessionCreate.rng</a></p>
 
 <div>
 <div class="CodeRay">
@@ -166,31 +182,31 @@
 <span style="color:#070;font-weight:bold">&lt;grammar</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://relaxng.org/ns/structure/1.0</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
   <span style="color:#777">&lt;!--
     
-    Echo Result
+    SessionDestroy Result
     
   --&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Result.content</span><span style="color:#710">"</span></span> <span style="color:#b48">combine</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">choice</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
   <span style="color:#777">&lt;!--
     
-    Echo Element
+    SessionDestroy Element
     
   --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
         <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">AnyAttribute</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">SessionDestroy.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
     <span style="color:#070;font-weight:bold">&lt;element&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;anyName</span><span style="color:#070;font-weight:bold">/&gt;</span>
       <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Anything</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>

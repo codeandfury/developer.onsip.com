@@ -89,13 +89,18 @@
 <ul>
 <li>[<code>CONFIGURATION_ERROR</code>](/SIPjs/dom_exceptions/”&gt;</li>
 </ul><h4 id="example">Example</h4>
-<pre><code class="language-javascript"><span class="kd">var</span> <span class="nx">configuration</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'ws_servers'</span><span class="o">:</span>         <span class="s1">'ws://sip-ws.example.com'</span><span class="p">,</span>
-  <span class="s1">'uri'</span><span class="o">:</span>                <span class="s1">'sip:alice@example.com'</span><span class="p">,</span>
-  <span class="s1">'password'</span><span class="o">:</span>           <span class="s1">'superpassword'</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">coolPhone</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">JsSIP</span><span class="p">.</span><span class="nx">UA</span><span class="p">(</span><span class="nx">configuration</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> configuration = {
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>ws_servers</span><span style="color:#404">'</span></span>:         <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ws://sip-ws.example.com</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>uri</span><span style="color:#404">'</span></span>:                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:alice@example.com</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>password</span><span style="color:#404">'</span></span>:           <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">superpassword</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>};
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#080;font-weight:bold">var</span> coolPhone = <span style="color:#080;font-weight:bold">new</span> JsSIP.UA(configuration);
+</pre></div>
+</div>
+</div>
 
 <h2 id="instance-methods">Instance Methods</h2>
 
@@ -139,11 +144,16 @@
     </tr></tbody>
 </table><h4 id="example-1">Example</h4>
 
-<pre><code class="language-javascript"><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'extraHeaders'</span><span class="o">:</span> <span class="p">[</span> <span class="s1">'X-Foo: foo'</span><span class="p">,</span> <span class="s1">'X-Bar: bar'</span> <span class="p">]</span>
-<span class="p">};</span>
-
-<span class="nx">coolPhone</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> options = {
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ]
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>};
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>coolPhone.register(options);
+</pre></div>
+</div>
+</div>
 
 <h3 id="unregisteroptionsnull"><code>unregister(options=null)</code></h3>
 <p>Unregisters the UA.</p>
@@ -183,12 +193,17 @@
 </tbody>
 </table><h4 id="example-2">Example</h4>
 
-<pre><code class="language-javascript"><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'all'</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s1">'extraHeaders'</span><span class="o">:</span> <span class="p">[</span> <span class="s1">'X-Foo: foo'</span><span class="p">,</span> <span class="s1">'X-Bar: bar'</span> <span class="p">]</span>
-<span class="p">};</span>
-
-<span class="nx">coolPhone</span><span class="p">.</span><span class="nx">unregister</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> options = {
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>all</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>,
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ]
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>};
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>coolPhone.unregister(options);
+</pre></div>
+</div>
+</div>
 
 <h3 id="calltarget-optionsnull"><code>call(target, options=null)</code></h3>
 
@@ -260,39 +275,44 @@
 </tbody>
 </table><h4 id="example-3">Example</h4>
 
-<pre><code class="language-javascript"><span class="c1">// HTML5 &amp;lt;video&amp;gt; elements in which local and remote video will be shown</span>
-<span class="kd">var</span> <span class="nx">views</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'selfView'</span><span class="o">:</span>   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'my-video'</span><span class="p">),</span>
-  <span class="s1">'remoteView'</span><span class="o">:</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'peer-video'</span><span class="p">)</span>
-<span class="p">};</span>
-
-<span class="c1">// Register callbacks to desired call events</span>
-<span class="kd">var</span> <span class="nx">eventHandlers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'progress'</span><span class="o">:</span>   <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="cm">/* Your code here */</span> <span class="p">},</span>
-  <span class="s1">'failed'</span><span class="o">:</span>     <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="cm">/* Your code here */</span> <span class="p">},</span>
-  <span class="s1">'started'</span><span class="o">:</span>    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
-    <span class="kd">var</span> <span class="nx">rtcSession</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">session</span><span class="p">;</span>
-
-    <span class="c1">// Attach local stream to selfView</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">rtcSession</span><span class="p">.</span><span class="nx">getLocalStreams</span><span class="p">().</span><span class="nx">length</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">selfView</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">rtcSession</span><span class="p">.</span><span class="nx">getLocalStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Attach remote stream to remoteView</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">rtcSession</span><span class="p">.</span><span class="nx">getRemoteStreams</span><span class="p">().</span><span class="nx">length</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">remoteView</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">rtcSession</span><span class="p">.</span><span class="nx">getRemoteStreams</span><span class="p">()[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="s1">'ended'</span><span class="o">:</span>      <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="cm">/* Your code here */</span> <span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'eventHandlers'</span><span class="o">:</span> <span class="nx">eventHandlers</span><span class="p">,</span>
-  <span class="s1">'extraHeaders'</span><span class="o">:</span> <span class="p">[</span> <span class="s1">'X-Foo: foo'</span><span class="p">,</span> <span class="s1">'X-Bar: bar'</span> <span class="p">],</span>
-  <span class="s1">'mediaConstraints'</span><span class="o">:</span> <span class="p">{</span><span class="s1">'audio'</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s1">'video'</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="nx">coolPhone</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s1">'sip:bob@example.com'</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#777">// HTML5 &amp;lt;video&amp;gt; elements in which local and remote video will be shown</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span><span style="color:#080;font-weight:bold">var</span> views = {
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>selfView</span><span style="color:#404">'</span></span>:   document.getElementById(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-video</span><span style="color:#710">'</span></span>),
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>remoteView</span><span style="color:#404">'</span></span>: document.getElementById(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">peer-video</span><span style="color:#710">'</span></span>)
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>};
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span><span style="color:#777">// Register callbacks to desired call events</span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">var</span> eventHandlers = {
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>progress</span><span style="color:#404">'</span></span>:   <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  <span style="color:#606"><span style="color:#404">'</span><span>failed</span><span style="color:#404">'</span></span>:     <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>started</span><span style="color:#404">'</span></span>:    <span style="color:#080;font-weight:bold">function</span>(e){
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#080;font-weight:bold">var</span> rtcSession = e.data.session;
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>    <span style="color:#777">// Attach local stream to selfView</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#080;font-weight:bold">if</span> (rtcSession.getLocalStreams().length &amp;gt; <span style="color:#00D">0</span>) {
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>      selfView.src = window.URL.createObjectURL(rtcSession.getLocalStreams()[<span style="color:#00D">0</span>]);
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>    }
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>    <span style="color:#777">// Attach remote stream to remoteView</span>
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>    <span style="color:#080;font-weight:bold">if</span> (rtcSession.getRemoteStreams().length &amp;gt; <span style="color:#00D">0</span>) {
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>      remoteView.src = window.URL.createObjectURL(rtcSession.getRemoteStreams()[<span style="color:#00D">0</span>]);
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>    }
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>  },
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>ended</span><span style="color:#404">'</span></span>:      <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> }
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>};
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>
+<span class="line-numbers"><a href="#n27" name="n27">27</a></span><span style="color:#080;font-weight:bold">var</span> options = {
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>eventHandlers</span><span style="color:#404">'</span></span>: eventHandlers,
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ],
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>  <span style="color:#606"><span style="color:#404">'</span><span>mediaConstraints</span><span style="color:#404">'</span></span>: {<span style="color:#606"><span style="color:#404">'</span><span>audio</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>, <span style="color:#606"><span style="color:#404">'</span><span>video</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>}
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>};
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>
+<span class="line-numbers"><a href="#n33" name="n33">33</a></span>coolPhone.call(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, options);
+</pre></div>
+</div>
+</div>
 
 <h3 id="sendmessagetarget-body-optionsnull"><code>sendMessage(target, body, options=null)</code></h3>
 
@@ -350,18 +370,23 @@
 </tbody>
 </table><h4 id="example-4">Example</h4>
 
-<pre><code class="language-javascript"><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s1">'Hello Bob!'</span><span class="p">;</span>
-
-<span class="kd">var</span> <span class="nx">eventHandlers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'succeeded'</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="cm">/* Your code here */</span> <span class="p">},</span>
-  <span class="s1">'failed'</span><span class="o">:</span>    <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="cm">/* Your code here */</span> <span class="p">};</span>
-<span class="p">};</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'eventHandlers'</span><span class="o">:</span> <span class="nx">eventHandlers</span>
-<span class="p">};</span>
-
-<span class="nx">coolPhone</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="s1">'sip:bob@example.com'</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello Bob!</span><span style="color:#710">'</span></span>;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">var</span> eventHandlers = {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>succeeded</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>failed</span><span style="color:#404">'</span></span>:    <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> };
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>};
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">var</span> options = {
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>eventHandlers</span><span style="color:#404">'</span></span>: eventHandlers
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>};
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>coolPhone.sendMessage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, text, options);
+</pre></div>
+</div>
+</div>
 
 <h3 id="isregistered"><code>isRegistered()</code></h3>
 

@@ -269,22 +269,32 @@
 
 <h4 id="example-1">Example 1</h4>
 
-<pre><code class="language-javascript"><span class="nx">call</span><span class="p">.</span><span class="nx">sendDTMF</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="nx">call</span><span class="p">.</span><span class="nx">sendDTMF</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>call.sendDTMF(<span style="color:#00D">1</span>);
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>call.sendDTMF(<span style="color:#00D">4</span>);
+</pre></div>
+</div>
+</div>
 
 <h4 id="example-2">Example 2</h4>
 
-<pre><code class="language-javascript"><span class="kd">var</span> <span class="nx">tones</span> <span class="o">=</span> <span class="s1">'1234#'</span><span class="p">;</span>
-
-<span class="kd">var</span> <span class="nx">extraHeaders</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">'X-Foo: foo'</span><span class="p">,</span> <span class="s1">'X-Bar: bar'</span> <span class="p">];</span>
-
-<span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'duration'</span><span class="o">:</span> <span class="mi">160</span><span class="p">,</span>
-  <span class="s1">'interToneGap'</span><span class="o">:</span> <span class="mi">1200</span><span class="p">,</span>
-  <span class="s1">'extraHeaders'</span><span class="o">:</span> <span class="nx">extraHeaders</span>
-<span class="p">};</span>
-
-<span class="nx">call</span><span class="p">.</span><span class="nx">sendDTMF</span><span class="p">(</span><span class="nx">tones</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span></code></pre>
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> tones = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1234#</span><span style="color:#710">'</span></span>;
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">var</span> extraHeaders = [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ];
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span><span style="color:#080;font-weight:bold">var</span> options = {
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>duration</span><span style="color:#404">'</span></span>: <span style="color:#00D">160</span>,
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>interToneGap</span><span style="color:#404">'</span></span>: <span style="color:#00D">1200</span>,
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: extraHeaders
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>};
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>call.sendDTMF(tones, options);
+</pre></div>
+</div>
+</div>
 
 <h2 id="events">Events</h2>
 
