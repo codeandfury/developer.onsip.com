@@ -37,7 +37,7 @@ Date object indicating the time when the session ended. Takes its value at the m
 
 ## Instance Methods (Client)
 
-### 'invite(options)'
+### `invite(options)`
 
 Send an INVITE request. Based on the call set up, this may prompt the user for media. Returns this InviteClientContext.
 
@@ -51,15 +51,15 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 `mediaConstraints`|`Object`|`Object` with two valid fields (`audio` and `video`) indicating whether the session is intended to use audio and/or video and the constraints to be used. Default value is both `audio` and `video` set to `true`.
-'RTCConstraints'|'Object'|Used similarly to 'mediaConstraints', but for the RTCMediaHandler
-'inviteWithoutSdp'|'Boolean'|Tells the InviteContext if the INVITE should be sent with or without sdp.
-'anonymous'|'Boolean'|Tells the InviteContext if the UA being used will be anonymous.
-body'|'String'|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in 'extraHeaders' field).
+`RTCConstraints`|`Object`|Used similarly to `mediaConstraints`, but for the RTCMediaHandler
+`inviteWithoutSdp`|`Boolean`|Tells the InviteContext if the INVITE should be sent with or without sdp.
+`anonymous`|`Boolean`|Tells the InviteContext if the UA being used will be anonymous.
+body`|`String`|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in `extraHeaders` field).
 
 
-### 'cancel(options)'
+### `cancel(options)`
 
 Sends a CANCEL request following an INVITE request that has not received a 2xx response. Returns this InviteClientContext.
 
@@ -73,8 +73,8 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'status_code'|'Number'|The SIP response code that will be used in the upcoming response instead of the default.
-'reason_phrase'|'String'|The SIP reason phrase.
+`status_code`|`Number`|The SIP response code that will be used in the upcoming response instead of the default.
+`reason_phrase`|`String`|The SIP reason phrase.
 
 #### Throws
 
@@ -86,7 +86,7 @@ INVALID_STATE_ERROR
 
 ### `accept(options)`
 
-Reply to a received INVITE request with a 200 OK response. Based on the call set up, this may prompt the user for media. Returns this InviteServerContext. TODO: everything chains, do we need this last piece? I'm gonna stop doing it from here.
+Reply to a received INVITE request with a 200 OK response. Based on the call set up, this may prompt the user for media. Returns this InviteServerContext. TODO: everything chains, do we need this last piece? I`m gonna stop doing it from here.
 
 #### Parameters
 
@@ -98,7 +98,7 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 `mediaConstraints`|`Object`|`Object` with two valid fields (`audio` and `video`) indicating whether the session is intended to use audio and/or video and the constraints to be used. Default value is both `audio` and `video` set to `true`.
 
 #### Throws
@@ -106,7 +106,7 @@ Name | Type | Description
 INVALID_STATE_ERROR
 
 
-### 'preaccept(options)'
+### `preaccept(options)`
 
 Reply to a received INVITE request with a reliable provisional response (183 Session in Progress) after the user is prompted for media. This response contains the sdp of the UAS and is used to negotiate the media of the session before a final response is sent.
 
@@ -123,7 +123,7 @@ Name | Type | Description
 CURRENTLY|NOTHING|TODO
 
 
-### 'reject(options)'
+### `reject(options)`
 
 Reject the received INVITE request. The default response is 480 Temporarily Unavailable.
 
@@ -137,10 +137,10 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'status_code'|'Number'|The SIP response code that will be used in the upcoming response instead of the default.
-'reason_phrase'|'String'|The SIP reason phrase.
-'body'|'String'|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in 'extraHeaders' field).
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`status_code`|`Number`|The SIP response code that will be used in the upcoming response instead of the default.
+`reason_phrase`|`String`|The SIP reason phrase.
+`body`|`String`|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in `extraHeaders` field).
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 
 #### Throws
 
@@ -150,7 +150,7 @@ INVALID_STATE_ERROR
 
 ## Instance Methods (Both)
 
-### 'sendDTMF(tone, options)'
+### `sendDTMF(tone, options)`
 
 send one or multiple DTMF tones making use of SIP INFO method.
 
@@ -166,8 +166,8 @@ Name | Type | Description
 Name | Type | Description
 -----|------|--------------
 `extraHeaders`|`Array`|Optional `Array` of `Strings` with extra SIP headers for each INFO request.
-'duration'|'Number'|Positive decimal 'Number' indicating the duration of the tone expressed in milliseconds. Default value is '100'.
-'interToneGap'|'Number'|Positive decimal 'Number' indicating the interval between two tones expressed in milliseconds. Default value is '500'.
+`duration`|`Number`|Positive decimal `Number` indicating the duration of the tone expressed in milliseconds. Default value is `100`.
+`interToneGap`|`Number`|Positive decimal `Number` indicating the interval between two tones expressed in milliseconds. Default value is `500`.
 
 #### Throws
 
@@ -184,7 +184,7 @@ call.sendDTMF(4);
 #### Example 2
 
 ~~~ javascript
-var tones = '1234#';
+var tones = `1234#`;
 
 var extraHeaders = [ 'X-Foo: foo', 'X-Bar: bar' ];
 
@@ -212,17 +212,17 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'status_code'|'Number'|The SIP response code that will be used in the upcoming response instead of the default.
-'reason_phrase'|'String'|The SIP reason phrase.
-'body'|'String'|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in 'extraHeaders' field).
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`status_code`|`Number`|The SIP response code that will be used in the upcoming response instead of the default.
+`reason_phrase`|`String`|The SIP reason phrase.
+`body`|`String`|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in `extraHeaders` field).
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 
 #### Throws
 
 TypeError
 INVALID_STATE_ERROR
 
-### 'bye(options)'
+### `bye(options)`
 
 Sends a BYE request on a confirmed session.
 
@@ -236,12 +236,12 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'status_code'|'Number'|The SIP response code that will be used in the upcoming response instead of the d\
+`status_code`|`Number`|The SIP response code that will be used in the upcoming response instead of the d\
 efault.
-'reason_phrase'|'String'|The SIP reason phrase.
-'body'|'String'|represents the SIP message body (in case this parameter is set, a corresponding Content-\
-Type header field must be set in 'extraHeaders' field).
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`reason_phrase`|`String`|The SIP reason phrase.
+`body`|`String`|represents the SIP message body (in case this parameter is set, a corresponding Content-\
+Type header field must be set in `extraHeaders` field).
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 
 #### Throws
 
@@ -257,25 +257,25 @@ Returns a sequence of MediaStream objects representing the streams that are curr
 
 Returns a sequence of MediaStream objects representing the streams that are currently received in this InviteContext.
 
-### 'sendRequest(method, options)'
+### `sendRequest(method, options)`
 
-Generic function that sends a 'method' request.
+Generic function that sends a `method` request.
 
 #### Parameters
 
 Name | Type | Description
 -----|------|--------------
 `options`|`Object`|Optional `Object` with extra parameters (see below).
-'method'|'String'|The name of the SIP request to be sent
+`method`|`String`|The name of the SIP request to be sent
 
 #### Fields in <code>options</code> Object
 
 Name | Type | Description
 -----|------|--------------
-TODO|DON'T KNOW| passed directly to request.send
+TODO|DON`T KNOW| passed directly to request.send
 
 
-### 'refer(target, options)'
+### `refer(target, options)`
 
 Send a REFER request. The transfer that occurs can be attended or blind.
 
@@ -289,7 +289,7 @@ Name | Type | Description
 
 Name | Type | Description
 -----|------|--------------
-'extraHeaders'|'Array' of 'Strings'|Extra SIP headers for the request.
+`extraHeaders`|`Array` of `Strings`|Extra SIP headers for the request.
 
 #### Throws
 
@@ -312,7 +312,7 @@ Fired when receiving or generating a 1XX SIP class response (>100) to the INVITE
 Name | Type | Description 
 -----|------|--------------
 `response`|`Object`|[`SIP.IncomingResponse`](/SIPjs/incomingResponse/) instance of the received SIP 1XX response.
-'code'||The SIP response code.
+`code`||The SIP response code.
 
 
 ### `accepted`
@@ -324,7 +324,7 @@ Fired when the call is answered.
 Name | Type | Description 
 -----|------|--------------
 `response`|`Object`|[`SIP.IncomingResponse`](/SIPjs/incomingResponse/) instance of the received SIP 1XX response.
-'code'||The SIP response code.
+`code`||The SIP response code.
 
 
 ### `terminated`
@@ -349,7 +349,7 @@ Name | Type | Description
 -----|------|--------------
 `response`|`Object`|[`SIP.IncomingResponse`](/SIPjs/incomingResponse/) instance of the received SIP 1XX response.
 `cause`||One value of Failure and End Causes
-'code'||The SIP response code.
+`code`||The SIP response code.
 
 
 ### `canceled`
@@ -361,7 +361,7 @@ Fired when the session was canceled by the UAC.
 Name | Type | Description
 -----|------|--------------
 `response`|`Object`|[`SIP.IncomingResponse`](/SIPjs/incomingResponse/) instance of the received SIP 1XX response.
-'code'||The SIP response code.
+`code`||The SIP response code.
 
 
 ### `referred`
