@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>SIP.Session | SIP.js</title>
+  <title>SIP.InviteContext | SIP.js</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
@@ -47,44 +47,65 @@
 	
   <div id="wrapper">
   	<div class="content">
-    	<h1 id="sipsession">SIP.Session</h1>
+    	<h1 id="sipinvitecontext">SIP.InviteContext</h1>
 
-<p>The class JIP.Session represents a WebRTC media (audio/video) session. It can be initiated by the local user or by a remote peer.</p>
+<p>The class SIP.InviteContext represents a WebRTC media (audio/video) session. It can be initiated by the local user or by a remote peer. TODO: explain context turning into session</p>
 
 <ul id="markdown-toc">
 <li>
 <a href="#instance-attributes">Instance Attributes</a>    <ul>
-<li><a href="#direction"><code>direction</code></a></li>
+<li><a href="#starttime"><code>start_time</code></a></li>
+      <li><a href="#endtime"><code>end_time</code></a></li>
       <li><a href="#localidentity"><code>local_identity</code></a></li>
       <li><a href="#remoteidentity"><code>remote_identity</code></a></li>
-      <li><a href="#starttime"><code>start_time</code></a></li>
-      <li><a href="#endtime"><code>end_time</code></a></li>
-      <li><a href="#data"><code>data</code></a></li>
+      <li><a href="#starttime-1"><code>start_time</code></a></li>
+      <li><a href="#endtime-1"><code>end_time</code></a></li>
     </ul>
 </li>
   <li>
-<a href="#instance-methods">Instance Methods</a>    <ul>
-<li><a href="#answeroptions"><code>answer(options)</code></a></li>
+<a href="#instance-methods-client">Instance Methods (Client)</a>    <ul>
+<li><a href="#inviteoptions">‘invite(options)’</a></li>
+      <li><a href="#canceloptions">‘cancel(options)’</a></li>
+    </ul>
+</li>
+  <li>
+<a href="#instance-methods-server">Instance Methods (Server)</a>    <ul>
+<li><a href="#acceptoptions"><code>accept(options)</code></a></li>
+      <li><a href="#preacceptoptions">‘preaccept(options)’</a></li>
+      <li><a href="#rejectoptions">‘reject(options)’</a></li>
+    </ul>
+</li>
+  <li>
+<a href="#instance-methods-both">Instance Methods (Both)</a>    <ul>
+<li><a href="#senddtmftone-options">‘sendDTMF(tone, options)’</a></li>
       <li><a href="#terminateoptions"><code>terminate(options)</code></a></li>
+      <li><a href="#byeoptions">‘bye(options)’</a></li>
       <li><a href="#getlocalstreams"><code>getLocalStreams()</code></a></li>
-      <li><a href="#getremotelocalstreams"><code>getRemoteLocalStreams()</code></a></li>
-      <li><a href="#senddtmftone-optionsnull"><code>sendDTMF(tone, options=null)</code></a></li>
+      <li><a href="#getremotestreams"><code>getRemoteStreams()</code></a></li>
+      <li><a href="#sendrequestmethod-options">‘sendRequest(method, options)’</a></li>
+      <li><a href="#refertarget-options">‘refer(target, options)’</a></li>
     </ul>
 </li>
   <li>
 <a href="#events">Events</a>    <ul>
 <li><a href="#progress"><code>progress</code></a></li>
-      <li><a href="#started"><code>started</code></a></li>
-      <li><a href="#ended"><code>ended</code></a></li>
+      <li><a href="#accepted"><code>accepted</code></a></li>
+      <li><a href="#terminated"><code>terminated</code></a></li>
       <li><a href="#failed"><code>failed</code></a></li>
-      <li><a href="#newdtmf"><code>newDTMF</code></a></li>
+      <li><a href="#canceled"><code>canceled</code></a></li>
+      <li><a href="#referred"><code>referred</code></a></li>
+      <li><a href="#dtmf"><code>dtmf</code></a></li>
     </ul>
 </li>
 </ul><h2 id="instance-attributes">Instance Attributes</h2>
 
-<h3 id="direction"><code>direction</code></h3>
+<h3 id="starttime"><code>start_time</code></h3>
 
-<p>String indicating who started the session. Possible values are ‘incoming’ when the session is started by the remote peer or ‘outgoing’ when the session is started by the local user.</p>
+<p>Date object indicating the time when the session started. Takes its value at the moment when the accepted event is fired.</p>
+
+<h3 id="endtime"><code>end_time</code></h3>
+
+<p>Date object indicating the time when the session ended. Takes its value at the moment when terminated event was fired.</p>
 
 <h3 id="localidentity"><code>local_identity</code></h3>
 
@@ -94,23 +115,19 @@
 
 <p>JsSIP.NameAddrHeader instance indicating the remote identity. It corresponds with the INVITE To header value when the direction is ‘outgoing’, and with the From header value when the direction is ‘incoming’</p>
 
-<h3 id="starttime"><code>start_time</code></h3>
+<h3 id="starttime-1"><code>start_time</code></h3>
 
 <p>Date object indicating the time when the session started. Takes its value at the moment when started event was fired.</p>
 
-<h3 id="endtime"><code>end_time</code></h3>
+<h3 id="endtime-1"><code>end_time</code></h3>
 
 <p>Date object indicating the time when the session ended. Takes its value at the moment when ended event was fired.</p>
 
-<h3 id="data"><code>data</code></h3>
+<h2 id="instance-methods-client">Instance Methods (Client)</h2>
 
-<p>Custom session empty Object for application usage. The developer can add here custom attribute/value pairs.</p>
+<h3 id="inviteoptions">‘invite(options)’</h3>
 
-<h2 id="instance-methods">Instance Methods</h2>
-
-<h3 id="answeroptions"><code>answer(options)</code></h3>
-
-<p>Answer the incoming session. This method is available for incoming sessions only.</p>
+<p>Send an INVITE request. Based on the call set up, this may prompt the user for media. Returns this InviteClientContext.</p>
 
 <h4 id="parameters">Parameters</h4>
 
@@ -135,33 +152,40 @@
     </tr></thead>
 <tbody>
 <tr>
+<td>‘extraHeaders’</td>
+      <td>‘Array’ of ‘Strings’</td>
+      <td>Extra SIP headers for the request.</td>
+    </tr>
+<tr>
 <td><code>mediaConstraints</code></td>
       <td><code>Object</code></td>
       <td>
 <code>Object</code> with two valid fields (<code>audio</code> and <code>video</code>) indicating whether the session is intended to use audio and/or video and the constraints to be used. Default value is both <code>audio</code> and <code>video</code> set to <code>true</code>.</td>
     </tr>
 <tr>
-<td><code>mediaStream</code></td>
-      <td><code>MediaStream</code></td>
-      <td>
-<code>MediaStream</code> to transmit to the other end.</td>
+<td>‘RTCConstraints’</td>
+      <td>‘Object’</td>
+      <td>Used similarly to ‘mediaConstraints’, but for the RTCMediaHandler</td>
+    </tr>
+<tr>
+<td>‘inviteWithoutSdp’</td>
+      <td>‘Boolean’</td>
+      <td>Tells the InviteContext if the INVITE should be sent with or without sdp.</td>
+    </tr>
+<tr>
+<td>‘anonymous’</td>
+      <td>‘Boolean’</td>
+      <td>Tells the InviteContext if the UA being used will be anonymous.</td>
+    </tr>
+<tr>
+<td>body’</td>
+      <td>‘String’</td>
+      <td>represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in ‘extraHeaders’ field).</td>
     </tr>
 </tbody>
-</table><h4 id="throws">Throws</h4>
+</table><h3 id="canceloptions">‘cancel(options)’</h3>
 
-<p>INVALID_STATE_ERROR</p>
-
-<h3 id="terminateoptions"><code>terminate(options)</code></h3>
-
-<p>Terminate the current session regardless its direction or state.</p>
-
-<p>Depending on the state of the session, this function may send a CANCEL request, a non-2xx final response, a BYE request, or even no request.</p>
-
-<p>For incoming sessions, if the user has not answered the incoming INVITE, this function sends the non-2xx final response with the optionally specified status code and reason phrase. <code>480 Unavailvable</code> is default response.</p>
-
-<p>For outgoing sessions, if the original INVITE has not been already sent, it will never be sent. If the original INVITE has not been answered with a final response, the behavior depends on whether provisional response has been received. If provisional response has been received, a CANCEL request will be sent. If no provisional response has been received, the function will not send a CANCEL as per <a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a>. If then a provisional response is received, the CANCEL request will be automatically sent.</p>
-
-<p>For both incoming and outgoing, if the INVITE session has been answered with final response, a BYE request will be sent.</p>
+<p>Sends a CANCEL request following an INVITE request that has not received a 2xx response. Returns this InviteClientContext.</p>
 
 <h4 id="parameters-1">Parameters</h4>
 
@@ -186,35 +210,26 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>statusCode</code></td>
-      <td><code>Number</code></td>
-      <td>
-<code>Number</code> between 300 and 699 representing the SIP response code.</td>
+<td>‘status_code’</td>
+      <td>‘Number’</td>
+      <td>The SIP response code that will be used in the upcoming response instead of the default.</td>
     </tr>
 <tr>
-<td><code>reasonPhrase</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>String</code> representing the SIP reason phrase.</td>
+<td>‘reason_phrase’</td>
+      <td>‘String’</td>
+      <td>The SIP reason phrase.</td>
     </tr>
 </tbody>
-</table><p>NOTE: When generating a CANCEL, statusCode can take values from 200 to 699. The statusCode and reasonPhrase will form a Reason header field as specified in RFC3326. A CANCEL will not take the extraHeaders parameter nor the body paramter.</p>
+</table><h4 id="throws">Throws</h4>
 
-<h4 id="throws-1">Throws</h4>
+<p>TypeError
+INVALID_STATE_ERROR</p>
 
-<p>INVALID_STATE_ERROR</p>
+<h2 id="instance-methods-server">Instance Methods (Server)</h2>
 
-<h3 id="getlocalstreams"><code>getLocalStreams()</code></h3>
+<h3 id="acceptoptions"><code>accept(options)</code></h3>
 
-<p>Returns a sequence of MediaStream objects representing the streams that are currently sent in this RTCSession.</p>
-
-<h3 id="getremotelocalstreams"><code>getRemoteLocalStreams()</code></h3>
-
-<p>Returns a sequence of MediaStream objects representing the streams that are currently received in this RTCSession.</p>
-
-<h3 id="senddtmftone-optionsnull"><code>sendDTMF(tone, options=null)</code></h3>
-
-<p>Send one or multiple DTMF tones making use of SIP INFO method.</p>
+<p>Reply to a received INVITE request with a 200 OK response. Based on the call set up, this may prompt the user for media. Returns this InviteServerContext. TODO: everything chains, do we need this last piece? I’m gonna stop doing it from here.</p>
 
 <h4 id="parameters-2">Parameters</h4>
 
@@ -224,20 +239,11 @@
       <th>Type</th>
       <th>Description</th>
     </tr></thead>
-<tbody>
-<tr>
-<td><code>tone</code></td>
-      <td>
-<code>String</code> or <code>Number</code>
-</td>
-      <td>One or multiple valid DTMF symbols.</td>
-    </tr>
-<tr>
+<tbody><tr>
 <td><code>options</code></td>
       <td><code>Object</code></td>
       <td>Optional <code>Object</code> with extra parameters (see below).</td>
-    </tr>
-</tbody>
+    </tr></tbody>
 </table><h4 id="fields-in-codeoptionscode-object-2">Fields in <code>options</code> Object</h4>
 
 <table>
@@ -248,24 +254,160 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>duration</code></td>
-      <td><code>Number</code></td>
-      <td>Positive decimal value indicating the duration of the tone expressed in milliseconds. Default value is 100.</td>
+<td>‘extraHeaders’</td>
+      <td>‘Array’ of ‘Strings’</td>
+      <td>Extra SIP headers for the request.</td>
     </tr>
 <tr>
-<td><code>interToneGap</code></td>
-      <td><code>Number</code></td>
-      <td>Positive decimal value indicating the interval between two tones expressed in milliseconds. Default value is 500.</td>
+<td><code>mediaConstraints</code></td>
+      <td><code>Object</code></td>
+      <td>
+<code>Object</code> with two valid fields (<code>audio</code> and <code>video</code>) indicating whether the session is intended to use audio and/or video and the constraints to be used. Default value is both <code>audio</code> and <code>video</code> set to <code>true</code>.</td>
     </tr>
+</tbody>
+</table><h4 id="throws-1">Throws</h4>
+
+<p>INVALID_STATE_ERROR</p>
+
+<h3 id="preacceptoptions">‘preaccept(options)’</h3>
+
+<p>Reply to a received INVITE request with a reliable provisional response (183 Session in Progress) after the user is prompted for media. This response contains the sdp of the UAS and is used to negotiate the media of the session before a final response is sent.</p>
+
+<h4 id="parameters-3">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object-3">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td>CURRENTLY</td>
+      <td>NOTHING</td>
+      <td>TODO</td>
+    </tr></tbody>
+</table><h3 id="rejectoptions">‘reject(options)’</h3>
+
+<p>Reject the received INVITE request. The default response is 480 Temporarily Unavailable.</p>
+
+<h4 id="parameters-4">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object-4">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>‘status_code’</td>
+      <td>‘Number’</td>
+      <td>The SIP response code that will be used in the upcoming response instead of the default.</td>
+    </tr>
+<tr>
+<td>‘reason_phrase’</td>
+      <td>‘String’</td>
+      <td>The SIP reason phrase.</td>
+    </tr>
+<tr>
+<td>‘body’</td>
+      <td>‘String’</td>
+      <td>represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in ‘extraHeaders’ field).</td>
+    </tr>
+<tr>
+<td>‘extraHeaders’</td>
+      <td>‘Array’ of ‘Strings’</td>
+      <td>Extra SIP headers for the request.</td>
+    </tr>
+</tbody>
+</table><h4 id="throws-2">Throws</h4>
+
+<p>TypeError
+INVALID_STATE_ERROR</p>
+
+<h2 id="instance-methods-both">Instance Methods (Both)</h2>
+
+<h3 id="senddtmftone-options">‘sendDTMF(tone, options)’</h3>
+
+<p>send one or multiple DTMF tones making use of SIP INFO method.</p>
+
+<h4 id="parameters-5">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr>
+<tr>
+<td><code>tone</code></td>
+      <td>
+<code>String</code> or <code>Number</code>
+</td>
+      <td>One or multiple valid DTMF symbols.</td>
+    </tr>
+</tbody>
+</table><h4 id="fields-in-codeoptionscode-object-5">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
 <tr>
 <td><code>extraHeaders</code></td>
       <td><code>Array</code></td>
       <td>Optional <code>Array</code> of <code>Strings</code> with extra SIP headers for each INFO request.</td>
     </tr>
+<tr>
+<td>‘duration’</td>
+      <td>‘Number’</td>
+      <td>Positive decimal ‘Number’ indicating the duration of the tone expressed in milliseconds. Default value is ‘100’.</td>
+    </tr>
+<tr>
+<td>‘interToneGap’</td>
+      <td>‘Number’</td>
+      <td>Positive decimal ‘Number’ indicating the interval between two tones expressed in milliseconds. Default value is ‘500’.</td>
+    </tr>
 </tbody>
-</table><h4 id="throws-2">Throws</h4>
+</table><h4 id="throws-3">Throws</h4>
 
-<p>INVALID_STATE_ERROR</p>
+<p>TypeError
+INVALID_STATE_ERROR</p>
 
 <h4 id="example-1">Example 1</h4>
 
@@ -296,9 +438,174 @@
 </div>
 </div>
 
+<h3 id="terminateoptions"><code>terminate(options)</code></h3>
+
+<p>Terminate the current session. Depending on the state of the session, this function may send a CANCEL request, a non-2xx final response, a BYE request, or even no request.</p>
+
+<h4 id="parameters-6">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object-6">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>‘status_code’</td>
+      <td>‘Number’</td>
+      <td>The SIP response code that will be used in the upcoming response instead of the default.</td>
+    </tr>
+<tr>
+<td>‘reason_phrase’</td>
+      <td>‘String’</td>
+      <td>The SIP reason phrase.</td>
+    </tr>
+<tr>
+<td>‘body’</td>
+      <td>‘String’</td>
+      <td>represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in ‘extraHeaders’ field).</td>
+    </tr>
+<tr>
+<td>‘extraHeaders’</td>
+      <td>‘Array’ of ‘Strings’</td>
+      <td>Extra SIP headers for the request.</td>
+    </tr>
+</tbody>
+</table><h4 id="throws-4">Throws</h4>
+
+<p>TypeError
+INVALID_STATE_ERROR</p>
+
+<h3 id="byeoptions">‘bye(options)’</h3>
+
+<p>Sends a BYE request on a confirmed session.</p>
+
+<h4 id="parameters-7">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object-7">Fields in <code>options</code> Object</h4>
+
+<p>Name | Type | Description
+—–|——|————–
+‘status_code’|’Number’|The SIP response code that will be used in the upcoming response instead of the d\
+efault.
+‘reason_phrase’|’String’|The SIP reason phrase.
+‘body’|’String’|represents the SIP message body (in case this parameter is set, a corresponding Content-\
+Type header field must be set in ‘extraHeaders’ field).
+‘extraHeaders’|’Array’ of ‘Strings’|Extra SIP headers for the request.</p>
+
+<h4 id="throws-5">Throws</h4>
+
+<p>TypeError
+INVALID_STATE_ERROR</p>
+
+<h3 id="getlocalstreams"><code>getLocalStreams()</code></h3>
+
+<p>Returns a sequence of MediaStream objects representing the streams that are currently sent in this InviteContext.</p>
+
+<h3 id="getremotestreams"><code>getRemoteStreams()</code></h3>
+
+<p>Returns a sequence of MediaStream objects representing the streams that are currently received in this InviteContext.</p>
+
+<h3 id="sendrequestmethod-options">‘sendRequest(method, options)’</h3>
+
+<p>Generic function that sends a ‘method’ request.</p>
+
+<h4 id="parameters-8">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr>
+<tr>
+<td>‘method’</td>
+      <td>‘String’</td>
+      <td>The name of the SIP request to be sent</td>
+    </tr>
+</tbody>
+</table><h4 id="fields-in-codeoptionscode-object-8">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td>TODO</td>
+      <td>DON’T KNOW</td>
+      <td>passed directly to request.send</td>
+    </tr></tbody>
+</table><h3 id="refertarget-options">‘refer(target, options)’</h3>
+
+<p>Send a REFER request. The transfer that occurs can be attended or blind.</p>
+
+<h4 id="parameters-9">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object-9">Fields in <code>options</code> Object</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td>‘extraHeaders’</td>
+      <td>‘Array’ of ‘Strings’</td>
+      <td>Extra SIP headers for the request.</td>
+    </tr></tbody>
+</table><h4 id="throws-6">Throws</h4>
+
+<p>TypeError
+INVALID_STATE_ERROR</p>
+
 <h2 id="events">Events</h2>
 
-<p><code>JsSIP.Session</code> class defines a series of events. Each of them allows callback functions registration in order to let the user execute a handler for each given stimulus.</p>
+<p><code>SIP.InviteContext</code> class defines a series of events. Each of them allows callback functions registration in order to let the user execute a handler for each given stimulus.</p>
 
 <p>Every event handler is executed with a <a href="/SIPjs/event/">SIP.Event</a> instance as the only argument.</p>
 
@@ -316,20 +623,18 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>local</code> or <code>remote</code>
-</td>
-    </tr>
-<tr>
 <td><code>response</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/incomingResponse/"><code>JsSIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+    </tr>
+<tr>
+<td>‘code’</td>
+      <td> </td>
+      <td>The SIP response code.</td>
     </tr>
 </tbody>
-</table><h3 id="started"><code>started</code></h3>
+</table><h3 id="accepted"><code>accepted</code></h3>
 
 <p>Fired when the call is answered.</p>
 
@@ -343,20 +648,18 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>local</code> or <code>remote</code>
-</td>
-    </tr>
-<tr>
 <td><code>response</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/incomingResponse/"><code>JsSIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+    </tr>
+<tr>
+<td>‘code’</td>
+      <td> </td>
+      <td>The SIP response code.</td>
     </tr>
 </tbody>
-</table><h3 id="ended"><code>ended</code></h3>
+</table><h3 id="terminated"><code>terminated</code></h3>
 
 <p>Fired when an established call ends.</p>
 
@@ -370,17 +673,10 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>local</code> or <code>remote</code>
-</td>
-    </tr>
-<tr>
-<td><code>response</code></td>
+<td><code>message</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/incomingResponse/"><code>JsSIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
     </tr>
 <tr>
 <td><code>cause</code></td>
@@ -402,25 +698,66 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>local</code> or <code>remote</code>
-</td>
-    </tr>
-<tr>
 <td><code>response</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/incomingResponse/"><code>JsSIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
     </tr>
 <tr>
 <td><code>cause</code></td>
       <td> </td>
       <td>One value of Failure and End Causes</td>
     </tr>
+<tr>
+<td>‘code’</td>
+      <td> </td>
+      <td>The SIP response code.</td>
+    </tr>
 </tbody>
-</table><h3 id="newdtmf"><code>newDTMF</code></h3>
+</table><h3 id="canceled"><code>canceled</code></h3>
+
+<p>Fired when the session was canceled by the UAC.</p>
+
+<h4 id="event-data-fields-4">Event <code>data</code> fields</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>response</code></td>
+      <td><code>Object</code></td>
+      <td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+    </tr>
+<tr>
+<td>‘code’</td>
+      <td> </td>
+      <td>The SIP response code.</td>
+    </tr>
+</tbody>
+</table><h3 id="referred"><code>referred</code></h3>
+
+<p>Fired when the session was unable to establish.</p>
+
+<h4 id="event-data-fields-5">Event <code>data</code> fields</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>response</code></td>
+      <td><code>Object</code></td>
+      <td>
+<a href="/SIPjs/incomingResponse/"><code>SIP.IncomingResponse</code></a> instance of the received SIP 1XX response.</td>
+    </tr></tbody>
+</table><h3 id="dtmf"><code>dtmf</code></h3>
 
 <p>Fired for an incoming or outgoing DTMF.</p>
 
@@ -432,23 +769,16 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>
-<code>local</code> or <code>remote</code>
-</td>
-    </tr>
-<tr>
 <td><code>dtmf</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/session/dtmf/"><code>JsSIP.Session.DTMF</code></a> instance.</td>
+<a href="/SIPjs/session/dtmf/"><code>SIP.InviteContext.DTMF</code></a> instance.</td>
     </tr>
 <tr>
 <td><code>request</code></td>
       <td><code>Object</code></td>
       <td>
-<a href="/SIPjs/incomingRequest/"><code>JsSIP.IncomingRequest</code></a> instance of the received SIP INFO request.</td>
+<a href="/SIPjs/incomingRequest/"><code>SIP.IncomingRequest</code></a> instance of the received SIP INFO request.</td>
     </tr>
 </tbody>
 </table>
