@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>SIP.js</title>
+  <title>SIP.MessageContext | SIP.js</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
@@ -47,49 +47,58 @@
 	
   <div id="wrapper">
   	<div class="content">
-    	<h1 id="overview">Overview</h1>
+    	<h1 id="class-sipmessagecontext">Class <code>SIP.MessageContext</code>
+</h1>
 
-<p>This describes the resources that make up OnSIP’s official SIP WebRTC Library - SIP.js.</p>
-
-<p>SIP.js is a simple to use JavaScript library which leverages latest developments in <a href="http://tools.ietf.org/html/rfc3261">SIP</a> and <a href="http://www.webrtc.org/">WebRTC</a> to provide a fully featured SIP endpoint in any website. With SIP.js any website can get Real Time Communications features using audio, video and more with just a few lines of code.</p>
+<p>SIP.js SIP MESSAGE based IM.</p>
 
 <ul id="markdown-toc">
-<li><a href="#features">Features</a></li>
-  <li><a href="#sip-standards">SIP Standards</a></li>
-</ul><h2 id="features">Features</h2>
-
-<ul>
 <li>
-<a href="http://tools.ietf.org/html/draft-ietf-sipcore-sip-websocket">SIP over WebSocket</a> transport.</li>
-  <li>Audio/video calls, instant messaging and presence.</li>
-  <li>Lightweight! (~140KB).</li>
-  <li>100% pure JavaScript built from the ground up.</li>
-  <li>Easy to use and powerful user API.</li>
-  <li>Works with OverSIP, Kamailio and Asterisk servers.</li>
-</ul><h2 id="sip-standards">SIP Standards</h2>
+<a href="#instance-attributes">Instance Attributes</a>    <ul>
+<li><a href="#localidentity"><code>local_identity</code></a></li>
+      <li><a href="#remoteidentity"><code>remote_identity</code></a></li>
+    </ul>
+</li>
+  <li>
+<a href="#instance-method-client">Instance Method (Client)</a>    <ul>
+<li><a href="#messageoptions"><code>message(options)</code></a></li>
+    </ul>
+</li>
+</ul><h2 id="instance-attributes">Instance Attributes</h2>
 
-<p>SIP.js implements the following SIP specifications:</p>
+<h3 id="localidentity"><code>local_identity</code></h3>
 
-<ul>
-<li>
-<a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a> SIP: Session Initiation Protocol</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc3326">RFC 3326</a> The Reason Header Field for SIP</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc3327">RFC 3327</a> SIP Extension Header Field for Registering Non-Adjacent Contacts (<code>Path</code>)</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc3428">RFC 3428</a> SIP Extension for Instant Messaging (<code>MESSAGE</code>)</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc3856">RFC 3856</a> A Presence Event Package for SIP (<code>SUBSCRIBE</code> / <code>NOTIFY</code>)</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc5626">RFC 5626</a> Managing Client-Initiated Connections in SIP (<code>SIP Outbound</code>)</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc5954">RFC 5954</a> Essential Correction for IPv6 ABNF and URI Comparison in RFC 3261</li>
-  <li>
-<a href="http://tools.ietf.org/html/rfc6026">RFC 6026</a> Correct Transaction Handling for 2xx Responses to SIP INVITE Requests</li>
-  <li>
-<a href="http://tools.ietf.org/html/draft-ietf-sipcore-sip-websocket">draft-ietf-sipcore-sip-websocket</a> The WebSocket Protocol as a Transport for SIP</li>
-</ul>
+<p>SIP.NameAddrHeader instance indicating the local identity.</p>
+
+<h3 id="remoteidentity"><code>remote_identity</code></h3>
+
+<p>SIP.NameAddrHeader instance indicating the remote identity.</p>
+
+<h2 id="instance-method-client">Instance Method (Client)</h2>
+
+<h3 id="messageoptions"><code>message(options)</code></h3>
+
+<p>Send a MESSAGE through the WebSocket connection.</p>
+
+<h4 id="parameters">Parameters</h4>
+
+<table>
+<thead><tr>
+<th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>options</code></td>
+      <td><code>Object</code></td>
+      <td>Optional <code>Object</code> with extra parameters (see below).</td>
+    </tr></tbody>
+</table><h4 id="fields-in-codeoptionscode-object">Fields in <code>options</code> Object</h4>
+
+<p>Name | Type | Description
+—–|——|————–
+<code>extraHeaders</code>|<code>Array</code> of <code>Strings</code>|Extra SIP headers for the request.
+body<code>|</code>String<code>|represents the SIP message body (in case this parameter is set, a corresponding Content-Type header field must be set in </code>extraHeaders` field).</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">

@@ -59,8 +59,8 @@
       <li><a href="#stop"><code>stop()</code></a></li>
       <li><a href="#registeroptionsnull"><code>register(options=null)</code></a></li>
       <li><a href="#unregisteroptionsnull"><code>unregister(options=null)</code></a></li>
-      <li><a href="#calltarget-optionsnull"><code>call(target, options=null)</code></a></li>
-      <li><a href="#sendmessagetarget-body-optionsnull"><code>sendMessage(target, body, options=null)</code></a></li>
+      <li><a href="#invitetarget-optionsnull"><code>invite(target, options=null)</code></a></li>
+      <li><a href="#messagetarget-body-optionsnull"><code>message(target, body, options=null)</code></a></li>
       <li><a href="#isregistered"><code>isRegistered()</code></a></li>
       <li><a href="#isconnected"><code>isConnected()</code></a></li>
     </ul>
@@ -72,8 +72,8 @@
       <li><a href="#registered"><code>registered</code></a></li>
       <li><a href="#unregistered"><code>unregistered</code></a></li>
       <li><a href="#registrationfailed"><code>registrationFailed</code></a></li>
-      <li><a href="#newrtcsession"><code>newRTCSession</code></a></li>
-      <li><a href="#newmessage"><code>newMessage</code></a></li>
+      <li><a href="#invite"><code>invite</code></a></li>
+      <li><a href="#message"><code>message</code></a></li>
     </ul>
 </li>
 </ul><h2 id="instantiation">Instantiation</h2>
@@ -97,7 +97,7 @@
 <span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>password</span><span style="color:#404">'</span></span>:           <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">superpassword</span><span style="color:#710">'</span></span>
 <span class="line-numbers"><a href="#n5" name="n5">5</a></span>};
 <span class="line-numbers"><a href="#n6" name="n6">6</a></span>
-<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#080;font-weight:bold">var</span> coolPhone = <span style="color:#080;font-weight:bold">new</span> JsSIP.UA(configuration);
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span><span style="color:#080;font-weight:bold">var</span> coolPhone = <span style="color:#080;font-weight:bold">new</span> SIP.UA(configuration);
 </pre></div>
 </div>
 </div>
@@ -205,7 +205,7 @@
 </div>
 </div>
 
-<h3 id="calltarget-optionsnull"><code>call(target, options=null)</code></h3>
+<h3 id="invitetarget-optionsnull"><code>invite(target, options=null)</code></h3>
 
 <p>Makes an outgoing multimedia call.</p>
 
@@ -287,8 +287,8 @@
 <span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">var</span> eventHandlers = {
 <span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>progress</span><span style="color:#404">'</span></span>:   <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
 <span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  <span style="color:#606"><span style="color:#404">'</span><span>failed</span><span style="color:#404">'</span></span>:     <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>started</span><span style="color:#404">'</span></span>:    <span style="color:#080;font-weight:bold">function</span>(e){
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#080;font-weight:bold">var</span> rtcSession = e.data.session;
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>accepted</span><span style="color:#404">'</span></span>:    <span style="color:#080;font-weight:bold">function</span>(e){
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#080;font-weight:bold">var</span> rtcSession = e.data;
 <span class="line-numbers"><a href="#n13" name="n13">13</a></span>
 <span class="line-numbers"><a href="#n14" name="n14">14</a></span>    <span style="color:#777">// Attach local stream to selfView</span>
 <span class="line-numbers"><a href="#n15" name="n15">15</a></span>    <span style="color:#080;font-weight:bold">if</span> (rtcSession.getLocalStreams().length &amp;gt; <span style="color:#00D">0</span>) {
@@ -300,21 +300,20 @@
 <span class="line-numbers"><a href="#n21" name="n21">21</a></span>      remoteView.src = window.URL.createObjectURL(rtcSession.getRemoteStreams()[<span style="color:#00D">0</span>]);
 <span class="line-numbers"><a href="#n22" name="n22">22</a></span>    }
 <span class="line-numbers"><a href="#n23" name="n23">23</a></span>  },
-<span class="line-numbers"><a href="#n24" name="n24">24</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>ended</span><span style="color:#404">'</span></span>:      <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> }
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>terminated</span><span style="color:#404">'</span></span>:      <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> }
 <span class="line-numbers"><a href="#n25" name="n25">25</a></span>};
 <span class="line-numbers"><a href="#n26" name="n26">26</a></span>
 <span class="line-numbers"><a href="#n27" name="n27">27</a></span><span style="color:#080;font-weight:bold">var</span> options = {
-<span class="line-numbers"><a href="#n28" name="n28">28</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>eventHandlers</span><span style="color:#404">'</span></span>: eventHandlers,
-<span class="line-numbers"><a href="#n29" name="n29">29</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ],
-<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>  <span style="color:#606"><span style="color:#404">'</span><span>mediaConstraints</span><span style="color:#404">'</span></span>: {<span style="color:#606"><span style="color:#404">'</span><span>audio</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>, <span style="color:#606"><span style="color:#404">'</span><span>video</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>}
-<span class="line-numbers"><a href="#n31" name="n31">31</a></span>};
-<span class="line-numbers"><a href="#n32" name="n32">32</a></span>
-<span class="line-numbers"><a href="#n33" name="n33">33</a></span>coolPhone.call(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, options);
+<span class="line-numbers"><a href="#n28" name="n28">28</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>extraHeaders</span><span style="color:#404">'</span></span>: [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Foo: foo</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X-Bar: bar</span><span style="color:#710">'</span></span> ],
+<span class="line-numbers"><a href="#n29" name="n29">29</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>mediaConstraints</span><span style="color:#404">'</span></span>: {<span style="color:#606"><span style="color:#404">'</span><span>audio</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>, <span style="color:#606"><span style="color:#404">'</span><span>video</span><span style="color:#404">'</span></span>: <span style="color:#069">true</span>}
+<span class="line-numbers"><strong><a href="#n30" name="n30">30</a></strong></span>};
+<span class="line-numbers"><a href="#n31" name="n31">31</a></span>
+<span class="line-numbers"><a href="#n32" name="n32">32</a></span>coolPhone.call(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, options);
 </pre></div>
 </div>
 </div>
 
-<h3 id="sendmessagetarget-body-optionsnull"><code>sendMessage(target, body, options=null)</code></h3>
+<h3 id="messagetarget-body-optionsnull"><code>message(target, body, options=null)</code></h3>
 
 <p>Sends an instant message making use of SIP MESSAGE method.</p>
 
@@ -372,18 +371,9 @@
 
 <div>
 <div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello Bob!</span><span style="color:#710">'</span></span>;
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">var</span> eventHandlers = {
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>succeeded</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> },
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>failed</span><span style="color:#404">'</span></span>:    <span style="color:#080;font-weight:bold">function</span>(e){ <span style="color:#777">/* Your code here */</span> };
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>};
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">var</span> options = {
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  <span style="color:#606"><span style="color:#404">'</span><span>eventHandlers</span><span style="color:#404">'</span></span>: eventHandlers
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>};
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>coolPhone.sendMessage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, text, options);
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">var</span> text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Hello Bob!</span><span style="color:#710">'</span></span>;
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>coolPhone.message(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sip:bob@example.com</span><span style="color:#710">'</span></span>, text, options);
 </pre></div>
 </div>
 </div>
@@ -398,7 +388,7 @@
 
 <h2 id="events">Events</h2>
 
-<p><code>JsSIP.UA</code> class defines a series of events. Each of them allows callback functions registration in order to let the user execute a handler for each given stimulus.</p>
+<p><code>SIP.UA</code> class defines a series of events. Each of them allows callback functions registration in order to let the user execute a handler for each given stimulus.</p>
 
 <p>Every event handler is executed with a <a href="/SIPjs/event/">SIP.Event</a> instance as the only argument.</p>
 
@@ -452,7 +442,7 @@
 </tbody>
 </table><h3 id="registered"><code>registered</code></h3>
 
-<p>Fired for a successfull registration.</p>
+<p>Fired for a successful registration.</p>
 
 <h4 id="event-data-fields-2">Event <code>data</code> fields</h4>
 
@@ -525,9 +515,9 @@
 </td>
     </tr>
 </tbody>
-</table><h3 id="newrtcsession"><code>newRTCSession</code></h3>
+</table><h3 id="invite"><code>invite</code></h3>
 
-<p>Fired for an incoming or outgoing session/call.</p>
+<p>Fired for an incoming call.</p>
 
 <h4 id="event-data-fields-5">Event <code>data</code> fields</h4>
 
@@ -538,11 +528,6 @@
       <th>Description</th>
     </tr></thead>
 <tbody>
-<tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>The new session is generated by the remote peer.</td>
-    </tr>
 <tr>
 <td><code>session</code></td>
       <td><a href="/SIPjs/session/">SIP.Session</a></td>
@@ -566,11 +551,6 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>The new session is generated by the local user.</td>
-    </tr>
-<tr>
 <td><code>session</code></td>
       <td><a href="/SIPjs/session/">SIP.Session</a></td>
       <td>
@@ -583,9 +563,9 @@
 <a href="/SIPjs/outgoing-request/">SIP.OutgoingRequest</a> instance of the outgoing INVITE request.</td>
     </tr>
 </tbody>
-</table><h3 id="newmessage"><code>newMessage</code></h3>
+</table><h3 id="message"><code>message</code></h3>
 
-<p>Fired for an incoming or outgoing <span class="caps">MESSAGE</span> request.</p>
+<p>Fired for an incoming <span class="caps">MESSAGE</span> request.</p>
 
 <h4 id="event-data-fields-6">Event <code>data</code> fields</h4>
 
@@ -597,11 +577,6 @@
     </tr></thead>
 <tbody>
 <tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>The new message is generated by the remote peer.</td>
-    </tr>
-<tr>
 <td><code>message</code></td>
       <td><a href="/SIPjs/message/">SIP.Message</a></td>
       <td>
@@ -612,33 +587,6 @@
       <td><a href="/SIPjs/incoming-request/">SIP.IncomingRequest</a></td>
       <td>
 <a href="/SIPjs/incoming-request/">SIP.IncomingRequest</a> instance of the incoming MESSAGE request.</td>
-    </tr>
-</tbody>
-</table><h4 id="event-data-fields-for-an-outgoing-message">Event <code>data</code> fields for an outgoing message</h4>
-
-<table>
-<thead><tr>
-<th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr></thead>
-<tbody>
-<tr>
-<td><code>originator</code></td>
-      <td><code>String</code></td>
-      <td>The new message is generated by the local user.</td>
-    </tr>
-<tr>
-<td><code>message</code></td>
-      <td><a href="/SIPjs/message/">SIP.Message</a></td>
-      <td>
-<a href="/SIPjs/message/">SIP.Message</a> instance.</td>
-    </tr>
-<tr>
-<td><code>request</code></td>
-      <td><a href="/SIPjs/outgoing-request/">SIP.OutgoingRequest</a></td>
-      <td>
-<a href="/SIPjs/outgoing-request/">SIP.OutgoingRequest</a> instance of the outgoing MESSAGE request.</td>
     </tr>
 </tbody>
 </table>
@@ -663,7 +611,7 @@
         </ul>
       </li>
       <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/SIPjs/session/">SIP.Session</a></h3>
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/SIPjs/invitecontext/">SIP.InviteContext</a></h3>
         <ul class="js-guides">
           <li><a href="/SIPjs/session/#instantiation">Instantiation</a></li>
           <li><a href="/SIPjs/session/#instance-methods">Instance Methods</a></li>
@@ -671,7 +619,7 @@
         </ul>
       </li>
       <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/SIPjs/message/">SIP.Message</a></h3>
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/SIPjs/messagecontext/">SIP.MessageContext</a></h3>
         <ul class="js-guides">
           <li><a href="/SIPjs/message/#instantiation">Instantiation</a></li>
           <li><a href="/SIPjs/message/#instance-methods">Instance Methods</a></li>
