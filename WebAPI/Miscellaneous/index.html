@@ -54,23 +54,29 @@
   <li><a href="#noop">NOOP</a></li>
 </ul><h2 id="echo">Echo</h2>
 
-<h3 id="description">Description</h3>
-
 <p>An action which echoes all paramaters back in the response.</p>
 
-<h3 id="authentication">Authentication</h3>
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
 
 <p>Not required.</p>
 
-<h3 id="authorization">Authorization</h3>
-
-<p>Not required.</p>
-
-<h3 id="parameters">Parameters</h3>
+<h3 id="request-parameters">Request Parameters</h3>
 
 <p>None</p>
 
-<h3 id="result-element-example">Result Element Example</h3>
+<h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody><tr>
+<td>Main</td>
+      <td><a href="/rng/Echo.rng">Echo.rng</a></td>
+    </tr></tbody>
+</table><h3 id="examples">Examples</h3>
 
 <div>
 <div class="CodeRay">
@@ -81,123 +87,37 @@
 </div>
 </div>
 
-<h3 id="result-element-schema">Result Element Schema</h3>
-
-<p>Main module: <a href="/rng/Echo.rng">Echo.rng</a></p>
-
-<div>
-<div class="CodeRay">
-  <div class="code"><pre><span style="color:#579">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;grammar</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://relaxng.org/ns/structure/1.0</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-  <span style="color:#777">&lt;!--
-    
-    Echo Result
-    
-  --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Result.content</span><span style="color:#710">"</span></span> <span style="color:#b48">combine</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">choice</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#777">&lt;!--
-    
-    Echo Element
-    
-  --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">AnyAttribute</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Echo.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;anyName</span><span style="color:#070;font-weight:bold">/&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Anything</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/grammar&gt;</span>
-
-</pre></div>
-</div>
-</div>
-
 <h2 id="noop">NOOP</h2>
-
-<h3 id="description-1">Description</h3>
 
 <p>An action which does nothing.</p>
 
-<h3 id="authentication-1">Authentication</h3>
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
 
 <p>Not required.</p>
 
-<h3 id="authorization-1">Authorization</h3>
-
-<p>Not required.</p>
-
-<h3 id="parameters-1">Parameters</h3>
+<h3 id="request-parameters-1">Request Parameters</h3>
 
 <p>None</p>
 
-<h3 id="result-element-example-1">Result Element Example</h3>
+<h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody><tr>
+<td>Main</td>
+      <td><a href="/rng/NoOp.rng">NoOp.rng</a></td>
+    </tr></tbody>
+</table><h3 id="examples-1">Examples</h3>
 
 <div>
 <div class="CodeRay">
   <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;Result&gt;</span>
   <span style="color:#070;font-weight:bold">&lt;NoOp</span><span style="color:#070;font-weight:bold">/&gt;</span>
 <span style="color:#070;font-weight:bold">&lt;/Result&gt;</span>
-</pre></div>
-</div>
-</div>
-
-<h3 id="result-element-schema-1">Result Element Schema</h3>
-
-<p>Main module: <a href="/rng/NoOp.rng">NoOp.rng</a></p>
-
-<div>
-<div class="CodeRay">
-  <div class="code"><pre><span style="color:#579">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;grammar</span> <span style="color:#b48">xmlns</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">http://relaxng.org/ns/structure/1.0</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-  <span style="color:#777">&lt;!--
-    
-    NoOp Result
-    
-  --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Result.content</span><span style="color:#710">"</span></span> <span style="color:#b48">combine</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">choice</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#777">&lt;!--
-    
-    NoOp Element
-    
-  --&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">AnyAttribute</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;zeroOrMore&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/zeroOrMore&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;define</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">NoOp.content.open</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;element&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;anyName</span><span style="color:#070;font-weight:bold">/&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;ref</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Anything</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/element&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/define&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/grammar&gt;</span>
-
 </pre></div>
 </div>
 </div>

@@ -58,15 +58,452 @@
   <li><a href="#account-invoice-browse">Account Invoice Browse</a></li>
 </ul><h2 id="account-read">Account Read</h2>
 
+<p>Returns information about an Account.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountRead.rng">AccountRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Account.rng">Account.rng</a> <a href="/rng/Contact.rng">Contact.rng</a> <a href="/rng/CreditCard.rng">CreditCard.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="account-edit-contact">Account Edit Contact</h2>
+
+<p>Update the Contact record associated with the account.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountEditContact”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>Name</code></td>
+      <td>The contact name.</td>
+    </tr>
+<tr>
+<td><code>Organization</code></td>
+      <td>The contact company or organization name.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>The contact address.</td>
+    </tr>
+<tr>
+<td><code>City</code></td>
+      <td>The contact city.</td>
+    </tr>
+<tr>
+<td><code>State</code></td>
+      <td>The contact state - the two letter state code.</td>
+    </tr>
+<tr>
+<td><code>Zipcode</code></td>
+      <td>The contact zipcode.</td>
+    </tr>
+<tr>
+<td><code>CountryId</code></td>
+      <td>A positive integer which references a unique Country.</td>
+    </tr>
+<tr>
+<td><code>Phone</code></td>
+      <td>The contact phone number.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>The contact email address.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountEditContact.rng">AccountEditContact.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Account.rng">Account.rng</a> <a href="/rng/Contact.rng">Contact.rng</a> <a href="/rng/CreditCard.rng">CreditCard.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="account-credit-add">Account Credit Add</h2>
 
+<p>Add credit to the pre-paid balance of the account by charging the credit card on file.</p>
+
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountEditCreditAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>Amount</code></td>
+      <td>Amount in dollars as an integer between 10 and 10000.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountEditAddCredit.rng">AccountEditAddCredit.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Account.rng">Account.rng</a> <a href="/rng/Contact.rng">Contact.rng</a> <a href="/rng/CreditCard.rng">CreditCard.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="account-recharge">Account Recharge</h2>
+
+<p>Modify the auto recharge parameters of the account.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountEditRecharge”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>Recharge</code></td>
+      <td>Enable auto recharge for this account; boolean (true/false).</td>
+    </tr>
+<tr>
+<td><code>RechargeThreshold</code></td>
+      <td>The dollar amount below which the pre-paid balance must fall for an auto recharge to be attempted; an integer &gt;= 5 and &lt;= 5000.</td>
+    </tr>
+<tr>
+<td><code>RechargeLevel</code></td>
+      <td>The dollar amount to which the pre-paid balance will be increased by an auto recharge: an integer &gt;= 10 and &lt;= 10000.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountEditRecharge.rng">AccountEditRecharge.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Account.rng">Account.rng</a> <a href="/rng/Contact.rng">Contact.rng</a> <a href="/rng/CreditCard.rng">CreditCard.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="account-invoice-read">Account Invoice Read</h2>
 
+<p>If used with an AccountInvoiceId this returns an existing invoice. Otherwise, based on the current account configuration, this will generate a preliminary invoice for the next billing cycle (useful to get an idea of what the next monthly invoice will look like).</p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountInvoiceRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>One and Only One of the Following Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>AccountInvoiceId</code></td>
+      <td>A positive integer which references a unique Invoice.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-4">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountInvoiceRead.rng">AccountInvoiceRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/AccountInvoice.rng">AccountInvoice.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-4">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="account-invoice-browse">Account Invoice Browse</h2>
+
+<p>If used with an AccountInvoiceId this returns an existing invoice. Otherwise, based on the current account configuration, this will generate a preliminary invoice for the next billing cycle (useful to get an idea of what the next monthly invoice will look like).</p>
+
+<h3 id="authentication--authorization-5">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-5">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“AccountInvoiceBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td>AccountInvoiceId</td>
+      <td>AccountId [Desc] | AccountInvoiceId [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-5">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/AccountInvoiceBrowse.rng">AccountInvoiceBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/AccountInvoice.rng">AccountInvoice.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-5">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
