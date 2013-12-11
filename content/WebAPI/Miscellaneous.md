@@ -10,23 +10,23 @@ title: Miscellaneous | Web API
 
 ## Echo
 
-### Description
-
 An action which echoes all paramaters back in the response.
     
-### Authentication
+### Authentication & Authorization
 
 Not required.
 
-### Authorization
-
-Not required.
-
-### Parameters
+### Request Parameters
 
 None
 
-### Result Element Example
+### Response Format
+
+Modules | [Relax NG](http://relaxng.org) Schema Files
+-|-
+Main | [Echo.rng](/rng/Echo.rng)
+
+### Examples
 
 ~~~ xml
 <Result>
@@ -34,46 +34,30 @@ None
 </Result>
 ~~~
 
-### Result Element Schema
-
-Main module: [Echo.rng](/rng/Echo.rng)
-
-~~~ xml
-<%= s = IO.read("static/rng/Echo.rng"); s %>
-~~~
-
 
 ## NOOP
 
-### Description
-
 An action which does nothing.
     
-### Authentication
+### Authentication & Authorization
 
 Not required.
 
-### Authorization
-
-Not required.
-
-### Parameters
+### Request Parameters
 
 None
 
-### Result Element Example
+### Response Format
+
+Modules | [Relax NG](http://relaxng.org) Schema Files
+-|-
+Main | [NoOp.rng](/rng/NoOp.rng)
+
+### Examples
 
 ~~~ xml
 <Result>
   <NoOp/>
 </Result>
-~~~
-
-### Result Element Schema
-    
-Main module: [NoOp.rng](/rng/NoOp.rng)
-
-~~~ xml
-<%= s = IO.read("static/rng/NoOp.rng"); s %>
 ~~~
 
