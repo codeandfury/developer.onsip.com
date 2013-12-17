@@ -48,6 +48,8 @@
   	<div class="content">
     	<h1 id="user-addresses">User Addresses</h1>
 
+<p>Every user can have one or more user addresses or SIP addresses (e.g mike@acme.onsip.com). This feature can be a useful way to create different identities like mike.sales@acme.onsip.com and mike.support@acme.onsip.com for the same user. User addresses can be a handy feature when used in conjunction with <a href="../Ring-Groups">Ring Groups</a>. For instance, it would be trivial to run phone campaigns by placing the user address, mike.campaign1@acme.onsip.com, into the <a href="../Rign%20Groups">Ring Group</a> holiday.campaign1@acme.onsip.com, and then assigning a phone number to that campaign.</p>
+
 <ul id="markdown-toc">
 <li><a href="#user-address-add">User Address Add</a></li>
   <li><a href="#user-address-read">User Address Read</a></li>
@@ -56,15 +58,390 @@
   <li><a href="#user-address-edit">User Address Edit</a></li>
 </ul><h2 id="user-address-add">User Address Add</h2>
 
-<p>Every user can have one or more user addresses or SIP addresses (e.g mike@acme.onsip.com). This feature can be a useful way to create different identities like mike.sales@acme.onsip.com and mike.support@acme.onsip.com for the same user. User addresses can be a handy feature when used in conjunction with <a href="../Ring-Groups">Ring Groups</a>. For instance, it would be trivial to run phone campaigns by placing the user address, mike.campaign1@acme.onsip.com, into the <a href="../Rign%20Groups">Ring Group</a> holiday.campaign1@acme.onsip.com, and then assigning a phone number to that campaign.</p>
+<p>Add a UserAddress to an Organization.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAddressAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The username portion of the address to add.</td>
+    </tr>
+<tr>
+<td><code>Domain</code></td>
+      <td>The domain portion of the address to add.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User associated with the address.</td>
+    </tr>
+<tr>
+<td><code>Timeout</code></td>
+      <td>A positive integer indicating the max length of time in seconds a call attempt is made.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>DefaultAddress</code></td>
+      <td>If not set, no failover will be attempted.</td>
+      <td>A failover SIP address to use in the event of a timeout or negative response.</td>
+    </tr></tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserAddressAdd.rng">UserAddressAdd.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/UserAddress.rng">UserAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="user-address-read">User Address Read</h2>
 
+<p>Returns information about a UserAddress.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAddressRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>A SIP “user” address of the form username@domain (ie joe@smith.onsip.com).</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserAddressRead.rng">UserAddressRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/UserAddress.rng">UserAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="user-address-browse">User Address Browse</h2>
+
+<p>Returns information about a group UserAddresses.</p>
+
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAddressBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table><tbody>
+<tr>
+<td>One and Only One of the Following Parameters</td>
+      <td>Description</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+</tbody></table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td>UserId</td>
+      <td>Domain [Desc] | UserId [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserAddressBrowse.rng">UserAddressBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/UserAddress.rng">UserAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="user-address-delete">User Address Delete</h2>
 
+<p>Delete a UserAddress.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAddressDelete”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>A SIP “user” address of the form username@domain (ie joe@smith.onsip.com).</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody><tr>
+<td>Main</td>
+      <td><a href="/rng/UserAddressDelete.rng">UserAddressDelete.rng</a></td>
+    </tr></tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="user-address-edit">User Address Edit</h2>
+
+<p>Update a UserAddress.</p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAddressEdit”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User associated with the address.</td>
+    </tr>
+<tr>
+<td><code>Timeout</code></td>
+      <td>A positive integer indicating the max length of time in seconds a call attempt is made.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>DefaultAddress</code></td>
+      <td>If not set, no failover will be attempted.</td>
+      <td>A failover SIP address to use in the event of a timeout or negative response.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The updated username portion of the address.</td>
+      <td> </td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-4">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserAddressEdit.rng">UserAddressEdit.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/UserAddress.rng">UserAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-4">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -106,7 +483,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -116,7 +492,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>

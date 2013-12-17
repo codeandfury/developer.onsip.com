@@ -48,6 +48,8 @@
   	<div class="content">
     	<h1 id="ring-groups">Ring Groups</h1>
 
+<p>Groups are similar to e-mail group aliases. Multiple user addresses can be part of a group. A call to the group would ring the phone of each of the members in that group.</p>
+
 <ul id="markdown-toc">
 <li><a href="#group-address-add">Group Address Add</a></li>
   <li><a href="#group-address-read">Group Address Read</a></li>
@@ -56,13 +58,391 @@
   <li><a href="#group-address-edit">Group Address Edit</a></li>
 </ul><h2 id="group-address-add">Group Address Add</h2>
 
+<p>Add a GroupAddress to an Organization.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“GroupAddressAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The username portion of the address to add.</td>
+    </tr>
+<tr>
+<td><code>Domain</code></td>
+      <td>The domain portion of the address to add.</td>
+    </tr>
+<tr>
+<td><code>Ordering</code></td>
+      <td>‘parallel’ | ‘sequential’</td>
+    </tr>
+<tr>
+<td><code>Timeout</code></td>
+      <td>A positive integer indicating the max length of time in seconds a call attempt is made.</td>
+    </tr>
+<tr>
+<td><code>MemberAddresses</code></td>
+      <td>An array of existing SIP UserAddresses of the form array(UserAddress =&gt; Priority) which make up the group. Priority is an integer specifying the relative priority of the address in the group. More explicitly, the URI will contain: MemberAddresses[user1@domain.onsip.com]=1&amp;MemberAddresses[user2@domain.onsip.com]=2</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>DefaultAddress</code></td>
+      <td>If not set, no failover will be attempted.</td>
+      <td>A failover SIP address to use in the event of a timeout or negative response.</td>
+    </tr></tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/GroupAddressAdd.rng">GroupAddressAdd.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/GroupAddress.rng">GroupAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="group-address-read">Group Address Read</h2>
+
+<p>Returns information about a GroupAddress.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“GroupAddressRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>A SIP “group” address of the form username@domain (ie sales@smith.onsip.com).</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/GroupAddressRead.rng">GroupAddressRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/GroupAddress.rng">GroupAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="group-address-browse">Group Address Browse</h2>
 
+<p>Returns information about a group GroupAddresses.</p>
+
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“GroupAddressBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table><tbody>
+<tr>
+<td>One and Only One of the Following Parameters</td>
+      <td>Description</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+</tbody></table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td>UserId</td>
+      <td>Domain [Desc] | UserId [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/GroupAddressBrowse.rng">GroupAddressBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/GroupAddress.rng">GroupAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="group-address-delete">Group Address Delete</h2>
 
+<p>Delete a GroupAddress.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“GroupAddressDelete”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>A SIP “group” address of the form username@domain (ie sales@smith.onsip.com).</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody><tr>
+<td>Main</td>
+      <td><a href="/rng/GroupAddressDelete.rng">GroupAddressDelete.rng</a></td>
+    </tr></tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="group-address-edit">Group Address Edit</h2>
+
+<p>Update a GroupAddress.</p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“GroupAddressEdit”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The username portion of the address.</td>
+    </tr>
+<tr>
+<td><code>Ordering</code></td>
+      <td>‘parallel’ | ‘sequential’</td>
+    </tr>
+<tr>
+<td><code>Timeout</code></td>
+      <td>A positive integer indicating the max length of time in seconds a call attempt is made.</td>
+    </tr>
+<tr>
+<td><code>MemberAddresses</code></td>
+      <td>An array of existing SIP UserAddresses of the form array(UserAddress =&gt; Priority) which make up the group. Priority is an integer specifying the relative priority of the address in the group. More explicitly, the URI will contain: MemberAddresses[user1@domain.onsip.com]=1&amp;MemberAddresses[user2@domain.onsip.com]=2</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>DefaultAddress</code></td>
+      <td>If not set, no failover will be attempted.</td>
+      <td>A failover SIP address to use in the event of a timeout or negative response.</td>
+    </tr></tbody>
+</table><h3 id="response-format-4">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/GroupAddressEdit.rng">GroupAddressEdit.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/GroupAddress.rng">GroupAddress.rng</a> <a href="/rng/Address.rng">Address.rng</a> <a href="/rng/DefaultAddress.rng">DefaultAddress.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-4">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -104,7 +484,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -114,7 +493,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>

@@ -52,22 +52,398 @@
 <li><a href="#user-add">User Add</a></li>
   <li><a href="#user-read">User Read</a></li>
   <li><a href="#user-browse">User Browse</a></li>
-  <li><a href="#user-delete">User Delete</a></li>
   <li><a href="#user-edit-contact">User Edit Contact</a></li>
   <li><a href="#user-reset-portal-password">User Reset Portal Password</a></li>
 </ul><h2 id="user-add">User Add</h2>
 
 <p>Create a new user in the specified organization. Setting up an extension and voicemail for the user once created is accomplished with <a href="../User-Aliases/#user-alias-add">User Alias Add</a> and <a href="../Voicemail/#voicemailbox-add">Voicemailbox Add</a>.</p>
 
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The portal username as well as the username portion of the hosted pbx user address.</td>
+    </tr>
+<tr>
+<td><code>Domain</code></td>
+      <td>A fully qualified domain name.</td>
+    </tr>
+<tr>
+<td><code>Name</code></td>
+      <td>A human readable name</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>A valid email address</td>
+    </tr>
+<tr>
+<td><code>AuthUsername</code></td>
+      <td>An authentication username which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Password</code></td>
+      <td>A user’s login password (the password used to login to the web portal).</td>
+    </tr>
+<tr>
+<td><code>PasswordConfirm</code></td>
+      <td>A confirmation copy of the user’s login password (the password used to login to the web portal)</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserAdd.rng">UserRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/User.rng">User.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="user-read">User Read</h2>
+
+<p>Returns information about an User.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>One and Only One of the Following Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>UserAddress</code></td>
+      <td>A SIP “user” address of the form username@domain (ie joe@smith.onsip.com).</td>
+    </tr>
+<tr>
+<td><code>AuthUsername</code></td>
+      <td>An authentication username which references a unique User.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserRead.rng">UserRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/User.rng">User.rng</a> <a href="/rng/Contact.rng">Contact.rng</a> <a href="/rng/CreditCard.rng">CreditCard.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="user-browse">User Browse</h2>
 
-<h2 id="user-delete">User Delete</h2>
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table><tbody>
+<tr>
+<td>One and Only One of the Following Parameters</td>
+      <td>Description</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+</tbody></table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td>UserId</td>
+      <td>Domain [Desc] | UserId [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserBrowse.rng">UserBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/User.rng">User.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="user-edit-contact">User Edit Contact</h2>
 
+<p>Update the Contact record associated with the user.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">User Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserEditContact”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Name</code></td>
+      <td>The contact name.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>The contact address.</td>
+    </tr>
+<tr>
+<td><code>City</code></td>
+      <td>The contact city.</td>
+    </tr>
+<tr>
+<td><code>State</code></td>
+      <td>The contact state - the two letter state code.</td>
+    </tr>
+<tr>
+<td><code>Zipcode</code></td>
+      <td>The contact zipcode.</td>
+    </tr>
+<tr>
+<td><code>CountryId</code></td>
+      <td>A positive integer which references a unique Country.</td>
+    </tr>
+<tr>
+<td><code>Phone</code></td>
+      <td>The contact phone number.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>The contact email address.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>User</code></td>
+      <td>’’</td>
+      <td>The contact company or user name.</td>
+    </tr></tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/UserEditContact.rng">UserEditContact.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/User.rng">User.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="user-reset-portal-password">User Reset Portal Password</h2>
+
+<p>Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.</p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr></tbody>
+</table>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -109,7 +485,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -119,7 +494,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>

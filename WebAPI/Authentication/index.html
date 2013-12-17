@@ -48,6 +48,8 @@
   	<div class="content">
     	<h1 id="authentication">Authentication</h1>
 
+<p>Most of the requests to the Web Services API require authentication. The account must be authorized to perform the desired Action. In most cases, you’ll want to use an Admin account. The Admin of the account is the person who signed up for the OnSIP Hosted PBX service. Authentication is done by establishing a session using the Action SessionCreate. The request needs to be made with parameters UserName and Password. For admins, the password is the one used to access the admin portal, admin.onsip.com. If the credentials are valid, the API will respond with session information. You’ll use the SessionId in subsequent requests.</p>
+
 <ul id="markdown-toc">
 <li><a href="#session-create">Session Create</a></li>
   <li><a href="#session-destroy">Session Destroy</a></li>
@@ -257,7 +259,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -267,7 +268,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>

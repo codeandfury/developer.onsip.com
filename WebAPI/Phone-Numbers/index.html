@@ -54,9 +54,186 @@
   <li><a href="#did-edit">DID Edit</a></li>
 </ul><h2 id="npa-nxx-browse">NPA NXX Browse</h2>
 
+<p>Returns a list of available phone numbers. Use the DidId value along with Action DidRequest to purchase the DID / phone number, then assign the DID to a user using the DidEdit Action.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<p>Not required.</p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>Action</code></td>
+      <td>“NpaNxxBrowse”</td>
+    </tr></tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/NpaNxxBrowse.rng">NpaNxxBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/NpaNxx.rng">NpaNxx.rng</a> <a href="/rng/PostalCode.rng">PostalCode.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="did-request">DID Request</h2>
 
+<p>Use NpaNxxBrowse to find phone numbers, then purchase the number using this UserRequestDid Action. Once purchased, use DID Edit to associate this phone number / DID to a user’s SIP address.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Protocol</code></td>
+      <td>The protocol by which calls will be delivered to the user; ‘sip’ or ‘iax’</td>
+    </tr>
+<tr>
+<td><code>NpaNxx[]</code></td>
+      <td>An array mapping an NPA/NXX to a quantity. For example, NpaNxx[212789]=2 would indicate a request for 2 numbers from Area Code 212 with an NXX of 789.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/DidRequest.rng">DidRequest.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Did.rng">Did.rng</a> <a href="/rng/User.rng">User.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="did-edit">DID Edit</h2>
+
+<p>Associate a DID / phone number to a SIP address and have callers dial you through the PSTN. Standard Rates will apply. This would be the last step in a series of 3 API calls to setup a phone number and be reachable by way of mobile phones and landlines.</p>
+
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>DidId</code></td>
+      <td>A positive integer which references a unique DID.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Destination</code></td>
+      <td>A valid hosted SIP address</td>
+    </tr>
+<tr>
+<td><code>CallerIdNumberRequired</code></td>
+      <td>Block calls that don’t have valid caller-id number info; boolean (true/false)</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/DidEdit.rng">DidRequest.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Did.rng">Did.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -98,7 +275,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -108,7 +284,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>

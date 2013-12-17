@@ -52,19 +52,394 @@
 <li><a href="#organization-add">Organization Add</a></li>
   <li><a href="#organization-read">Organization Read</a></li>
   <li><a href="#organization-browse">Organization Browse</a></li>
-  <li><a href="#organization-delete">Organization Delete</a></li>
   <li><a href="#organization-edit-contact">Organization Edit Contact</a></li>
 </ul><h2 id="organization-add">Organization Add</h2>
 
-<p>Create a new user in the specified organization. Setting up an extension and voicemail for the user once created is accomplished with <a href="../User-Aliases/#user-alias-add">User Alias Add</a> and <a href="../Voicemail/#voicemailbox-add">Voicemailbox Add</a>.</p>
+<p>Create a new organization in the specified account.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>Name</code></td>
+      <td>The contact name.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>The contact address.</td>
+    </tr>
+<tr>
+<td><code>City</code></td>
+      <td>The contact city.</td>
+    </tr>
+<tr>
+<td><code>State</code></td>
+      <td>The contact state - the two letter state code.</td>
+    </tr>
+<tr>
+<td><code>Zipcode</code></td>
+      <td>The contact zipcode.</td>
+    </tr>
+<tr>
+<td><code>CountryId</code></td>
+      <td>A positive integer which references a unique Country.</td>
+    </tr>
+<tr>
+<td><code>Phone</code></td>
+      <td>The contact phone number.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>The contact email address.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>An authentication username which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>Password</code></td>
+      <td>A user’s login password (the password used to login to the web portal).</td>
+    </tr>
+<tr>
+<td><code>PasswordConfirm</code></td>
+      <td>A confirmation copy of the user’s login password (the password used to login to the web portal)</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Company</code></td>
+      <td>’’</td>
+      <td>The contact company or organization name.</td>
+    </tr>
+<tr>
+<td><code>PbxType</code></td>
+      <td>‘trunk’</td>
+      <td>‘hosted’ | ‘trunk’</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/OrganizationRead.rng">OrganizationRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Organization.rng">Organization.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="organization-read">Organization Read</h2>
 
+<p>Returns information about an Organization.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>One and Only One of the Following Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Domain</code></td>
+      <td>A fully qualified domain name which references a unique Organization.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/OrganizationRead.rng">OrganizationRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Organization.rng">Organization.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="organization-browse">Organization Browse</h2>
 
-<h2 id="organization-delete">Organization Delete</h2>
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td>OrganizationId</td>
+      <td>Domain [Desc] | OrganizationId [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/OrganizationBrowse.rng">OrganizationBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Organization.rng">Organization.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="organization-edit-contact">Organization Edit Contact</h2>
+
+<p>Update the Contact record associated with the organization.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Organization Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationEditContact”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Name</code></td>
+      <td>The contact name.</td>
+    </tr>
+<tr>
+<td><code>Address</code></td>
+      <td>The contact address.</td>
+    </tr>
+<tr>
+<td><code>City</code></td>
+      <td>The contact city.</td>
+    </tr>
+<tr>
+<td><code>State</code></td>
+      <td>The contact state - the two letter state code.</td>
+    </tr>
+<tr>
+<td><code>Zipcode</code></td>
+      <td>The contact zipcode.</td>
+    </tr>
+<tr>
+<td><code>CountryId</code></td>
+      <td>A positive integer which references a unique Country.</td>
+    </tr>
+<tr>
+<td><code>Phone</code></td>
+      <td>The contact phone number.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>The contact email address.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody><tr>
+<td><code>Organization</code></td>
+      <td>’’</td>
+      <td>The contact company or organization name.</td>
+    </tr></tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/OrganizationEditContact.rng">OrganizationEditContact.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td>
+<a href="/rng/Organization.rng">Organization.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -106,7 +481,6 @@
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
-          <li><a href="/WebAPI/Organizations/#organization-delete">Organization Delete</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
         </ul>
       </li>
@@ -116,7 +490,6 @@
           <li><a href="/WebAPI/Users/#user-add">User Add</a></li>
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
-          <li><a href="/WebAPI/Users/#user-delete">User Delete</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
         </ul>
