@@ -56,15 +56,459 @@
   <li><a href="#voicemailbox-edit">Voicemailbox Edit</a></li>
 </ul><h2 id="voicemailbox-add">Voicemailbox Add</h2>
 
-<p>Add a voicemail box to an Organization. This Action is simply for creating a new voicemailbox. Once created, use <a href="User-Addresses/user-address-edit">User Address Edit</a> to set the <code>DefaultAddress</code> to rollover to voicemail after a set <code>Timeout</code>.</p>
+<p>Add a voicemail box to an Organization. This <code>Action</code> is simply for creating a new voicemailbox. Once created, use <a href="User-Addresses/user-address-edit">User Address Edit</a> to set the <code>DefaultAddress</code> to rollover to voicemail after a set <code>Timeout</code>.</p>
+
+<h3 id="authentication--authorization">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“VoicemailboxAdd”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The username portion of the address.</td>
+    </tr>
+<tr>
+<td><code>Domain</code></td>
+      <td>The domain portion of the address.</td>
+    </tr>
+<tr>
+<td><code>Mailbox</code></td>
+      <td>A positive integer value up to 7 digits representing the Mailbox’s number. It must be unique across the organization the mailbox belongs to. It usually makes sense to make this identical to the extension of the user assocaited with this mailbox. For example, if my extension is 7011, then it would make sense for my mailbox number to be 7011 as well.</td>
+    </tr>
+<tr>
+<td><code>Fullname</code></td>
+      <td>A proper name associated with the user of the mailbox. For example, ‘Joe Smith’.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Timezone</code></td>
+      <td>‘us_eastern’</td>
+      <td>One of the following values: ‘us_eastern’, ‘us_central’, ‘us_mountain’, or ‘us_pacific’.</td>
+    </tr>
+<tr>
+<td><code>SayCallerId</code></td>
+      <td>false</td>
+      <td>Play caller-id information when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>SayDuration</code></td>
+      <td>false</td>
+      <td>Play message length information when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>SayDatetime</code></td>
+      <td>false</td>
+      <td>Play date and time call when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>NotifyEmail</code></td>
+      <td>false</td>
+      <td>One of the following values: ‘no’, ‘yes’, ‘attach’, or ‘delete’.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>n/a</td>
+      <td>If NotifyEmail is anything other than ‘no’, this parameter is required and should be the email address to send email notifications to.</td>
+    </tr>
+<tr>
+<td><code>NotifyPager</code></td>
+      <td>no</td>
+      <td>One of the following values: ‘no’ or ‘yes’</td>
+    </tr>
+<tr>
+<td><code>Pager</code></td>
+      <td>n/a</td>
+      <td>If NotifyPager is anything other than ‘no’, this parameter is required and should be the email address to send pager notifications to.</td>
+    </tr>
+<tr>
+<td><code>Mwi</code></td>
+      <td>Don’t send MWI notifications</td>
+      <td>SIP User Address send message waiting indications to using SIP NOTIFY requests.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/VoicemailboxAdd.rng">VoicemailboxAdd.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Voicemailbox.rng">Voicemailbox.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="voicemailbox-read">Voicemailbox Read</h2>
 
+<p>Returns information about an Voicemailbox.</p>
+
+<h3 id="authentication--authorization-1">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-1">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“VoicemailboxRead”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>VoicemailboxId</code></td>
+      <td>A positive integer which references a unique Voicemailbox.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-1">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/VoicemailboxRead.rng">VoicemailboxRead.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Voicemailbox.rng">Voicemailbox.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-1">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="voicemailbox-browse">Voicemailbox Browse</h2>
+
+<h3 id="authentication--authorization-2">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-2">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“VoicemailboxBrowse”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+</tbody>
+</table><table><tbody>
+<tr>
+<td>One and Only One of the Following Parameters</td>
+      <td>Description</td>
+    </tr>
+<tr>
+<td><code>AccountId</code></td>
+      <td>A positive integer which references a unique Account.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+</tbody></table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>OrderBy</code></td>
+      <td> </td>
+      <td>VoicemailboxId [Desc] | OrganizationId [Desc] | Mailbox [Desc]</td>
+    </tr>
+<tr>
+<td><code>Limit</code></td>
+      <td>20</td>
+      <td>The maximum number of records to return.</td>
+    </tr>
+<tr>
+<td><code>Offset</code></td>
+      <td>0</td>
+      <td>The offset of the first record to return. The offset of the initial record is 0 (not 1).</td>
+    </tr>
+<tr>
+<td><code>CalcFound</code></td>
+      <td>true</td>
+      <td>Calculate how many records there would be in the result set, disregarding any Limit parameter.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-2">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/VoicemailboxBrowse.rng">VoicemailboxBrowse.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Voicemailbox.rng">Voicemailbox.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-2">Examples</h3>
+
+<p>Not available.</p>
 
 <h2 id="voicemailbox-delete">Voicemailbox Delete</h2>
 
+<p>Delete a Voicemailbox.</p>
+
+<h3 id="authentication--authorization-3">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-3">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“VoicemailboxDelete”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>VoicemailboxId</code></td>
+      <td>A positive integer which references a unique Voicemailbox.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-3">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody><tr>
+<td>Main</td>
+      <td><a href="/rng/VoicemailboxDelete.rng">VoicemailboxDelete.rng</a></td>
+    </tr></tbody>
+</table><h3 id="examples-3">Examples</h3>
+
+<p>Not available.</p>
+
 <h2 id="voicemailbox-edit">Voicemailbox Edit</h2>
+
+<p>Update a Voicemailbox.</p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“VoicemailboxEdit”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>VoicemailboxId</code></td>
+      <td>A positive integer which references a unique Voicemailbox.</td>
+    </tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Optional Parameters</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Mailbox</code></td>
+      <td>If the parameter is not supplied, the value is unchanged.</td>
+      <td>A positive integer value up to 7 digits representing the Mailbox’s number. It must be unique across the organization the mailbox belongs to. It usually makes sense to make this identical to the extension of the user assocaited with this mailbox. For example, if my extension is 7011, then it would make sense for my mailbox number to be 7011 as well.</td>
+    </tr>
+<tr>
+<td><code>Password</code></td>
+      <td>If the parameter is not supplied, the value is unchanged.</td>
+      <td>A positive integer value up to 7 digits representing the Mailbox’s PIN number.</td>
+    </tr>
+<tr>
+<td><code>Timezone</code></td>
+      <td>‘us_eastern’</td>
+      <td>One of the following values: ‘us_eastern’, ‘us_central’, ‘us_mountain’, or ‘us_pacific’.</td>
+    </tr>
+<tr>
+<td><code>SayCallerId</code></td>
+      <td>false</td>
+      <td>Play caller-id information when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>SayDuration</code></td>
+      <td>false</td>
+      <td>Play message length information when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>SayDatetime</code></td>
+      <td>false</td>
+      <td>Play date and time call when reviewing messages; boolean (true/false)</td>
+    </tr>
+<tr>
+<td><code>NotifyEmail</code></td>
+      <td>false</td>
+      <td>One of the following values: ‘no’, ‘yes’, ‘attach’, or ‘delete’.</td>
+    </tr>
+<tr>
+<td><code>Email</code></td>
+      <td>n/a</td>
+      <td>If NotifyEmail is anything other than ‘no’, this parameter is required and should be the email address to send email notifications to.</td>
+    </tr>
+<tr>
+<td><code>NotifyPager</code></td>
+      <td>no</td>
+      <td>One of the following values: ‘no’ or ‘yes’</td>
+    </tr>
+<tr>
+<td><code>Pager</code></td>
+      <td>n/a</td>
+      <td>If NotifyPager is anything other than ‘no’, this parameter is required and should be the email address to send pager notifications to.</td>
+    </tr>
+<tr>
+<td><code>Mwi</code></td>
+      <td>Don’t send MWI notifications</td>
+      <td>SIP User Address send message waiting indications to using SIP NOTIFY requests.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-4">Response Format</h3>
+
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/VoicemailboxEdit.rng">VoicemailboxEdit.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
+      <td><a href="/rng/Voicemailbox.rng">Voicemailbox.rng</a></td>
+    </tr>
+</tbody>
+</table><h3 id="examples-4">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
