@@ -38,7 +38,7 @@ One and Only One of the Following Optional Parameters | Default | Description
 
 Optional Parameters | Default | Description
 -|-
-`OrderBy` | AccountInvoiceId | AccountId [Desc] \| AccountInvoiceId [Desc] 
+`OrderBy` | DateTime | CdrId [Desc] \| DateTime [Desc]  \| Price [Desc] 
 `Limit` | 20 | The maximum number of records to return.
 `Offset` | 0 | The offset of the first record to return. The offset of the initial record is 0 (not 1).
 `CalcFound` | true | Calculate how many records there would be in the result set, disregarding any Limit parameter.

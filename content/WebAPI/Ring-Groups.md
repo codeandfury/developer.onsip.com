@@ -101,7 +101,7 @@ One and Only One of the Following Parameters | Description
 
 Optional Parameters | Default | Description
 -|-
-`OrderBy` | UserId | Domain [Desc] \| UserId [Desc] 
+`OrderBy` | | Username [Desc] \| Domain [Desc] \|
 `Limit` | 20 | The maximum number of records to return.
 `Offset` | 0 | The offset of the first record to return. The offset of the initial record is 0 (not 1).
 `CalcFound` | true | Calculate how many records there would be in the result set, disregarding any Limit parameter.
