@@ -55,7 +55,6 @@ Required Parameters | Description
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `AccountId` | A positive integer which references a unique Account.
 `Name` | The contact name.
-`Organization` | The contact company or organization name.
 `Address` | The contact address.
 `City` | The contact city.
 `State` | The contact state - the two letter state code.
@@ -63,6 +62,10 @@ Required Parameters | Description
 `CountryId` | A positive integer which references a unique Country.
 `Phone` | The contact phone number.
 `Email` | The contact email address.
+
+Optional Parameters | Default | Description
+-|-
+`Organization` | '' | The contact company or organization name.
 
 ### Response Format
 
