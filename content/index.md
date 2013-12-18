@@ -14,20 +14,20 @@ layout: overview
   <ul class="wrapper highlights">
     <li>
       <h2>Get Started</h2>
-      <p>New to the OnSIP APIs? With these guides you’ll be up and running in a snap.</p>
-      <a href="http://www.onsip.com/developer/" class="button-secondary">View getting statted guides</a>
+      <p>New to the OnSIP Web API? With these guides you’ll be up and running in a snap.</p>
+      <a href="/guides/" class="button-secondary">View getting statted guides</a>
       <img class="octocat professorcat" src="/shared/images/professorcat.png" />
     </li>
     <li>
-      <h2>SIP WebRTC Libraries</h2>
-      <p>We’ve got you covered. Use the SIP stack that fits your target platform.</p>
-      <a href="http://www.onsip.com/developer/platform/" class="button-secondary">WebRTC libraries</a>
+      <h2>OnSIP Web API</h2>
+      <p>We’ve got you covered. Use the OnSIP Web API to automate and integrate administration of OnSIP.</p>
+      <a href="/WebAPI/" class="button-secondary">Web API</a>
       <img class="octocat" src="/shared/images/gundamcat-small.png" />
     </li>
     <li>
-      <h2>OnSIP Web API SDKs</h2>
-      <p>We’ve got you covered. Use the OnSIP API in your favorite language.</p>
-      <a href="http://www.onsip.com/developer/web-phone/" class="button-secondary">Web API SDKs</a>
+      <h2>Support</h2>
+      <p>Are you stuck? Talk to support.</p>
+      <a href="/support" class="button-secondary">Support</a>
       <img class="octocat" src="/shared/images/supportocat.png" />
     </li>
   </ul>

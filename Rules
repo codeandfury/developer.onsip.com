@@ -20,6 +20,13 @@ end
 compile '/CNAME/' do
 end
 
+compile '/guides/*' do
+  filter :kramdown, :toc_levels => [2]
+  filter :erb
+  filter :colorize_syntax, :default_colorizer => :pygmentsrb
+  layout item[:layout] || 'guides'
+end
+
 compile '/WebAPI/*' do
   if item.binary?
     # don’t filter binary items
