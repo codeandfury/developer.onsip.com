@@ -166,3 +166,36 @@ Supporting | [Organization.rng](/rng/Organization.rng) [Contact.rng](/rng/Contac
 
 Not available.
 
+
+## Organization Migrate Domain
+
+
+Migrates the domain of the organization so as to allow custom domains.  
+
+The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com <http://sip.onsip.com/> on port 5060.  SRV TCP records are NOT allowed yet.
+
+### Authentication & Authorization
+
+Authentication | Authorization
+-|-
+[Authenticated Session](../Authentication/#session-create) | [Organization Admin](../#roles)
+
+### Request Parameters
+
+Required Parameters | Description
+-|-
+`Action` | "OrganizationMigrateDomain"
+`SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
+`OrganizationId` | A positive integer which references a unique Organization.
+`OldDomain` | The old domain.
+`NewDomain` | The domain that is being migrated too.  This new domain must already exist.
+
+
+### Response Format
+
+Modules | [Relax NG](http://relaxng.org) Schema Files
+
+
+### Examples
+
+Not available.
