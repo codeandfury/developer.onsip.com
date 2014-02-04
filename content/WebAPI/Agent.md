@@ -33,7 +33,7 @@ Required Parameters | Description
 `City` | The city parameter of the address
 `State` | The state parameter of the address
 `Zipcode` | The zipcode parameter of the address
-`Phone` | The contact phone number
+`Phone` | The contact phone number.  No country codes or IDs are accepted.
 `Email` | A valid email address.  This email will receive billing emails, feature/product change emails, used by support to address account-level bug reports.  The admin user created by this signup account will be assigned this email address.  
 `Password` | A user's login password (the password used to login to the web portal).  Used to generate API sessions and log into the admin portal to make account wide changes.
 `Productcode` | This should be "onSIP".
