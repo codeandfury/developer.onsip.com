@@ -446,7 +446,7 @@
 
 <p>You can get the required OrganizationId parameter by doing a <a href="../Organizations/#organization-read">Organization Read</a>.</p>
 
-<p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com &lt;http://sip.onsip.com/&gt; on port 5060.  SRV TCP records are NOT allowed yet.</domain></p>
+<p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for <code>_sip._udp.&lt;domain&gt;.com</code> to point to target <code>sip.onsip.com</code> on port 5060.  SRV TCP records are NOT allowed yet.</p>
 
 <h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
 
@@ -482,7 +482,7 @@
     </tr>
 <tr>
 <td><code>OldDomain</code></td>
-      <td>The old domain.</td>
+      <td>The old domain.  It must be an existing domain.</td>
     </tr>
 <tr>
 <td><code>NewDomain</code></td>
