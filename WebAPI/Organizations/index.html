@@ -51,6 +51,7 @@
   <li><a href="#organization-read">Organization Read</a></li>
   <li><a href="#organization-browse">Organization Browse</a></li>
   <li><a href="#organization-edit-contact">Organization Edit Contact</a></li>
+  <li><a href="#organization-migrate-domain">Organization Migrate Domain</a></li>
 </ul><h2 id="organization-add">Organization Add</h2>
 
 <p>Create a new organization in the specified account.</p>
@@ -438,6 +439,63 @@
 </table><h3 id="examples-3">Examples</h3>
 
 <p>Not available.</p>
+
+<h2 id="organization-migrate-domain">Organization Migrate Domain</h2>
+
+<p>Migrates the domain of the organization so as to allow custom domains.  </p>
+
+<p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com &lt;http://sip.onsip.com/&gt; on port 5060.  SRV TCP records are NOT allowed yet.</domain></p>
+
+<h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Organization Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-4">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“OrganizationMigrateDomain”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>OrganizationId</code></td>
+      <td>A positive integer which references a unique Organization.</td>
+    </tr>
+<tr>
+<td><code>OldDomain</code></td>
+      <td>The old domain.</td>
+    </tr>
+<tr>
+<td><code>NewDomain</code></td>
+      <td>The domain that is being migrated too.  This new domain must already exist.</td>
+    </tr>
+</tbody>
+</table><h3 id="response-format-4">Response Format</h3>
+
+<table><tbody><tr>
+<td>Modules</td>
+      <td>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</td>
+    </tr></tbody></table><h3 id="examples-4">Examples</h3>
+
+<p>Not available.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
@@ -474,12 +532,19 @@
         </ul>
       </li>
       <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Agent/">Agent</a></h3>
+        <ul class="js-guides">
+          <li><a href="/WebAPI/Agent/#agent-add-account">Agent Add Account</a></li>
+        </ul>
+      </li>
+      <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn"></a><a href="/WebAPI/Organizations/">Organizations</a></h3>
         <ul class="js-guides">
           <li><a href="/WebAPI/Organizations/#organization-add">Organization Add</a></li>
           <li><a href="/WebAPI/Organizations/#organization-read">Organization Read</a></li>
           <li><a href="/WebAPI/Organizations/#organization-browse">Organization Browse</a></li>
           <li><a href="/WebAPI/Organizations/#organization-edit-contact">Organization Edit Contact</a></li>
+          <li><a href="/WebAPI/Organizations/#organization-migrate-domain">Organization Migrate Domain</a></li>
         </ul>
       </li>
       <li class="js-topic">
