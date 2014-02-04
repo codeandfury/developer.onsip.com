@@ -40,4 +40,8 @@ Required Parameters | Description
 
 ### Examples
 
+Here is an example request.  For more information on how to make requests go to [Request Format](../#request-format).
+
+~~~
 https://www.jnctn.com/restapi?Action=AgentAddAccount&SessionId=dh2enh0v1m6u4radtmpz1gkpe5&Name=Dude+Man&Company=Dude+Man+Inc.&Address=123+Dude+Street&City=New+York&State=NY&Zipcode=10004&Phone=212-213-1234&Email=dude@onsip.com&Username=dudeman91&Domain=dudeman91.onsip.com&Password=superpassword&Productcode=onSIP&Creditcard=false
+~~~

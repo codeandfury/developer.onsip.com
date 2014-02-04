@@ -172,6 +172,8 @@ Not available.
 
 Migrates the domain of the organization so as to allow custom domains.  If you are an agent creating accounts for your custom domain, you must first create the account by using the [AgentAddAccount](../Agent/#agent-add-account) action.
 
+You can get the required OrganizationId parameter by doing a [Organization Read](../Organizations/#organization-read).
+
 The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com <http://sip.onsip.com/> on port 5060.  SRV TCP records are NOT allowed yet.
 
 ### Authentication & Authorization
@@ -188,7 +190,7 @@ Required Parameters | Description
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `OrganizationId` | A positive integer which references a unique Organization.
 `OldDomain` | The old domain.
-`NewDomain` | The domain that is being migrated too.  This new domain must already exist.
+`NewDomain` | The domain that is being migrated too.  This new domain must have a SRV record associated with it.
 
 
 ### Response Format
@@ -198,4 +200,4 @@ Modules | [Relax NG](http://relaxng.org) Schema Files
 
 ### Examples
 
-Not available.
+For more information on how to make requests go to [Request Format](../#request-format).
