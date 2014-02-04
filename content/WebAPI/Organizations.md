@@ -174,7 +174,7 @@ Migrates the domain of the organization so as to allow custom domains.  If you a
 
 You can get the required OrganizationId parameter by doing a [Organization Read](../Organizations/#organization-read).
 
-The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com <http://sip.onsip.com/> on port 5060.  SRV TCP records are NOT allowed yet.
+The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for `_sip._udp.<domain>.com` to point to target `sip.onsip.com` on port 5060.  SRV TCP records are NOT allowed yet.
 
 ### Authentication & Authorization
 
@@ -189,7 +189,7 @@ Required Parameters | Description
 `Action` | "OrganizationMigrateDomain"
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `OrganizationId` | A positive integer which references a unique Organization.
-`OldDomain` | The old domain.
+`OldDomain` | The old domain.  It must be an existing domain.
 `NewDomain` | The domain that is being migrated too.  This new domain must have a SRV record associated with it.
 
 
