@@ -9,9 +9,7 @@ title: Agent | Web API
 
 ## Agent Add Account
 
-As an Agent, this requests creates a new account.  Immediate after the account is created, the onSIP branded billing emails are sent to the email address.  
-
-If you 
+As an Agent, this requests creates a new account.  Immediate after the account is created, the OnSIP branded billing emails are sent to the email address.  
 
 ### Authentication & Authorization
 
@@ -42,4 +40,4 @@ Required Parameters | Description
 
 ### Examples
 
-Not available.
+https://www.jnctn.com/restapi?Action=AgentAddAccount&SessionId=dh2enh0v1m6u4radtmpz1gkpe5&Name=Dude+Man&Company=Dude+Man+Inc.&Address=123+Dude+Street&City=New+York&State=NY&Zipcode=10004&Phone=212-213-1234&Email=dude@onsip.com&Username=dudeman91&Domain=dudeman91.onsip.com&Password=superpassword&Productcode=onSIP&Creditcard=false

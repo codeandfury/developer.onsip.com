@@ -170,7 +170,7 @@ Not available.
 ## Organization Migrate Domain
 
 
-Migrates the domain of the organization so as to allow custom domains.  
+Migrates the domain of the organization so as to allow custom domains.  If you are an agent creating accounts for your custom domain, you must first create the account by using the [AgentAddAccount](../Agent/#agent-add-account) action.
 
 The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com <http://sip.onsip.com/> on port 5060.  SRV TCP records are NOT allowed yet.
 
