@@ -11,6 +11,8 @@ title: Agent | Web API
 
 As an Agent, this requests creates a new account.  Immediate after the account is created, the OnSIP branded billing emails are sent to the email address.  
 
+If you are adding an account that you want to host on your own custom domain, then you need to do an AgentAddAccount action followed by a [OrganizationMigrateDomain](../organizations/#organization-migrate-domain) action.
+
 ### Authentication & Authorization
 
 Authentication | Authorization
