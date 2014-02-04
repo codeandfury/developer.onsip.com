@@ -444,6 +444,8 @@
 
 <p>Migrates the domain of the organization so as to allow custom domains.  If you are an agent creating accounts for your custom domain, you must first create the account by using the <a href="../Agent/#agent-add-account">AgentAddAccount</a> action.</p>
 
+<p>You can get the required OrganizationId parameter by doing a <a href="../Organizations/#organization-read">Organization Read</a>.</p>
+
 <p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for _sip._udp.<domain>.com to point to target sip.onsip.com &lt;http://sip.onsip.com/&gt; on port 5060.  SRV TCP records are NOT allowed yet.</domain></p>
 
 <h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
@@ -484,7 +486,7 @@
     </tr>
 <tr>
 <td><code>NewDomain</code></td>
-      <td>The domain that is being migrated too.  This new domain must already exist.</td>
+      <td>The domain that is being migrated too.  This new domain must have a SRV record associated with it.</td>
     </tr>
 </tbody>
 </table><h3 id="response-format-4">Response Format</h3>
@@ -495,7 +497,7 @@
 <a href="http://relaxng.org">Relax NG</a> Schema Files</td>
     </tr></tbody></table><h3 id="examples-4">Examples</h3>
 
-<p>Not available.</p>
+<p>For more information on how to make requests go to <a href="../#request-format">Request Format</a>.</p>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
