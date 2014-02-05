@@ -51,12 +51,23 @@ https://www.jnctn.com/restapi?Action=AgentAddAccount&SessionId=dh3enh0v2n6u4radt
 ~~~
 
 ~~~ javascript
-$.post( "https://www.jnctn.com/restapi", { Action: "AgentAddAccount", 
-SessionId: "dh3enh0v2n6u4radtmpz2gkpe7",  Name: "DudeMan", Company: "DudeManInc", 
-Address: "123DudeStreet", City: "NewYork", State: "NY", Zipcode: "10004", 
-Phone: "212-213-1234", Email: "dude@onsip.com", Username: "dudeman91", 
-Domain: "dudeman91.onsip.com", Password: "superpassword", Productcode: "onSIP", 
-Creditcard: "false" }).done(function( data ) {
+$.post("https://www.jnctn.com/restapi", {
+    Action: "AgentAddAccount",
+    SessionId: "dh3enh0v2n6u4radtmpz2gkpe7",
+    Name: "DudeMan",
+    Company: "DudeManInc",
+    Address: "123DudeStreet",
+    City: "NewYork",
+    State: "NY",
+    Zipcode: "10004",
+    Phone: "212-213-1234",
+    Email: "dude@onsip.com",
+    Username: "dudeman91",
+    Domain: "dudeman91.onsip.com",
+    Password: "superpassword",
+    Productcode: "onSIP",
+    Creditcard: "false"
+}).done(function (data) {
     alert( "Data Loaded: " + data );
-  });
+});
 ~~~
