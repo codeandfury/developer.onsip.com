@@ -204,3 +204,13 @@ Supporting | [Organization.rng](/rng/Organization.rng) [Contact.rng](/rng/Contac
 ### Examples
 
 For more information on how to make requests go to [Request Format](../#request-format).
+
+For easy to follow examples on how to do requests using jQuery look at their documentation [here](http://api.jquery.com/jQuery.post/)
+
+~~~ javascript
+$.post( "https://www.jnctn.com/restapi", { Action: "OrganizationMigrateDomain", 
+SessionId: "dh3enh0v2n6u4radtmpz2gkpe7",  OrganizationId: "1234", 
+OldDomain: "example.onsip.com", NewDomain: "example.newdomain.com" }).done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+~~~

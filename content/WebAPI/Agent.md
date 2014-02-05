@@ -44,6 +44,19 @@ Required Parameters | Description
 
 Here is an example request.  For more information on how to make requests go to [Request Format](../#request-format).
 
+For easy to follow examples on how to do requests using jQuery look at their documentation [here](http://api.jquery.com/jQuery.post/)
+
 ~~~
-https://www.jnctn.com/restapi?Action=AgentAddAccount&SessionId=dh2enh0v1m6u4radtmpz1gkpe5&Name=Dude+Man&Company=Dude+Man+Inc.&Address=123+Dude+Street&City=New+York&State=NY&Zipcode=10004&Phone=212-213-1234&Email=dude@onsip.com&Username=dudeman91&Domain=dudeman91.onsip.com&Password=superpassword&Productcode=onSIP&Creditcard=false
+https://www.jnctn.com/restapi?Action=AgentAddAccount&SessionId=dh3enh0v2n6u4radtmpz2gkpe7&Name=Dude+Man&Company=Dude+Man+Inc.&Address=123+Dude+Street&City=New+York&State=NY&Zipcode=10004&Phone=212-213-1234&Email=dude@onsip.com&Username=dudeman91&Domain=dudeman91.onsip.com&Password=superpassword&Productcode=onSIP&Creditcard=false
+~~~
+
+~~~ javascript
+$.post( "https://www.jnctn.com/restapi", { Action: "AgentAddAccount", 
+SessionId: "dh3enh0v2n6u4radtmpz2gkpe7",  Name: "DudeMan", Company: "DudeManInc", 
+Address: "123DudeStreet", City: "NewYork", State: "NY", Zipcode: "10004", 
+Phone: "212-213-1234", Email: "dude@onsip.com", Username: "dudeman91", 
+Domain: "dudeman91.onsip.com", Password: "superpassword", Productcode: "onSIP", 
+Creditcard: "false" }).done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
 ~~~
