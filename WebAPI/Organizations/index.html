@@ -446,7 +446,7 @@
 
 <p>You can get the required OrganizationId parameter by doing a <a href="../Organizations/#organization-read">Organization Read</a>.</p>
 
-<p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for <code>_sip._udp.&lt;domain&gt;.com</code> to point to target <code>sip.onsip.com</code> on port 5060.  SRV TCP records are NOT allowed yet.</p>
+<p>The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for <code>_sip._udp.&lt;domain&gt;</code> to point to target <code>sip.onsip.com</code> on port 5060.  SRV TCP records are NOT allowed yet.</p>
 
 <h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
 
@@ -491,11 +491,25 @@
 </tbody>
 </table><h3 id="response-format-4">Response Format</h3>
 
-<table><tbody><tr>
-<td>Modules</td>
+<table>
+<thead><tr>
+<th>Modules</th>
+      <th>
+<a href="http://relaxng.org">Relax NG</a> Schema Files</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td>Main</td>
+      <td><a href="/rng/OrganizationEditContact.rng">OrganizationMigrateDomain.rng</a></td>
+    </tr>
+<tr>
+<td>Supporting</td>
       <td>
-<a href="http://relaxng.org">Relax NG</a> Schema Files</td>
-    </tr></tbody></table><h3 id="examples-4">Examples</h3>
+<a href="/rng/Organization.rng">Organization.rng</a> <a href="/rng/Contact.rng">Contact.rng</a>
+</td>
+    </tr>
+</tbody>
+</table><h3 id="examples-4">Examples</h3>
 
 <p>For more information on how to make requests go to <a href="../#request-format">Request Format</a>.</p>
     </div>
