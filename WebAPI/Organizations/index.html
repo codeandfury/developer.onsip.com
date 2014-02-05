@@ -512,6 +512,19 @@
 </table><h3 id="examples-4">Examples</h3>
 
 <p>For more information on how to make requests go to <a href="../#request-format">Request Format</a>.</p>
+
+<p>For easy to follow examples on how to do requests using jQuery look at their documentation <a href="http://api.jquery.com/jQuery.post/">here</a></p>
+
+<div>
+<div class="CodeRay">
+  <div class="code"><pre><span style="color:#369;font-weight:bold">$</span>.post( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">https://www.jnctn.com/restapi</span><span style="color:#710">"</span></span>, { <span style="color:#606">Action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">OrganizationMigrateDomain</span><span style="color:#710">"</span></span>, 
+<span style="color:#606">SessionId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">dh3enh0v2n6u4radtmpz2gkpe7</span><span style="color:#710">"</span></span>,  <span style="color:#606">OrganizationId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">1234</span><span style="color:#710">"</span></span>, 
+<span style="color:#606">OldDomain</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">example.onsip.com</span><span style="color:#710">"</span></span>, <span style="color:#606">NewDomain</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">example.newdomain.com</span><span style="color:#710">"</span></span> }).done(<span style="color:#080;font-weight:bold">function</span>( data ) {
+    alert( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Data Loaded: </span><span style="color:#710">"</span></span> + data );
+  });
+</pre></div>
+</div>
+</div>
     </div>
 
 		<div id="js-sidebar" class="sidebar-shell">
