@@ -33,6 +33,9 @@ Users
 
 In most cases, the "Account Administrator" takes on the responsiblity for managing the account (adding users, assigning extensions, setting up ACD Queues, etc.). The Account Administrator role is given by default to the User which created the account. It's not possible to change the Account Administrator user, but it is possible to give other existing users in the account the Account Administror role. Please call support to do this.
 
+Agent Administrator
+: This applies to OnSIP Agents only.  It has additional privileges, such as the ability to add an account as an agent.
+
 Account Administrator
 : User with this role can edit their own account, organizations, and users. 
 

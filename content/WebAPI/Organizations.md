@@ -174,7 +174,7 @@ Migrates the domain of the organization so as to allow custom domains.  If you a
 
 You can get the required OrganizationId parameter by doing a [Organization Read](../Organizations/#organization-read).
 
-The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for `_sip._udp.<domain>.com` to point to target `sip.onsip.com` on port 5060.  SRV TCP records are NOT allowed yet.
+The recommended and supported approach for a customer hosting their SIP domain with us is for them to create an SRV record for `_sip._udp.<domain>` to point to target `sip.onsip.com` on port 5060.  SRV TCP records are NOT allowed yet.
 
 ### Authentication & Authorization
 
@@ -196,6 +196,9 @@ Required Parameters | Description
 ### Response Format
 
 Modules | [Relax NG](http://relaxng.org) Schema Files
+-|-
+Main | [OrganizationMigrateDomain.rng](/rng/OrganizationEditContact.rng)
+Supporting | [Organization.rng](/rng/Organization.rng) [Contact.rng](/rng/Contact.rng)
 
 
 ### Examples
