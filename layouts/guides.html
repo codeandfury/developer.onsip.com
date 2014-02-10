@@ -1,0 +1,29 @@
+<%= render 'head' %>
+
+<body class="guides">
+  <%= render 'header' %>
+
+  <div class="sub-nav">
+    <h2>Guides</h2>
+    <ul>
+      <li><a href="/guides/" class="active">Guides</a></li>
+    </ul>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <div id="js-sidebar" class="sidebar-shell">
+      <div class="sidebar-module">
+          <ul>
+            <li><h3><a href="/guides/">Overview</a></h3></li>
+          </ul>
+      </div>
+    </div>
+  </div><!-- #wrapper -->
+
+  <%= render 'footer' %>
+</body>
+</html>

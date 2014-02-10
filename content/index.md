@@ -27,7 +27,7 @@ layout: overview
     <li>
       <h2>Support</h2>
       <p>Are you stuck? Talk to support.</p>
-      <a href="/support" class="button-secondary">Support</a>
+      <a href="https://groups.google.com/forum/#!forum/sip_js" class="button-secondary">Support</a>
       <img class="octocat" src="/shared/images/supportocat.png" />
     </li>
   </ul>
