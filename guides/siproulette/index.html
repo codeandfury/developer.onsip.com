@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <title>SIProulette example</title>
+  <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
+  <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="/css/960.css" rel="stylesheet" type="text/css" />
+  <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
+  <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/shared/js/jquery.js" type="text/javascript"></script>
+  <script src="/shared/js/documentation.js" type="text/javascript"></script>
+</head>
+
+
+<body class="guides">
+  <div id="header-wrapper">
+  <div id="header">
+    <div>
+      <a class="logo" href="/">OnSIP:Developer</a>
+      <ul class="nav">
+        <li><a href="/" class="nav-overview">Overview</a></li>
+        <li><a href="/WebAPI/" class="nav-webapi">Web API</a></li>
+        <li><a href="http://www.onsip.com/blog" class="nav-blog">Blog</a></li>
+        <li><a href="https://groups.google.com/forum/#!forum/sip_js">Support</a></li>
+      </ul>
+    </div>
+  </div><!-- #header -->
+</div><!-- #header-wrapper -->
+
+
+  <div class="sub-nav">
+    <h2>Guides</h2>
+    <ul>
+      <li><a href="/guides/" class="active">Guides</a></li>
+    </ul>
+  </div>
+
+  <div id="wrapper">
+    <div class="content">
+      <h1 id="make-a-call">Make a Call</h1>
+
+<ul id="markdown-toc">
+<li><a href="#overview">Overview</a></li>
+</ul><p>Let’s walk through an example application.  For this example we will be creating “SIP Roulette”, an app where users can video chat with random other users.</p>
+
+<h2 id="overview">Overview</h2>
+
+<h3 id="setup-and-html-elements">Setup and HTML Elements</h3>
+
+<p>First, we will create the index.html, main.js, and style.css files in the same folder.  </p>
+
+<p>In index.html we will start by adding two <code>&lt;video&gt;</code> elements; one for the local video stream and one for the remote video stream.  We will also add a button which will be used to find a new chat partner.  </p>
+
+<p>We need to include the SIP.js library, which can be downloaded <a href="sipjs.com/download/">here</a>, as well as the main.js file.  In style.css we will include some css styling in order to format the page.  </p>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/W7ZRC/1/embedded/html,js,css,result/">
+</iframe>
+
+<h3 id="getting-and-displaying-video-streams">Getting and Displaying Video Streams</h3>
+
+<p>To do a video call we need to get access to the video and voice streams from the user.  We will use the library function <code>SIP.WebRTC.getUserMedia</code> to do this. </p>
+
+<p>Our application will also need to attach the incoming and outgoing video streams to the video elements.  We will do this by creating the <code>attachMediaStream</code> function, which attaches the media stream and plays it.  We will then attach the local video stream to the <code>localVideo</code> element.</p>
+
+<iframe style="width: 100%; height: 410px" src="http://jsfiddle.net/MLma5/2/embedded/js,html,css,result/">
+</iframe>
+
+<h3 id="accepting-invites">Accepting Invites</h3>
+
+<p>In our example, we will register a personal user agent for each user.  This user agent is the address at which a user can accept and send invites for video calls.  </p>
+
+<p>We will also have a variable called <code>newChat</code>.  If this variable is <code>true</code>, then the user agent will accept new invites to video calls, at which point the variable will be set to <code>false</code>.  We will add a click event to the “newChat” button, that sets this variable to <code>true</code>, so that the user can find a new chat partner.  </p>
+
+<p>We will also add a function that ends the call when the window is unloaded.  </p>
+
+<iframe style="width: 100%; height: 410px" src="http://jsfiddle.net/2pGLh/4/embedded/js,html,css,result/">
+</iframe>
+
+<h3 id="sending-and-asking-for-invites">Sending and Asking for Invites</h3>
+
+<p>In order for a user to join a random video call there needs to be a centralized location for users to ask the group to be invited to a call.  In this application, we will do this by having every user register a user agent using the same SIP address.  Then, when users want to be invited to a call, they will send a SIP message to this global SIP address, asking to be invited to a call.  Since every user is registered to this SIP address, they will all receive this message and be able to start a video call with the user.  </p>
+
+<p>In the click event for the <code>newChat</code> button we will also send a message to the global SIP address, asking to be invited to a chat.</p>
+
+<iframe style="width: 100%; height: 410px" src="http://jsfiddle.net/FbfRw/4/embedded/js,html,css,result/">
+</iframe>
+    </div>
+
+    <div id="js-sidebar" class="sidebar-shell">
+      <div class="sidebar-module">
+          <ul>
+            <li><h3><a href="/guides/">Overview</a></h3></li>
+            <li><h3><a href="/guides/siproulette/">SIP Roulette Example Application</a></h3></li>
+          </ul>
+      </div>
+    </div>
+  </div><!-- #wrapper -->
+
+  <div id="footer" >
+  <div class="lower_footer">
+    <ul class="footer-cell">
+      <li><a href="/terms-of-service">Terms</a></li>
+      <li><a href="/privacy-policy">Privacy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/contact">Contact</a></li>				
+    </ul>
+
+    <span class="footer-cell">
+      <a href="https://onsip.com" class="mega-icon mega-icon-invertocat"></a>
+    </span>
+
+    <ul class="footer-cell">
+      <li><a href="http://www.onsip.com/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+  
+  <div class="wrapper">
+    <p>Design &copy; <span class="js-year">2013</span> OnSIP, Inc. All rights reserved. Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons CC-BY license</a>.</p>
+  </div>
+
+</div><!-- /#footer -->
+
+<script src="/shared/js/retina.js" type="text/javascript"></script>
+
+</body>
+</html>
