@@ -17,7 +17,7 @@ First, we will create the index.html, main.js, and style.css files in the same f
 
 In index.html we will start by adding two `<video>` elements; one for the local video stream and one for the remote video stream.  We will also add a button which will be used to find a new chat partner.  
 
-We need to include the SIP.js library, which can be downloaded [here](sipjs.com/download/), as well as the main.js file.  In style.css we will include some css styling in order to format the page.  
+We need to include the SIP.js library, which can be downloaded [here](http://www.sipjs.com/download/){:target="_blank"}, as well as the main.js file.  In style.css we will include some css styling in order to format the page.  
 
 <iframe
   style="width: 120%; height: 260px"
