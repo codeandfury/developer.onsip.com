@@ -20,7 +20,7 @@ In index.html we will start by adding two `<video>` elements; one for the local 
 We need to include the SIP.js library, which can be downloaded [here](sipjs.com/download/), as well as the main.js file.  In style.css we will include some css styling in order to format the page.  
 
 <iframe
-  style="width: 120%; height: 300px"
+  style="width: 120%; height: 260px"
   src="http://jsfiddle.net/W7ZRC/3/embedded/html,js,css,result/">
 </iframe>
 
@@ -31,7 +31,7 @@ To do a video call we need to get access to the video and voice streams from the
 Our application will also need to attach the incoming and outgoing video streams to the video elements.  We will do this by creating the `attachMediaStream` function, which attaches the media stream and plays it.  We will then attach the local video stream to the `localVideo` element.
 
 <iframe
-  style="width: 120%; height: 410px"
+  style="width: 120%; height: 350px"
   src="http://jsfiddle.net/MLma5/4/embedded/js,html,css,result/">
 </iframe>
 
@@ -44,7 +44,7 @@ We will also have a variable called `newChat`.  If this variable is `true`, then
 We will also add a function that ends the call when the window is unloaded.  
 
 <iframe
-  style="width: 120%; height: 410px"
+  style="width: 120%; height: 600px"
   src="http://jsfiddle.net/2pGLh/7/embedded/js,html,css,result/">
 </iframe>
 
@@ -57,7 +57,7 @@ In the click event for the `newChat` button we will also send a message to the g
 
 
 <iframe
-  style="width: 120%; height: 410px"
+  style="width: 120%; height: 750px"
   src="http://jsfiddle.net/FbfRw/7/embedded/js,html,css,result/">
 </iframe>
 
