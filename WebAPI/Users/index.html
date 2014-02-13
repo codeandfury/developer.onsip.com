@@ -52,6 +52,7 @@
   <li><a href="#user-browse">User Browse</a></li>
   <li><a href="#user-edit-contact">User Edit Contact</a></li>
   <li><a href="#user-reset-portal-password">User Reset Portal Password</a></li>
+  <li><a href="#user-edit-portal-password">User Edit Portal Password</a></li>
 </ul><h2 id="user-add">User Add</h2>
 
 <p>Create a new user in the specified organization. Setting up an extension and voicemail for the user once created is accomplished with <a href="../User-Aliases/#user-alias-add">User Alias Add</a> and <a href="../Voicemail/#voicemailbox-add">Voicemailbox Add</a>.</p>
@@ -441,6 +442,55 @@
 <td><code>UserId</code></td>
       <td>A positive integer which references a unique User.</td>
     </tr></tbody>
+</table><h2 id="user-edit-portal-password">User Edit Portal Password</h2>
+
+<p>Edits the user portal password without sending a reset portal password email.</p>
+
+<h3 id="authentication--authorization-5">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Agent Account Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-5">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserEditPortalPassword”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>CurrentPortalPassword</code></td>
+      <td>The current user portal password</td>
+    </tr>
+<tr>
+<td><code>NewPortalPassword</code></td>
+      <td>The new portal password that you are changing too</td>
+    </tr>
+<tr>
+<td><code>NewPortalPasswordConfirm</code></td>
+      <td>Confirm the new portal password.  This must be the same as NewPortalPassword</td>
+    </tr>
+</tbody>
 </table>
     </div>
 
@@ -501,6 +551,7 @@
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
+          <li><a href="/WebAPI/Users/#user-edit-portal-password">User Edit Portal Password</a></li>
         </ul>
       </li>
       <li class="js-topic">
