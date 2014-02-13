@@ -174,3 +174,24 @@ Authentication | Authorization
 Required Parameters | Description
 -|-
 `UserId` | A positive integer which references a unique User.
+
+## User Edit Portal Password
+
+Edits the user portal password without sending a reset portal password email.
+
+### Authentication & Authorization
+
+Authentication | Authorization
+-|-
+[Authenticated Session](../Authentication/#session-create) | [Agent Account Admin](../#roles)
+
+### Request Parameters
+
+Required Parameters | Description
+-|-
+`Action` | "UserEditPortalPassword"
+`SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
+`UserId` | A positive integer which references a unique User.
+`CurrentPortalPassword` | The current user portal password
+`NewPortalPassword` | The new portal password that you are changing too
+`NewPortalPasswordConfirm` | Confirm the new portal password.  This must be the same as NewPortalPassword
