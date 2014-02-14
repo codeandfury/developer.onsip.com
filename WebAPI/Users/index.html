@@ -53,6 +53,7 @@
   <li><a href="#user-edit-contact">User Edit Contact</a></li>
   <li><a href="#user-reset-portal-password">User Reset Portal Password</a></li>
   <li><a href="#user-edit-portal-password">User Edit Portal Password</a></li>
+  <li><a href="#user-edit-role-submit">User Edit Role Submit</a></li>
 </ul><h2 id="user-add">User Add</h2>
 
 <p>Create a new user in the specified organization. Setting up an extension and voicemail for the user once created is accomplished with <a href="../User-Aliases/#user-alias-add">User Alias Add</a> and <a href="../Voicemail/#voicemailbox-add">Voicemailbox Add</a>.</p>
@@ -455,7 +456,7 @@
     </tr></thead>
 <tbody><tr>
 <td><a href="../Authentication/#session-create">Authenticated Session</a></td>
-      <td><a href="../#roles">Agent Account Admin</a></td>
+      <td><a href="../#roles">Agent Admin</a></td>
     </tr></tbody>
 </table><h3 id="request-parameters-5">Request Parameters</h3>
 
@@ -489,6 +490,47 @@
 <tr>
 <td><code>NewPortalPasswordConfirm</code></td>
       <td>Confirm the new portal password.  This must be the same as NewPortalPassword</td>
+    </tr>
+</tbody>
+</table><h2 id="user-edit-role-submit">User Edit Role Submit</h2>
+
+<p>Edits the users role.  Can only edit subordinate users within the agent admin’s authority.</p>
+
+<h3 id="authentication--authorization-6">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Agent Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-6">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserEditRoleSubmit”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+<tr>
+<td><code>RoleNames[]</code></td>
+      <td>An array of the roles that you are giving to the user.</td>
     </tr>
 </tbody>
 </table>
@@ -552,6 +594,7 @@
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
           <li><a href="/WebAPI/Users/#user-edit-portal-password">User Edit Portal Password</a></li>
+          <li><a href="/WebAPI/Users/#user-edit-role-submit">User Edit Role Submit</a></li>
         </ul>
       </li>
       <li class="js-topic">
