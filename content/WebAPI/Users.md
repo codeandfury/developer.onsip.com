@@ -213,5 +213,5 @@ Required Parameters | Description
 `Action` | "UserEditRoleSubmit"
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `UserId` | A positive integer which references a unique User.
-`RoleNames[]` | An array of the roles that you are giving to the user.
+`RoleNames[]` | An array of the roles that you are giving to the user.  Valid roles are "Account Admin", "Organization Admin", and "User"
 
