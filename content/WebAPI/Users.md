@@ -183,7 +183,7 @@ Edits the user portal password without sending a reset portal password email.
 
 Authentication | Authorization
 -|-
-[Authenticated Session](../Authentication/#session-create) | [Agent Account Admin](../#roles)
+[Authenticated Session](../Authentication/#session-create) | [Agent Admin](../#roles)
 
 ### Request Parameters
 
@@ -195,3 +195,23 @@ Required Parameters | Description
 `CurrentPortalPassword` | The current user portal password
 `NewPortalPassword` | The new portal password that you are changing too
 `NewPortalPasswordConfirm` | Confirm the new portal password.  This must be the same as NewPortalPassword
+
+## User Edit Role Submit
+
+Edits the users role.  Can only edit subordinate users within the agent admin's authority.
+
+### Authentication & Authorization
+
+Authentication | Authorization
+-|-
+[Authenticated Session](../Authentication/#session-create) | [Agent Admin](../#roles)
+
+### Request Parameters
+
+Required Parameters | Description
+-|-
+`Action` | "UserEditRoleSubmit"
+`SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
+`UserId` | A positive integer which references a unique User.
+`RoleNames[]` | An array of the roles that you are giving to the user.
+
