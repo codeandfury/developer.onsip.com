@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Language" content="en-us" />
   <meta http-equiv="imagetoolbar" content="false" />
   <meta name="MSSmartTagsPreventParsing" content="true" />
-  <title>Development Guides</title>
+  <title>User Agent Authentication</title>
   <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
   <link href="/css/reset.css" rel="stylesheet" type="text/css" />
   <link href="/css/960.css" rel="stylesheet" type="text/css" />
@@ -42,16 +42,30 @@
 
   <div id="wrapper">
     <div class="content">
-      <h1 id="development-guides">Development Guides</h1>
+      <h1 id="user-agent-authentication">User Agent Authentication</h1>
 
-<p>This section of the documentation is intended to get you up-and-running with
-real-world SIP.js applications. We’ll cover everything you need to know.</p>
+<ul id="markdown-toc">
+<li><a href="#overview">Overview</a></li>
+</ul><p>Let’s walk through how to create a user agent using SIP.js and authenticate it via the OnSIP Network web api.</p>
 
-<p>Every tutorial here will have a project, and every project will be
-stored and documented in our public
-<a href="https://github.com/onsip/sip.js">platform-samples</a> repo.</p>
+<h2 id="overview">Overview</h2>
 
-<p>Feel free to fork, clone, and improve these guides.</p>
+<h3 id="creating-a-user-agent">Creating a User Agent</h3>
+
+<p>First, we will create the index.html and main.js.</p>
+
+<p>We need to include the SIP.js library, which can be downloaded <a href="http://www.sipjs.com/download/" target="_blank">here</a>, as well as the main.js file. </p>
+
+<p>To create a user agent we will use the <code>SIP.UA(configuration)</code> method.  If the configuration is left empty, then it creates an anonymous user agent.  The list of configuration parameters can be found <a href="http://sipjs.com/api/devel/ua_configuration_parameters/" target="_blank">here</a>.</p>
+
+<iframe style="width: 120%; height: 260px" src="http://jsfiddle.net/W7ZRC/3/embedded/html,js,css,result/">
+</iframe>
+
+<h3 id="authenticating-a-user-agent">Authenticating a User Agent</h3>
+
+<p>In order to make and receive calls to the PSTN, we need to create an authenticated user agent.  To create an authenticated user agent we need to include an auth username and SIP password.  </p>
+
+<p>To get the auth username and SIP password using the OnSIP network, we will make ajax calls to the web api.  The web api is located at <code>www.jnctn.com/restapi</code>.</p>
     </div>
 
     <div id="js-sidebar" class="sidebar-shell">
