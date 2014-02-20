@@ -32,7 +32,7 @@ We will put the auth name and password in the configuration variable which is th
 
 <iframe
   style="width: 120%; height: 500px"
-  src="http://jsfiddle.net/VC8rK/4/embedded/js,html,css,result/">
+  src="http://jsfiddle.net/VC8rK/5/embedded/js,html,css,result/">
 </iframe>
 
 
