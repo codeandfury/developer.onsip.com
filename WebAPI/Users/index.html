@@ -51,6 +51,7 @@
   <li><a href="#user-read">User Read</a></li>
   <li><a href="#user-browse">User Browse</a></li>
   <li><a href="#user-edit-contact">User Edit Contact</a></li>
+  <li><a href="#send-password-reset-email">Send Password Reset Email</a></li>
   <li><a href="#user-reset-portal-password">User Reset Portal Password</a></li>
   <li><a href="#user-edit-portal-password">User Edit Portal Password</a></li>
   <li><a href="#user-edit-role-submit">User Edit Role Submit</a></li>
@@ -417,35 +418,38 @@
 
 <p>Not available.</p>
 
-<h2 id="user-reset-portal-password">User Reset Portal Password</h2>
+<h2 id="send-password-reset-email">Send Password Reset Email</h2>
 
-<p>Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.</p>
+<p>Sends a password reset email to the specified user.  Can only send out a password reset email every 2 minutes.  The reset email key is valid for 24 hours or until used.</p>
 
 <h3 id="authentication--authorization-4">Authentication &amp; Authorization</h3>
 
-<table>
-<thead><tr>
-<th>Authentication</th>
-      <th>Authorization</th>
-    </tr></thead>
-<tbody><tr>
-<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
-      <td><a href="../#roles">Account Admin</a></td>
-    </tr></tbody>
-</table><h3 id="request-parameters-4">Request Parameters</h3>
+<p>No SessionId required.</p>
+
+<h3 id="request-parameters-4">Request Parameters</h3>
 
 <table>
 <thead><tr>
 <th>Required Parameters</th>
       <th>Description</th>
     </tr></thead>
-<tbody><tr>
-<td><code>UserId</code></td>
-      <td>A positive integer which references a unique User.</td>
-    </tr></tbody>
-</table><h2 id="user-edit-portal-password">User Edit Portal Password</h2>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“SendPasswordResetEmail”</td>
+    </tr>
+<tr>
+<td><code>Username</code></td>
+      <td>The full web username of the user password that you are reseting.  Ex: bob@example.onsip.com</td>
+    </tr>
+<tr>
+<td><code>Destination</code></td>
+      <td>Changes which password reset location to use.  “my” goes to my.onsip.com . “admin” goes to the admin portal at jnctn.com, and “get” goes to getonsip.com</td>
+    </tr>
+</tbody>
+</table><h2 id="user-reset-portal-password">User Reset Portal Password</h2>
 
-<p>Edits the user portal password without sending a reset portal password email.</p>
+<p>Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.  It returns a randomized new password.</p>
 
 <h3 id="authentication--authorization-5">Authentication &amp; Authorization</h3>
 
@@ -456,9 +460,46 @@
     </tr></thead>
 <tbody><tr>
 <td><a href="../Authentication/#session-create">Authenticated Session</a></td>
-      <td><a href="../#roles">Agent Admin</a></td>
+      <td><a href="../#roles">Account Admin</a></td>
     </tr></tbody>
 </table><h3 id="request-parameters-5">Request Parameters</h3>
+
+<table>
+<thead><tr>
+<th>Required Parameters</th>
+      <th>Description</th>
+    </tr></thead>
+<tbody>
+<tr>
+<td><code>Action</code></td>
+      <td>“UserResetPortalPassword”</td>
+    </tr>
+<tr>
+<td><code>SessionId</code></td>
+      <td>
+<a href="../Authentication/#session-create">Authenticated Session</a> identifier.</td>
+    </tr>
+<tr>
+<td><code>UserId</code></td>
+      <td>A positive integer which references a unique User.</td>
+    </tr>
+</tbody>
+</table><h2 id="user-edit-portal-password">User Edit Portal Password</h2>
+
+<p>Edits the user portal password without sending a reset portal password email.</p>
+
+<h3 id="authentication--authorization-6">Authentication &amp; Authorization</h3>
+
+<table>
+<thead><tr>
+<th>Authentication</th>
+      <th>Authorization</th>
+    </tr></thead>
+<tbody><tr>
+<td><a href="../Authentication/#session-create">Authenticated Session</a></td>
+      <td><a href="../#roles">Agent Admin</a></td>
+    </tr></tbody>
+</table><h3 id="request-parameters-6">Request Parameters</h3>
 
 <table>
 <thead><tr>
@@ -496,7 +537,7 @@
 
 <p>Edits the users role.  Can only edit subordinate users within the agent admin’s authority.</p>
 
-<h3 id="authentication--authorization-6">Authentication &amp; Authorization</h3>
+<h3 id="authentication--authorization-7">Authentication &amp; Authorization</h3>
 
 <table>
 <thead><tr>
@@ -507,7 +548,7 @@
 <td><a href="../Authentication/#session-create">Authenticated Session</a></td>
       <td><a href="../#roles">Agent Admin</a></td>
     </tr></tbody>
-</table><h3 id="request-parameters-6">Request Parameters</h3>
+</table><h3 id="request-parameters-7">Request Parameters</h3>
 
 <table>
 <thead><tr>
@@ -592,6 +633,7 @@
           <li><a href="/WebAPI/Users/#user-read">User Read</a></li>
           <li><a href="/WebAPI/Users/#user-browse">User Browse</a></li>
           <li><a href="/WebAPI/Users/#user-edit-contact">User Edit Contact</a></li>
+          <li><a href="/WebAPI/Users/#send-password-reset-email">Send Password Reset Email</a></li>
           <li><a href="/WebAPI/Users/#user-reset-portal-password">User Reset Portal Password</a></li>
           <li><a href="/WebAPI/Users/#user-edit-portal-password">User Edit Portal Password</a></li>
           <li><a href="/WebAPI/Users/#user-edit-role-submit">User Edit Role Submit</a></li>
