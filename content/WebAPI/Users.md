@@ -158,10 +158,25 @@ Supporting | [User.rng](/rng/User.rng) [Contact.rng](/rng/Contact.rng)
 
 Not available.
 
+## Send Password Reset Email
+
+Sends a password reset email to the specified user.  Can only send out a password reset email every 2 minutes.  The reset email key is valid for 24 hours or until used.
+
+### Authentication & Authorization
+
+No SessionId required.
+
+### Request Parameters
+
+Required Parameters | Description
+-|-
+`Action` | "SendPasswordResetEmail"
+`Username` | The full web username of the user password that you are reseting.  Ex: bob@example.onsip.com
+`Destination` | Changes which password reset location to use.  "my" goes to my.onsip.com . "admin" goes to the admin portal at jnctn.com, and "get" goes to getonsip.com
 
 ## User Reset Portal Password
 
-Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.
+Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.  It returns a randomized new password.
 
 ### Authentication & Authorization
 
@@ -173,6 +188,8 @@ Authentication | Authorization
 
 Required Parameters | Description
 -|-
+`Action` | "UserResetPortalPassword"
+`SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `UserId` | A positive integer which references a unique User.
 
 ## User Edit Portal Password
