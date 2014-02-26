@@ -176,7 +176,9 @@ Required Parameters | Description
 
 ## User Reset Portal Password
 
-Reset the password of the user specified by UserId. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.  It returns a randomized new password.
+Reset the password of the user specified by UserId and returns a randomized new password. The intention here is to allow Account Admins to reset the portal passwords of users under their administrative control. Portal passwords, also known as the Web Passwords are those used to access my.onsip.com and the real-time events using the OnSIP XMPP API. OnSIP users can also reset their own password through my.onsip.com.  
+
+An Account Admin can reset the password of any users under it within its organization.  An Agent Admin can reset the password of any Account admins under it.
 
 ### Authentication & Authorization
 
