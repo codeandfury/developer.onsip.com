@@ -300,7 +300,7 @@ a img {
   display: inline-block;
   width: 186px;
   height: 27px;
-  background: url(/images/logo_developer.png) 0 0 no-repeat;
+  /*background: url(/images/logo_developer.png) 0 0 no-repeat;*/
   text-indent: -999em;
 }
 
@@ -1432,7 +1432,7 @@ li.api-status img {
   }
 
   #header .logo {
-    background-image: url(/images/logo_developer@2x.png);
+    /*background-image: url(/images/logo_developer@2x.png);*/
     background-size: 186px 27px;
   }
 
