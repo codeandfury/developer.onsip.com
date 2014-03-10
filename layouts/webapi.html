@@ -3,22 +3,16 @@
 <body class="webapi">
 	<%= render 'header' %>
 	
-	<div class="sub-nav">
-		<h2><a href="/WebAPI/">Web API</a></h2>
-		
-		<ul>
-      <li><a href="/guides/">Guides</a></li>
-      <li><a href="/WebAPI/" class="active">Documentation</a></li>
-		</ul>
-	</div>
-	
-  <div id="wrapper">
-  	<div class="content">
-    	<%= yield %>
-    </div>
+  <div class="wrapper">
 
-		<%= render 'webapi-sidebar' %>
-  </div><!-- #wrapper -->
+  	<%= render 'webapi-sidebar' %>
+
+  	<article id="mainContent">
+    	<%= yield %>
+    </article>
+
+		
+  </div><!-- .wrapper -->
 		
 	<%= render 'footer' %>
 </body>
