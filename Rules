@@ -35,13 +35,8 @@ compile '/WebAPI/*' do
     filter :kramdown,
            :toc_levels => [2],
            :enable_coderay => true,
-           :coderay_line_numbers => nil
-    filter :colorize_syntax,
-           :colorizers => {:xml => :coderay},
-           :coderay => {
-            :line_numbers => :list,
-            :css => :class
-           }
+           :coderay_line_numbers => :inline
+
     layout item[:layout] || 'webapi'
   end
 end
