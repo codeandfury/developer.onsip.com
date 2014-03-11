@@ -1,4 +1,4 @@
-code .c { color: #999988; font-style: italic } /* Comment */
+code .c { color: #f00; font-style: italic } /* Comment */
 code .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 code .k { font-weight: bold } /* Keyword */
 code .o { font-weight: bold } /* Operator */
