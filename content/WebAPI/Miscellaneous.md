@@ -4,10 +4,6 @@ title: Miscellaneous | Web API
 
 # Miscellaneous Actions
 
-* TOC
-{:toc}
-
-
 ## Echo
 
 An action which echoes all paramaters back in the response.

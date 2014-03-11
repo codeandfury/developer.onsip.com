@@ -6,9 +6,6 @@ title: Ring Groups | Web API
 
 Groups are similar to e-mail group aliases. Multiple user addresses can be part of a group. A call to the group would ring the phone of each of the members in that group.
 
-* TOC
-{:toc}
-
 ## Group Address Add
 
 Add a GroupAddress to an Organization.

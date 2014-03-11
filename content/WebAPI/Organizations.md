@@ -4,10 +4,6 @@ title: Organizations | Web API
 
 # Organizations
 
-* TOC
-{:toc}
-
-
 ## Organization Add
 
 Create a new organization in the specified account.

@@ -12,10 +12,6 @@ The Web API consists of a set of callable "Actions", most of which require authe
 
 If you have any problems or requests please contact [support][].
 
-* TOC
-{:toc}
-
-
 ## Hierarchy
 
 The OnSIP Hierarchy:
