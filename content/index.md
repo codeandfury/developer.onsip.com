@@ -11,7 +11,7 @@ layout: overview
 <div class="full-width-divider">
   <ul class="wrapper highlights">
     <li>
-      <h2>Get Started</h2>
+      <h2>Beginner Guides</h2>
       <p>New to the OnSIP Web API? With these guides you’ll be up and running in a snap.</p>
       <a class="button-orange-small" href="/guides/">View Guides</a>
     </li>
