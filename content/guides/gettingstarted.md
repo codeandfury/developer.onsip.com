@@ -2,7 +2,7 @@
 title: Getting Started
 ---
 
-# Getting Started
+# Displaying a Call
 
 * TOC
 {:toc}
