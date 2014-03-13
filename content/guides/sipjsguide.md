@@ -1,5 +1,5 @@
 ---
-title: Send a Message | SIP.js
+title: Sending Messages and Making Calls | SIP.js
 ---
 
 # Sending Messages and Making Calls
@@ -56,4 +56,10 @@ In order to make a video call, we need a way to display the video call on your s
 In this example, within the `<body>` tags, we have a `remoteVideo` `<video>`, to display the video of the person you are calling.  We also have a `localVideo` `<video>`, to display the video stream that you are sending to the person you are calling.  
 
 In the style.css file we will put a border around the `<video>` elements, to visualize them better.
+
+<iframe
+  style="width: 100%; height: 300px"
+  src="http://jsfiddle.net/mgc2e/11/embedded/html,js,css,result/">
+</iframe>
+
 
