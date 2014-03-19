@@ -22,7 +22,7 @@ Every time a message is received by a user agent, the "message" event is trigger
 
 <iframe
   style="width: 100%; height: 250px"
-  src="http://jsfiddle.net/h6PwR/3/embedded/html,js,result/">
+  src="http://jsfiddle.net/h6PwR/3/embedded/js,html,result/">
 </iframe>
 
 ### Receiving a Call
@@ -30,7 +30,7 @@ Every time a message is received by a user agent, the "message" event is trigger
 Like in the [make a call](/guides/sipjsguide/) example, we need to include `video` elements to display the call.  When receiving a call, an `invite` event is sent to the user agent.  To answer the call, we will catch this event using `.on('invite', funct(incomingSession))`.  With this incoming session we will accept the call and then attach the media streams to the appropriate video elements.
 
 <iframe
-  style="width: 100%; height: 250px"
-  src="http://jsfiddle.net/a5RYy/5/embedded/html,js,result/">
+  style="width: 100%; height: 600px"
+  src="http://jsfiddle.net/a5RYy/5/embedded/js,html,result/">
 </iframe>
 
