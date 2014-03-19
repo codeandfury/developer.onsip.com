@@ -13,10 +13,7 @@ Let's walk through core API concepts as we tackle some everyday use cases.
 
 ### Html
 
-We must first create the files index.html and main.js in the same folder.  In the index.html file we need to include the SIP.js library, which can be downloaded [here](/download/), as well as the main.js file.  
-
-Although we are loading the SIP.js library, we are not doing anything with it yet.
-
+We must create the files index.html and main.js in the same folder.  In the index.html file we need to include the SIP.js library, which can be downloaded [here](/download/), as well as the main.js file.  
 
 <iframe
   style="width: 100%; height: 250px"
@@ -27,7 +24,7 @@ Although we are loading the SIP.js library, we are not doing anything with it ye
 
 ### Creating the User Agent
 
-In order to make calls and send messages you must create a SIP user agent.  For this example, we will create an anonymous user agent.  To do this we will call the `SIP.UA()` method which will create and start the user agent.
+In order to send messages, create a SIP user agent.  Calling `SIP.UA()` method, with no parameters, creates an anonymous user agent.
 
 <iframe
   style="width: 100%; height: 250px"
@@ -39,7 +36,7 @@ In order to make calls and send messages you must create a SIP user agent.  For 
 
 After a user agent has been created we can send a message.
 
-To send the message we must use call the `.message(target, body)` method, along with the address that we are sending the message to in the `target` variable and the message that we are sending in the `body` variable.
+To send the message, call the `.message(target, body)` method, along with the address that the message is being sent to in the `target` argument and the message that we are sending in the `body` argument.
 
 
 <iframe
@@ -51,9 +48,9 @@ To send the message we must use call the `.message(target, body)` method, along 
 
 In addition to sending a SIP message, we can also make video calls.  
 
-In order to make a video call, we need a way to display the video call on your screen.  We can use a `<video>` element for this.  The `<video>` adds a standard way for browsers to display video over the internet without additional plugins. This makes `<video>` perfect for WebRTC. The local video stream should always be muted to prevent feedback.
+A `<video>` element is need to display the video stream.  The `<video>` element adds a standard way for browsers to display video over the internet without additional plugins. This makes `<video>` elements perfect for WebRTC. 
 
-In this example, within the `<body>` tags, we have a `remoteVideo` `<video>`, to display the video of the person you are calling.  We also have a `localVideo` `<video>`, to display the video stream that you are sending to the person you are calling.  
+Within the `<body>` tags, there is a `remoteVideo` `<video>` element, to display the video of the person being called.  There is also a `localVideo` `<video>` element, to display the video stream that is being sent to the person being called.  The local video stream should always be muted to prevent feedback.
 
 In the style.css file we will put a border around the `<video>` elements, to visualize them better.
 
@@ -66,13 +63,13 @@ In the style.css file we will put a border around the `<video>` elements, to vis
 
 As when we send a message, when we make a call, we first need to create a user agent using `SIP.UA()`. After this we can send an invite to make a call and thereby create a SIP session.
 
-To send an invite we must first create a javascript object, which contains the `mediaConstraints` variable in which we specify whether the session contains audio and video (i.e. whether it is a video call or an audio call).  
+To send an invite first create a javascript object, which contains the `media` variable that specifies whether the session contains audio and video (i.e. whether it is a video call or an audio call).  
 
-We must then call the `.invite()` method, along with the address that we are sending the invite to and the `options` media constraint javascript object.
+Then call the `.invite()` method with the target address and the `options` object containing media information.
 
-When we make the call the browser will ask for permission to access the camera and microphone.  We must allow this in order to make the call.  Once we send the invite the other party has the choice of either accepting or rejecting the call.  
+After invite is called, the browser will ask for permission to access the camera and microphone.  Permission must be allowed to make the call.  The person being called has the choice of accepting or rejecting the call.  
 
-We will also add an `endCall` button, which terminates the session using the `.bye()` method.
+An `endCall` button is added to terminate the session using the `.bye()` method.
 
 <iframe
   style="width: 100%; height: 410px"
@@ -82,11 +79,11 @@ We will also add an `endCall` button, which terminates the session using the `.b
 
 ###Displaying the Call
 
-Although we are now able to make calls, we are not yet displaying the videos on the screen.  To do this we need to attach the video streams that we are sending and receiving to the video elements that we added in the beginning.  
+Although we are now able to make calls, we are not yet displaying the videos on the screen.  To do this attach the video streams to the `<video>` elements.  
 
-We cannot just immediately attach the media streams; we must first wait until the call begins.  To do this we need to catch the `accepted` SIP event and attach the media streams after this point.  
+The streams cannot be attached until the call begins. Catch the `accepted` event and attach the video streams after this point.  
 
-We have created a new function called onAccepted(), which it runs as soon as the call connects.  This function calls the `attachMediaStream` function on both media streams, and then plays both video elements.
+Create a new function called onAccepted(), and bind it to the `accepted` event.  Inside this function, call the `attachMediaStream` function on both media streams, and then play both video elements.
 
 The function `attachMediaStream` attaches the media stream to the video element.
 

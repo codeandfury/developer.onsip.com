@@ -13,7 +13,7 @@ Let's walk through how to use the OnSIP network to receive calls and messages.
 
 ### Creating a Registered User Agent
 
-In order to make and receive calls and messages using the OnSIP Network, you first need to create an authenticated user agent.  To do this you need your auth username and sip password.  You can get this by using our webapi.  The [user agent authentication guide](/guides/useragentauthentication/) describes how to do this.
+To make and receive calls and messages using the OnSIP Network, you first need to create an authenticated user agent.  To do this you need your auth username and sip password.  You can get this by using our webapi.  The [user agent authentication guide](/guides/useragentauthentication/) describes how to do this.
 
 
 ### Receiving a Message
