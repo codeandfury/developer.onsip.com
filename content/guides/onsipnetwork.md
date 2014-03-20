@@ -18,7 +18,7 @@ To make and receive calls and messages using the OnSIP Network, you first need t
 
 ### Receiving a Message
 
-Every time a message is received by a user agent, the "message" event is triggered.  We need to catch this message event and do something with the message.  We will do this by calling the `.on("message", funct(e))` method.  The message is sent to the callback function that we include.  We will then print out the body of the message by getting the `.body` attribute.
+Every time a message is received by a user agent, the "message" event is triggered.  We need to catch this message event and do something with the message.  We will do this by calling the `.on("message", funct(e))` method.  The message is sent to the callback function that we include.  We will then print out the body of the message by getting the `.body` attribute.  
 
 <iframe
   style="width: 100%; height: 250px"

@@ -78,9 +78,9 @@ An `endCall` button is added to terminate the session using the `.bye()` method.
 
 ### Displaying the Call
 
-Although we are now able to make calls, we are not yet displaying the videos on the screen.  To do this attach the video streams to the `<video>` elements.  
+Although we are now able to make calls, we are not yet displaying the videos on the screen.  To do this we are going to attach the video streams to the `<video>` elements.  
 
-The streams cannot be attached until the call begins. Catch the `accepted` event and attach the video streams after this point.  
+The streams cannot be attached until the call begins. Catch the `accepted` event using `.on('accepted', funct)` and attach the video streams within this callback function.  
 
 Create a new function called onAccepted(), and bind it to the `accepted` event.  Inside this function, call the `attachMediaStream` function on both media streams, and then play both video elements.
 
