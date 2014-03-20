@@ -7,13 +7,13 @@ title: Sending Messages and Making Calls | SIP.js
 * TOC
 {:toc}
 
-Let's walk through core API concepts as we tackle some everyday use cases.
+In this guide, we walk through sending instant messages and creating sessions from a browser using [SIP.js](http://sipjs.com).  SIP.js is an open-source SIP stack written entirely in JavaScript for use with WebRTC-enabled browsers like Chrome and Firefox.  For more information about SIP.js, please visit [sipjs.com](http://www.sipjs.com).
 
 ## Setup
 
-### Html
+### HTML
 
-We must create the files index.html and main.js in the same folder.  In the index.html file we need to include the SIP.js library, which can be downloaded [here](/download/), as well as the main.js file.  
+We must create files called `index.html` and `main.js` in the same folder.  In the `index.html` file we need to include the SIP.js library as well as the main.js file.  [Download SIP.js](/download/) and save it in the same directory as the other two files.  Then, add the following code to `index.html`:
 
 <iframe
   style="width: 100%; height: 250px"
@@ -21,10 +21,9 @@ We must create the files index.html and main.js in the same folder.  In the inde
 </iframe>
 
 
-
 ### Creating the User Agent
 
-In order to send messages, create a SIP user agent.  Calling `SIP.UA()` method, with no parameters, creates an anonymous user agent.
+In order to send messages, create a SIP user agent.  To do this, open up `main.js`. Calling `new SIP.UA()` method, with no parameters, creates an anonymous user agent:
 
 <iframe
   style="width: 100%; height: 250px"
@@ -52,7 +51,7 @@ A `<video>` element is need to display the video stream.  The `<video>` element 
 
 Within the `<body>` tags, there is a `remoteVideo` `<video>` element, to display the video of the person being called.  There is also a `localVideo` `<video>` element, to display the video stream that is being sent to the person being called.  The local video stream should always be muted to prevent feedback.
 
-In the style.css file we will put a border around the `<video>` elements, to visualize them better.
+(Optional) We'll need to add some more code to display the videos later.  In the meantime, blank `<video>` elements don't look like much.  To help visualize them better, we used CSS to put a border around the `<video>` elements, to visualize them better.
 
 <iframe
   style="width: 100%; height: 300px"
@@ -77,7 +76,7 @@ An `endCall` button is added to terminate the session using the `.bye()` method.
 </iframe>
 
 
-###Displaying the Call
+### Displaying the Call
 
 Although we are now able to make calls, we are not yet displaying the videos on the screen.  To do this attach the video streams to the `<video>` elements.  
 
