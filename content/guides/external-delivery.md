@@ -34,7 +34,7 @@ Now that we know the destination is ready for us, let's configure the External A
 
 ## Step 2: Create an External Address Resource
 
-External Addresses can be managed through the Web Services API ([documentation](/WebAPI/External-Addresses.md/)). The [ExternalAddressAdd](/WebAPI/External-Addresses/#external-address-add) action creates a new External Address. Let's go straight to code samples:
+External Addresses can be managed through the Web Services API ([documentation](/WebAPI/External-Addresses/)). The [ExternalAddressAdd](/WebAPI/External-Addresses/#external-address-add) action creates a new External Address. Let's go straight to code samples:
 
 ### JavaScript
 ~~~ javascript
