@@ -27,7 +27,7 @@ In order to send messages, create a SIP user agent.  To do this, open up `main.j
 
 <iframe
   style="width: 100%; height: 250px"
-  src="http://jsfiddle.net/gk3p4/5/embedded/js,html,result/">
+  src="http://jsfiddle.net/gk3p4/6/embedded/js,html,result/">
 </iframe>
 
 
@@ -35,7 +35,7 @@ In order to send messages, create a SIP user agent.  To do this, open up `main.j
 
 After a user agent has been created we can send a message.
 
-To send the message, call the `.message(target, body)` method, along with the address that the message is being sent to in the `target` argument and the message that we are sending in the `body` argument.
+To send a message, call the `.message(target, body)` method, along with the address that the message is being sent to in the `target` argument and the message that we are sending in the `body` argument.  
 
 
 <iframe
@@ -58,9 +58,9 @@ Within the `<body>` tags, there is a `remoteVideo` `<video>` element, to display
   src="http://jsfiddle.net/mgc2e/11/embedded/html,js,css,result/">
 </iframe>
 
-### Sending an invite
+### Creating the Call
 
-As when we send a message, when we make a call, we first need to create a user agent using `SIP.UA()`. After this we can send an invite to make a call and thereby create a SIP session.
+Similar to message sending, when we make a call, we first need to create a user agent using `SIP.UA()`. After this we can send an invite to make a call and thereby create a SIP session.
 
 To send an invite first create a javascript object, which contains the `media` variable that specifies whether the session contains audio and video (i.e. whether it is a video call or an audio call).  
 
@@ -84,7 +84,7 @@ The streams cannot be attached until the call begins. Catch the `accepted` event
 
 Create a new function called onAccepted(), and bind it to the `accepted` event.  Inside this function, call the `attachMediaStream` function on both media streams, and then play both video elements.
 
-The function `attachMediaStream` attaches the media stream to the video element.
+The function `attachMediaStream` attaches the media stream to the video element.  This is needed due to cross browser compatibility issues.
 
 <iframe
   style="width: 100%; height: 600px"
