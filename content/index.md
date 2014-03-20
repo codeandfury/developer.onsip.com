@@ -5,7 +5,7 @@ layout: overview
 
 <div class="wrapper feature">
   <h1>Get Started with the OnSIP Network</h1>
-  <a class="button-orange-large" href="#">Sign up for a developer account</a>
+  <a class="button-orange-large" href="https://signup.onsip.com/network">Sign up for a developer account</a>
 </div>
 
 <div class="full-width-divider">
