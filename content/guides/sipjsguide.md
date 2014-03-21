@@ -13,7 +13,7 @@ In this guide, we walk through sending instant messages and creating sessions fr
 
 ### HTML
 
-We must create files called `index.html` and `main.js` in the same folder.  In the `index.html` file we need to include the SIP.js library as well as the main.js file.  [Download SIP.js](/download/) and save it in the same directory as the other two files.  Then, add the following code to `index.html`:
+We must create files called `index.html` and `main.js` in the same folder.  In the `index.html` file we need to include the SIP.js library as well as the main.js file.  [Download SIP.js](http://sipjs.com/download/) and save it in the same directory as the other two files.  Then, add the following code to `index.html`:
 
 <iframe
   style="width: 100%; height: 250px"
