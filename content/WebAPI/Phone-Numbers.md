@@ -48,7 +48,7 @@ Authentication | Authorization
 
 Required Parameters | Description
 -|-
-`Action` | "OrganizationBrowse"
+`Action` | "DidRequest"
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `UserId` | A positive integer which references a unique User.
 `Protocol` | The protocol by which calls will be delivered to the user; 'sip' or 'iax'
@@ -80,7 +80,7 @@ Authentication | Authorization
 
 Required Parameters | Description
 -|-
-`Action` | "OrganizationBrowse"
+`Action` | "DidEdit"
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 `DidId` | A positive integer which references a unique DID.
 `UserId` | A positive integer which references a unique User.
@@ -98,4 +98,31 @@ Supporting | [Did.rng](/rng/Did.rng)
 
 Not available.
 
+## DID Delete
+
+Remove a DID from an account.
+
+### Authentication & Authorization
+
+Authentication | Authorization
+-|-
+[Authenticated Session](../Authentication/#session-create) | [Account Admin](../#roles)
+
+### Request Parameters
+
+Required Parameters | Description
+-|-
+`Action` | "DidDelete"
+`SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
+`DidId` | A positive integer which references a unique DID.
+
+### Response Format
+
+Modules | [Relax NG](http://relaxng.org) Schema Files
+-|-
+Main | [DidDelete.rng](/rng/DidDelete.rng)
+
+### Examples
+
+Not available.
 

@@ -35,12 +35,12 @@ Required Parameters | Description
 `Email` | The contact email address.
 `Username` | An authentication username which references a unique User.
 `Password` | A user's login password (the password used to login to the web portal).
-`PasswordConfirm` | A confirmation copy of the user's login password (the password used to login to the web portal)
 
 Optional Parameters | Default | Description
 -|-
 `Company` | '' | The contact company or organization name.
-`PbxType` | 'trunk' | 'hosted' \| 'trunk'
+`PbxType` | 'hosted' | Currently we only allow customers to add additional Hosted PBXs to a single account. Contact support for more options.
+`Domain` | '' | A domain must contain 'onsip.com', i.e. it must be a subdomain of the onsip.com domain. This can be changed later using the [`OrganizationMigrateDomain`](/WebAPI/Organizations/#organization-migrate-domain) action. By default, one is created using the authentication username as the subdomain, with underscores replaced with dashes.
 
 ### Response Format
 
@@ -107,7 +107,7 @@ Required Parameters | Description
 
 Optional Parameters | Default | Description
 -|-
-`OrderBy` | OrganizationId | Domain [Desc] \| OrganizationId [Desc] 
+`OrderBy` | OrganizationId | Domain [Desc] \| OrganizationId [Desc]
 `Limit` | 20 | The maximum number of records to return.
 `Offset` | 0 | The offset of the first record to return. The offset of the initial record is 0 (not 1).
 `CalcFound` | true | Calculate how many records there would be in the result set, disregarding any Limit parameter.
