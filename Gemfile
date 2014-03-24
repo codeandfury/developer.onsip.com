@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 ruby "2.0.0"
 
+gem 'guard', '2.5.1'
+gem 'guard-nanoc', '1.0.2'
 gem 'rake', '10.1.0'
 gem 'nokogiri', '1.6.1'
 gem 'nanoc', '3.6.7'

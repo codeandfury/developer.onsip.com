@@ -6,10 +6,6 @@ title: Authentication | Web API
 
 Most of the requests to the Web Services API require authentication. The account must be authorized to perform the desired Action. In most cases, you’ll want to use an Admin account. The Admin of the account is the person who signed up for the OnSIP Hosted PBX service. Authentication is done by establishing a session using the Action SessionCreate. The request needs to be made with parameters UserName and Password. For admins, the password is the one used to access the admin portal, admin.onsip.com. If the credentials are valid, the API will respond with session information. You’ll use the SessionId in subsequent requests.
 
-* TOC
-{:toc}
-
-
 ## Session Create
 
 ### Description

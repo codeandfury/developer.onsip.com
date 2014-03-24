@@ -4,9 +4,6 @@ title: Agent | Web API
 
 # Agent
 
-* TOC
-{:toc}
-
 ## Agent Add Account
 
 As an Agent, this requests creates a new account.  Immediate after the account is created, the OnSIP branded billing emails are sent to the email address.

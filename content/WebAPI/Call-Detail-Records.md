@@ -4,9 +4,6 @@ title: Call Detail Records | Web API
 
 # Call Detail Records
 
-* TOC
-{:toc}
-
 ## CDR Browse
 
 Returns information about a group of Call Detail Records or CDRs. CDRs are only generated for calls to and from the PSTN. There will be no records generated for SIP to SIP calling which include extension to extension dialing. Internet calls are always free.

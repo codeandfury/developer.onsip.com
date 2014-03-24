@@ -4,9 +4,6 @@ title: User Agent Authentication
 
 # User Agent Authentication
 
-* TOC
-{:toc}
-
 Let's walk through how to create a [user agent](http://sipjs.com/api/0.5.0/ua/){:target="_blank"} using SIP.js and authenticate it via the OnSIP Network Web API.
 
 ## Overview
@@ -31,7 +28,7 @@ To get the auth username and SIP password using the OnSIP network, we will make 
 We will put the auth name and password in the configuration variable which is then passed to the `SIP.UA()` method.
 
 <iframe
-  style="width: 120%; height: 500px"
+  style="width: 100%; height: 500px"
   src="http://jsfiddle.net/VC8rK/6/embedded/js,html,css,result/">
 </iframe>
 

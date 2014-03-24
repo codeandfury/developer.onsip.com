@@ -3,17 +3,21 @@
 <body class="guides">
   <%= render 'header' %>
 
-  <div class="sub-nav">
-    <h2>Guides</h2>
-    <ul>
-      <li><a href="/guides/" class="active">Guides</a></li>
-    </ul>
-  </div>
+  <div class="wrapper">
 
-  <div id="wrapper">
-    <div class="content">
+    <aside id="sideNav">
+      <nav>
+        <ul class="sidenav-menu nav">
+          <li><a class="sidenav-section" href="/guides/">Overview</a></li>
+          <li><a class="sidenav-section" href="/guides/useragentauthentication/">User Agent Authentication</a></li>
+          <li><a class="sidenav-section" href="/guides/siproulette/">SIP Roulette Example Application</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <article id="mainContent">
       <%= yield %>
-    </div>
+    </article>
 
     <div id="js-sidebar" class="sidebar-shell">
       <div class="sidebar-module">

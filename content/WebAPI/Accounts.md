@@ -4,9 +4,6 @@ title: Accounts | Web API
 
 # Accounts
 
-* TOC
-{:toc}
-
 ## Account Read
 
 Returns information about an Account.

@@ -4,10 +4,6 @@ title: User Aliases | Web API
 
 # User Aliases
 
-* TOC
-{:toc}
-
-
 ## User Alias Add
 
 Typically used to add an 2 to 6 'pbx extension', this creates an alias for a [User Address](../User-Addresses).
@@ -56,6 +52,7 @@ Required Parameters | Description
 `SessionId` | [Authenticated Session](../Authentication/#session-create) identifier.
 
 One and Only One of the Following Parameters | Description
+-|-
 `AccountId` | A positive integer which references a unique Account.
 `OrganizationId` | A positive integer which references a unique Organization.
 `UserId` | A positive integer which references a unique User.

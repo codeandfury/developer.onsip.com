@@ -4,10 +4,6 @@ title: Phone Numbers | Web API
 
 # Phone Numbers
 
-* TOC
-{:toc}
-
-
 ## NPA NXX Browse
 
 Returns a list of available phone numbers. Use the DidId value along with Action DidRequest to purchase the DID / phone number, then assign the DID to a user using the DidEdit Action.
