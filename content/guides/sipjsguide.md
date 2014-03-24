@@ -4,9 +4,6 @@ title: Sending Messages and Making Calls | SIP.js
 
 # Sending Messages and Making Calls
 
-* TOC
-{:toc}
-
 In this guide, we walk through sending instant messages and creating sessions from a browser using [SIP.js](http://sipjs.com).  SIP.js is an open-source SIP stack written entirely in JavaScript for use with WebRTC-enabled browsers like Chrome and Firefox.  For more information about SIP.js, please visit [sipjs.com](http://www.sipjs.com).
 
 ## Setup

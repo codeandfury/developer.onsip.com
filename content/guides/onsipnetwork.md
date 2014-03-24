@@ -4,9 +4,6 @@ title: OnSIP Network
 
 # Receiving Calls and Messages using the OnSIP Network
 
-* TOC
-{:toc}
-
 Let's walk through how to use the OnSIP network to receive calls and messages.
 
 ## Overview

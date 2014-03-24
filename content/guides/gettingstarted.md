@@ -4,9 +4,6 @@ title: Getting Started
 
 # Displaying a Call
 
-* TOC
-{:toc}
-
 Let's walk through how to get started making and receiving phone calls using the SIP.js library.
 
 ## Overview
